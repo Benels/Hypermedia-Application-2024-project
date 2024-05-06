@@ -4,7 +4,9 @@
   </Head>
 
   <main>
-    <nuxt-link to="/our_women">Go to Another Page</nuxt-link>
+    <nuxt-link to="/our_women">Go to women Page</nuxt-link><br>
+    <nuxt-link to="/projects">Go to projects Page</nuxt-link><br>
+    <nuxt-link to="/services">Go to services Page</nuxt-link><br>
 
   </main>
 
