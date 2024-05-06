@@ -23,10 +23,12 @@
 
   import Person from "~/component/Person.vue";
 
-  const { data: people } = await useFetch('/api/our_women/')
+  const { data: people  } = await useFetch('/api/our_women/')
+
 
   if(people != null){
     console.log("if")
+    console.log(people)
   }else{
     console.log("k")
   }
