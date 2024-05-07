@@ -2,8 +2,14 @@
 // @ts-ignore
 export default defineNuxtConfig({
 
-  modules: ['@nuxtjs/supabase'],// ['@pinia/nuxt'],
-
+  modules: ['@nuxtjs/supabase', '@nuxtjs/google-fonts'],// ['@pinia/nuxt'],
+  
+  googleFonts: {
+    families: {
+      Roboto: true,
+      Rubik: true
+    }
+  },
 
   //devtools
 /*

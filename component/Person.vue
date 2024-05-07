@@ -1,9 +1,13 @@
 <template>
-  <NuxtLink :to = "link" :aria-label="`Link to ${name} ${surname} page`">
+  <NuxtLink :to = "link" :aria-label="`Link to ${name} ${surname} page`" class="personLink">
     <div class="card">
-      <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${name}-${surname}.jpg`"  :alt="`Missing Image`" />
-      <p class="name_surname">{{ surname }} {{ name }}</p>
-      <p class="role">{{ role }}</p>
+      <div class="imageContainer">
+        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${name}-${surname}.jpg`"  :alt="`Missing Image`" />
+      </div>
+      <div class="textContainer">
+        <p class="name_surname">{{ surname }} {{ name }}</p>
+        <p class="role">{{ role }}</p>
+      </div>
     </div>
   </NuxtLink>
 </template>
@@ -12,20 +16,53 @@
   const props = defineProps(['id', 'name', 'surname', 'role', 'link']);
 </script>
 
-  <style scoped>
-  .person-card-img {
-    height: 200px;
-    width: 200px;
-    aspect-ratio: auto;
+<style scoped>
+  .personLink {
+    text-decoration-line: none;
+    color: inherit;
   }
 
   .card {
+    width: 240px;
+    height: auto;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .imageContainer {
     width: 100%;
+    height: 240px;
+  }
+
+  .imageContainer > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 16px;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
+    gap: 6px;
   }
+
+  .textContainer > p {
+    margin: 0;
+    padding: 0;   
+  }
+
+  .textContainer > .name_surname {
+    font-size: 24px;
+  }
+
+  .textContainer > .role {
+    font-size: 18px;
+  }
+
 
 </style>
