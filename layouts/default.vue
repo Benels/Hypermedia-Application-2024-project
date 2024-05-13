@@ -1,9 +1,13 @@
 <template>
+
+  <Navbar />
   <slot />
+
 </template>
 
 <script lang="ts" setup>
 
+import Navbar from "~/component/Navbar.vue";
 </script>
 
 <style>
