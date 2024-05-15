@@ -2,7 +2,7 @@
 // @ts-ignore
 export default defineNuxtConfig({
 
-  modules: ['@nuxtjs/supabase', '@nuxtjs/google-fonts'],// ['@pinia/nuxt'],
+  modules: ['@nuxtjs/supabase', '@nuxtjs/google-fonts', "@nuxtjs/tailwindcss"],// ['@pinia/nuxt'],
   
   googleFonts: {
     families: {

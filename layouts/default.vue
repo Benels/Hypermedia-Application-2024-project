@@ -15,8 +15,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
-    color: white;
+    background-color: rgb(235, 235, 235);
+    color: black;
     font-family: 'Rubik';
 }
 </style>
