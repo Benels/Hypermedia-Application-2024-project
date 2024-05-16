@@ -5,7 +5,7 @@
 
   <main class="flex flex-col justify-center items-center mt-8 mb-0 mx-0 p-0 gap-8">
 
-    <div class="projectsContainer w-full flex flex-col items-center justify-center gap-4">
+    <div class="projectsContainer w-full flex flex-col items-center justify-center gap-4 z-0">
         <NuxtLink to="/projects" class="text-3xl">Our Projects</NuxtLink>
         <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
           <!-- Carousel wrapper -->
@@ -100,7 +100,16 @@
 
 <script setup>
 
+    import { initCarousels } from 'flowbite';
+    import { onMounted } from 'vue'
+  
 
+    // initialize components based on data attribute selectors
+    onMounted(() => {
+        setTimeout(() => {
+            initCarousels();
+        },100)
+    })
 
 </script>
 
