@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./node_modules/flowbite/**/*.js",
     "./component/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
@@ -17,4 +18,7 @@ module.exports = {
       "dropdownMenu": "#ebebeb"
     },},
   },
+  plugins: [
+    require('flowbite/plugin'),
+  ]
 }
