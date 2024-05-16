@@ -5,7 +5,7 @@
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:py-6 md:pb-4">
     <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
         <!--<img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />-->
-        <img src="~/assets/imgs/LogoTest.svg" class="h-8" alt="Flowbite Logo" />
+        <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
     </NuxtLink>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-dropdown" aria-expanded="false">
