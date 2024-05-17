@@ -5,7 +5,7 @@
 
   <main class="flex flex-col justify-center items-center mt-8 mb-0 mx-0 p-0 gap-8">
 
-    <div class="projectsContainer w-full flex flex-col items-center justify-center gap-4 z-0">
+    <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
         <NuxtLink to="/projects" class="text-3xl">Our Projects</NuxtLink>
         <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
           <!-- Carousel wrapper -->
@@ -50,7 +50,7 @@
     </div>
 
     
-    <div class="servicesContainer w-full flex flex-col items-center justify-center gap-4">
+    <div class="w-full flex flex-col items-center justify-center gap-4">
       <NuxtLink to="/projects" class="text-3xl">Our Services</NuxtLink>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <!-- Carousel wrapper -->
@@ -109,18 +109,12 @@
         setTimeout(() => {
             initCarousels();
         },100)
-    })
+    });
 
 </script>
 
 <style scoped>
-.outerContainer {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
+
 
 </style>
