@@ -4,13 +4,12 @@
   <slot />
 
 
-  <div class="absolute bottom-12 right-14 w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center">
+  <div class="fixed bottom-12 right-14 w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="w-16 h-16" src="~/assets/imgs/botLogoSelfMade.jpg"/>
   </div>
 
-  
-  <div class="socialContainer absolute bottom-12 left-12 flex flex-col-reverse gap-2 items-center">
+  <div class="socialContainer fixed bottom-12 left-12 flex flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-4" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
@@ -32,7 +31,6 @@
 import Navbar from "~/component/Navbar.vue";
 import { ref } from "vue";
 
-const prova = ref(false);
 const displaySocialList = ref(false);
 function handleSocialListDisplay(event: any) {
   // write the javascript to toggle the 
@@ -51,8 +49,5 @@ body {
     font-family: 'Rubik';
 }
 
-.instagram {
-  display: none;
-}
 
 </style>
