@@ -23,7 +23,7 @@
             <NuxtLink to="/activities">Our Activities</NuxtLink> <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
           </button>
           <!-- Dropdown menu -->
-          <div class="activities_dropdown rounded-lg shadow-xl border border-gray-300 w-32 self-center mt-10">
+          <div class="activities_dropdown rounded-lg shadow-xl border border-gray-300 w-32 self-center mt-7">
               <ul class="py-2 text-md text-center" aria-labelledby="dropdownLargeButton">
                 <li class="">
                   <NuxtLink to="/projects" class="block px-4 py-2 hover:text-red">Projects</NuxtLink>
