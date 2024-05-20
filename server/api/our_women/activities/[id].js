@@ -11,9 +11,7 @@ export default defineEventHandler(async (event) => {
         .from('activity')
         .select('name, activity_id, is_service, picture').eq('leader', id)
     if(error) {
-        console.log(error.message)
         throw createError({statusCode: 400, statusMessage: error.message})
     }
-    console.log(act)
     return act
 })
