@@ -13,7 +13,7 @@
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
-    <div class="transition-display duration-300 ease flex flex-col-reverse gap-2" v-if="displaySocialList">
+    <div class="socialLinks flex-col-reverse gap-2" ref="socialContainer">
       <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar">
       <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/instagram.png" alt="Bordered avatar">
       <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar">
@@ -32,9 +32,24 @@ import Navbar from "~/component/Navbar.vue";
 import { ref } from "vue";
 
 const displaySocialList = ref(false);
+const socialContainer = ref();
 function handleSocialListDisplay(event: any) {
   // write the javascript to toggle the 
-  displaySocialList.value = !displaySocialList.value;
+  //displaySocialList.value = !displaySocialList.value;
+
+  if(!displaySocialList.value) {
+    displaySocialList.value = !displaySocialList.value;
+    socialContainer.value.classList.add("displayBlock");
+    setTimeout(() => {
+      socialContainer.value.classList.add("setOpacity");
+    }, 100);
+  } else {
+    displaySocialList.value = !displaySocialList.value;
+    socialContainer.value.classList.remove("setOpacity");
+    setTimeout(() => {
+      socialContainer.value.classList.remove("displayBlock");
+    }, 700);
+  }
 }
 
 </script>
@@ -49,5 +64,19 @@ body {
     font-family: 'Rubik';
 }
 
+
+.socialLinks {
+  transition: opacity 1s ease;
+  opacity: 0;
+  display: none;
+}
+
+.setOpacity {
+  opacity: 1 !important;
+}
+
+.displayBlock {
+  display: flex !important;
+}
 
 </style>
