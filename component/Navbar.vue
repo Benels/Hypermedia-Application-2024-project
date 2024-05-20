@@ -18,12 +18,12 @@
         <li>
           <NuxtLink to="/about_us" class="hover:text-red block pb-2 px-3 rounded md:bg-transparent md:p-0" aria-current="page">About us</NuxtLink>
         </li>
-        <li class="activities_link flex flex-col">
+        <li class="activities_link flex flex-col" ref="dropdownLink" @focusin="displayDropdown" @focusout="removeDropdown">
           <button class="hover:text-red flex items-center justify-between w-full py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">
             <NuxtLink to="/activities">Our Activities</NuxtLink> <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
           </button>
           <!-- Dropdown menu -->
-          <div class="activities_dropdown rounded-lg shadow-xl border border-gray-300 w-32 self-center mt-7">
+          <div class="activities_dropdown rounded-lg shadow-xl border border-gray-300 w-32 self-center mt-7" ref="dropdownMenu">
               <ul class="py-2 text-md text-center" aria-labelledby="dropdownLargeButton">
                 <li class="">
                   <NuxtLink to="/projects" class="block px-4 py-2 hover:text-red">Projects</NuxtLink>
@@ -59,11 +59,26 @@
 import { ref } from "vue";
 
 const navbarMenu = ref();
+const dropdownLink = ref();
+const dropdownMenu = ref();
 
 function toggleNavbar(event) {
   navbarMenu.value.classList.toggle("hidden");
 }
 
+function displayDropdown(event) {
+  if(screen.width < 768) {
+    dropdownMenu.value.classList.add("displayDropdown");
+    console.log("display");
+  }
+}
+
+function removeDropdown(event) {
+  if(screen.width < 768) {
+    dropdownMenu.value.classList.remove("displayDropdown");
+    console.log("display");
+  }
+}
 
 </script>
 
@@ -76,8 +91,15 @@ function toggleNavbar(event) {
   background-color: #ebebeb;
 }
 
-.activities_link:hover .activities_dropdown {
-  display: block;
+.displayDropdown {
+  display: block !important;
 }
+
+@media (min-width: 768px) {/* if the screen is at least md */ 
+  .activities_link:hover .activities_dropdown {
+    display: block;
+  }
+}
+
 
 </style>
