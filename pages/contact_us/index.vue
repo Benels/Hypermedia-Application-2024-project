@@ -34,12 +34,12 @@
           <p>Or write as an email at: </p>
           <a class="mail" href="mailto:10727489@polimi.it">hermet@hermet.com</a>
 
-          <p>Forse si potrebbe mettere qualcosa qui per riempire lo spazio</p>
+          <img src="/assets/imgs/carouselTest/2.jpg">
         </div>
 
         <div class="social">
           <p>Follow us on:</p>
-          <a href="https://www.instagram.com" class = "social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram.png"></a>
+          <a href="https://www.instagram.com" class = "social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram2.png"></a>
           <a href="https://www.facebook.com" class = "social_logo" target="_blank" aria-label="Link to Facebook"><img src="/assets/imgs/social/facebook.png"></a>
           <a href="https://twitter.com/home" class = "social_logo" target="_blank" aria-label="Link to Twitter"><img src="/assets/imgs/social/twitter.png"></a>
           <a href="https://www.linkedin.com" class = "social_logo" target="_blank" aria-label="Link to LinkedIn"><img src="/assets/imgs/social/linkedin.png"></a>
