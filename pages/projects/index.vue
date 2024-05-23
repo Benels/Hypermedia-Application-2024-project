@@ -4,9 +4,8 @@
   </Head>
 
   <main>
-    <h1>Our Projects</h1>
-    <div class="flex flex-wrap gap-16 gap-y-12 justify-center mx-auto mt-10 max-w-[60vw] h-auto bg-gray-300">
-      <Project v-for = "x of projects" :id = "x.activity_id" :name = "x.name" :link = "'/projects/' + x.activity_id" />
+    <h1 class="text-4xl text-center mt-6 md:mt-10">Our Projects</h1>
+    <div class="flex flex-wrap justify-center w-full mx-auto gap-6 gap-y-4 md:gap-16 md:gap-y-10 mt-4 md:mt-6 pb-8 lg:pb-0 px-20 md:px-6 lg:w-[70vw]">
       <Project v-for = "x of projects" :id = "x.activity_id" :name = "x.name" :link = "'/projects/' + x.activity_id" />
     </div>
   </main>
