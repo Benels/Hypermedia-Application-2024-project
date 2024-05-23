@@ -126,7 +126,7 @@
 
     const projects = ref([])
     const services = ref([])
-    const { data: activities } = await useFetch('/api/our_women/activities/' + route.params.id)
+    const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id)
 
     if (activities.value) {
       activities.value.forEach(activity => {
@@ -147,7 +147,6 @@
         initCarousels();
       },100)
     });
-
 
 
 

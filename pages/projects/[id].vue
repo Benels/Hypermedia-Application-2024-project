@@ -11,10 +11,16 @@
 </template>
 
 <script setup>
-const route = useRoute();
-const activityId = route.params.id;
 
-const { data: activity  } = await useFetch(`/api/activities/${activityId}`);
+  const route = useRoute()
+  const project = await $fetch('/api/activities/' + route.params.id) //get the specific person from their id
+
+  const leader = await $fetch('/api/our_women/' + project.leader)
+
+  const descriptionParts = person.description.split('<br>').map(part => part.trim());
+
+
+
 </script>
 
 <style scoped>
