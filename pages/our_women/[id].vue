@@ -15,6 +15,7 @@
           <p>{{ part }}</p>
         </div>
       </div>
+      <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
     </div>
 
 
