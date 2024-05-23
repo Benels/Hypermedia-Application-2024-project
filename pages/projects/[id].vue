@@ -4,18 +4,17 @@
   </Head>
 
   <main class="outerContainer">
-    <h1>Our People</h1>
-
-    <div class="peopleContainer">
-      <Person v-for = "person of people" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-    </div>
+    <p>{{ activity.name }}</p>
+    <p>{{ activity.description }}</p>
 
   </main>
 </template>
 
 <script setup>
-import Person from "~/component/Person.vue";
-const { data: people  } = await useFetch('/api/our_women/');
+const route = useRoute();
+const activityId = route.params.id;
+
+const { data: activity  } = await useFetch(`/api/activities/${activityId}`);
 </script>
 
 <style scoped>

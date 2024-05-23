@@ -159,6 +159,7 @@
 
 <script setup>
   import Person from "~/component/Person.vue";
+
   const { data: response  } = await useFetch('/api/our_women/');
   const people = JSON.parse(JSON.stringify(response.value))
 
