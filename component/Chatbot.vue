@@ -1,9 +1,9 @@
 <template>
   <div class="chat-container">
     <div class="chat-header">
-      Jarvis - your personal assistent
+      Jarvis - Your personal Assistant
     </div>
-    <div class="chat-box">
+    <div class="chat-box" ref="chatBox">
       <div v-for="(msg, i) in messages" key="i" class="msg">
         <p>
           <!--<div class="message {{msg.role}>
@@ -65,9 +65,17 @@ export default {
 
         else
           throw new Error('Empty or invalid response from server');
+
+        this.scrollToBottom();
       } catch (error) {
         console.error("Error:", error);
       }
+    },
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const chatBox = this.$refs.chatBox;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
     }
   }
 };
@@ -83,14 +91,16 @@ body {
 }
 
 .chat-container {
-  width: 400px;
-  max-width: 100%;
+  width: 500px;
+  align-self: end;
+  max-width: 80%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 90vh;
 }
 
 .chat-box {
@@ -102,11 +112,10 @@ body {
 }
 
 .message {
-  max-width: 70%;
+  max-width: 90%;
   margin-bottom: 10px;
   position: relative;
   overflow: hidden;
-
 }
 
 .user-bubble,

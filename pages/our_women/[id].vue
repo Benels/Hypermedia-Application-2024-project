@@ -15,35 +15,26 @@
           <p>{{ part }}</p>
         </div>
       </div>
-      <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
+      <br>
+      <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
     </div>
 
 
 
 
-
     <div v-if="projects.length > 0">
-      <p>Projects managed by {{ person.name }} {{ person.surname }}</p>
-
+      <h1 class="activities">Projects managed by {{ person.name }} {{ person.surname }}</h1>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
-        <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(project, index) in projects" :key="project.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/projects/' + project.activity_id">
               <img :src="project.picture" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="project.name" />
-              <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-black text-white text-center py-2">
+              <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
                 {{ project.name }}
               </div>
             </router-link>
           </div>
         </div>
-
-        <!-- Slider indicators -->
-        <!--div v-if="projects.length > 1" class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          <button v-for="(project, index) in projects" :key="index" type="button" class="w-3 h-3 rounded-full" :aria-current="index === 0" :aria-label="'Slide ' + (index + 1)" :data-carousel-slide-to="index"></button>
-        </div-->
-
-        <!-- Slider controls -->
         <button v-if="projects.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
           <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -65,27 +56,18 @@
 
 
     <div v-if="services.length > 0">
-      <p>Services managed by {{ person.name }} {{ person.surname }}</p>
-
+      <h1>Services managed by {{ person.name }} {{ person.surname }}</h1>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
-        <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(service, index) in services" :key="service.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/services/' + service.activity_id">
               <img :src="service.picture" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="service.name" />
-              <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-black text-white text-center py-2">
+              <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
                 {{ service.name }}
               </div>
             </router-link>
           </div>
         </div>
-
-        <!-- Slider indicators -->
-        <!--div v-if="services.length > 1" class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          <button v-for="(service, index) in services" :key="index" type="button" class="w-3 h-3 rounded-full" :aria-current="index === 0" :aria-label="'Slide ' + (index + 1)" :data-carousel-slide-to="index"></button>
-        </div-->
-
-        <!-- Slider controls -->
         <button v-if="services.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
           <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -104,13 +86,8 @@
         </button>
       </div>
     </div>
-
-
-
-
+    <br>
   </main>
-
-
 </template>
 
 
@@ -207,5 +184,17 @@
   line-height: 1.5rem;
   color: #333;
 }
+.activities{
+  text-align: center;
+  color: red;
+  font-size: x-large;
+}
 
+.cv_box{
+  padding: 0.4rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
 </style>

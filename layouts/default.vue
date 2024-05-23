@@ -23,7 +23,7 @@
       <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar">
       <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar">
     </div>
-    
+
   </div>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
 
@@ -38,7 +38,7 @@ import { ref } from "vue";
 const displaySocialList = ref(false);
 const socialContainer = ref();
 function handleSocialListDisplay(event: any) {
-  // write the javascript to toggle the 
+  // write the javascript to toggle the
   //displaySocialList.value = !displaySocialList.value;
 
   if(!displaySocialList.value) {
@@ -66,7 +66,7 @@ function handleChatbot(event :any){
     chatbotContainer.value.classList.add("displayBlock");
     setTimeout(() => {
       chatbotContainer.value.classList.add("setOpacity");
-    }, 100);
+    }, 50);
   }else{
     displayChat.value = !displayChat.value;
     chatbotContainer.value.classList.remove("setOpacity");
