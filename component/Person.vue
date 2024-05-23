@@ -23,7 +23,7 @@
   }
 
   .card {
-    width: 240px;
+    width: 300px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
 
   .imageContainer {
     width: 100%;
-    height: 240px;
+    height: 300px;
   }
 
   .imageContainer > img {
