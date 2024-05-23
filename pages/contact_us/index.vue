@@ -34,7 +34,7 @@
           <p>Or write as an email at: </p>
           <a class="mail" href="mailto:10727489@polimi.it">hermet@hermet.com</a>
 
-          <img src="/assets/imgs/carouselTest/2.jpg">
+          <img src="/assets/imgs/contactus.jpg">
         </div>
 
         <div class="social">

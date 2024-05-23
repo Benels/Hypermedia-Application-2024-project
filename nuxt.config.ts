@@ -27,7 +27,4 @@ export default defineNuxtConfig({
   postcss:{
     plugins:{tailwindcss:{}, autoprefixer:{}}},
 
-  /*chatgpt:{
-    apiKey: 'sk-proj-VzKn9jz6P1e9TPoDwDvJT3BlbkFJjpMRBi4buHcSWXhfcJuO'
-  },*/
 })

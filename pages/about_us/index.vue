@@ -5,11 +5,11 @@
 
   <main class="outerContainer">
 
-    <div class="centered">
-      <p class="self-center text-6xl font-semibold whitespace-nowrap">HERmet</p>
+    <div class="centered hidden">
+      <p class="self-center text-6xl font-semibold whitespace-nowrap hidden">HERmet</p>
     </div>
-    <div class="centered">
-      <img src="/assets/imgs/carouselTest/2.jpg" width="90%">
+    <div class="centered w-full">
+      <img src="/assets/imgs/aboutus_big_2.jpeg" width="100%">
     </div>
 
     <div class="container">
