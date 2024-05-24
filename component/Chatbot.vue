@@ -4,78 +4,147 @@
       Jarvis - Your personal Assistant
     </div>
     <div class="chat-box" ref="chatBox">
-      <div v-for="(msg, i) in messages" key="i" class="msg">
-        <p>
-          <!--<div class="message {{msg.role}>
-            <div class="{{msg.role}}-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-               {{ content.text }}
-            </div>
-          </div>-->
-          <div class="message user" v-if="msg.role==='user'">
-            <div class="user-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-              {{ content.text }}
-            </div>
+      <div v-for="(msg, i) in messages" :key="i" class="msg">
+        <div class="message user" v-if="msg.role === 'user'">
+          <div class="user-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
+            {{ content.text }}
           </div>
-          <div class="message assistant" v-else>
-            <div class="assistant-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-              {{ content.text }}
-            </div>
+        </div>
+        <div class="message assistant" v-else>
+          <div class="assistant-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
+            {{ content.text }}
+            <button @click="speak(content.text)">🔊</button>
           </div>
-        </p>
+        </div>
       </div>
     </div>
     <div class="chat-input-container">
       <input class="chat-input" v-model="input" @keyup.enter="sendMsg" placeholder="Type your message..." />
       <button class="send-button" @click="sendMsg">Send</button>
+      <button class="TTSbutton" @click="startRecognition">🎙️</button>
+      <button class="TTSbutton" @click="stopRecognition">⏹️</button>
     </div>
   </div>
 </template>
 
+
+
+
 <script>
-export default {
-  data(){
-    return{
-      messages: [{role: 'assistant', content: [{text: "Hi, I am Jarvis, how can I help you?", type: 'text'}]}],
+  export default {
+  data() {
+    return {
+      messages: [{ role: 'assistant', content: [{ text: "Hi, I am Jarvis, how can I help you?", type: 'text' }] }],
       input: '',
+      speechSynthesisActive: false,
+      recognition: null
     };
+  },
+  mounted() {
+    this.setupRecognition();
   },
   methods: {
     async sendMsg() {
-      this.messages.push({ role: 'user', content: [{text: this.input, type: 'text'}] });
+      this.messages.push({ role: 'user', content: [{ text: this.input, type: 'text' }] });
+      const userInput = this.input;
       this.input = '';
       try {
-
         const res = await fetch('/api/chatbot', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-
           body: JSON.stringify({ messages: this.messages })
         });
 
-        if(!res.ok){
+        if (!res.ok) {
           throw new Error('Network response was not ok');
         }
-
         const data = await res.json();
-
-        if(data.choices && data.choices.length>0 && data.choices[0].message.content)
-          this.messages.push({role: 'assistant', content:[{text: data.choices[0].message.content, type: 'text'}]});
-
-        else
+        if (data.choices && data.choices.length > 0 && data.choices[0].message.content) {
+          this.messages.push({ role: 'assistant', content: [{ text: data.choices[0].message.content, type: 'text' }] });
+        } else {
           throw new Error('Empty or invalid response from server');
+        }
 
         this.scrollToBottom();
       } catch (error) {
         console.error("Error:", error);
       }
     },
+
     scrollToBottom() {
       this.$nextTick(() => {
         const chatBox = this.$refs.chatBox;
         chatBox.scrollTop = chatBox.scrollHeight;
       });
+    },
+
+    setupRecognition() {
+      if ('webkitSpeechRecognition' in window) {
+        this.recognition = new webkitSpeechRecognition();
+        this.recognition.continuous = false;
+        this.recognition.interimResults = false;
+        this.recognition.lang = 'en-US';
+
+        this.recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          this.input = transcript;
+          this.sendMsg();
+        };
+
+        this.recognition.onerror = (event) => {
+          console.error("Speech recognition error:", event);
+        };
+
+        this.recognition.onend = () => {
+          console.log("Speech recognition ended.");
+        };
+      } else {
+        console.error("Speech recognition not supported in this browser.");
+      }
+    },
+
+    startRecognition() {
+      if (this.recognition) {
+        this.recognition.start();
+      }
+    },
+
+    /*stopRecognition() {
+      //if (this.recognition) {
+      // this.recognition.stop();
+      //}
+    },*/
+    stopRecognition() {
+      if (this.recognitionActive && this.recognition) {
+        this.recognition.stop();
+        this.recognitionActive = false;
+      }
+    },
+
+    speak(text) {
+      if ('speechSynthesis' in window) {
+        if (this.speechSynthesisActive) {
+          window.speechSynthesis.cancel();
+          this.speechSynthesisActive = false;
+          return;
+        }
+
+        //console.log(window.speechSynthesis.getVoices());
+        window.speechSynthesis.getVoices().forEach(voice => {
+          console.log(voice.name);
+        });
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        //utterance.voice = window.speechSynthesis.getVoices()//.find(voice => voice.name === 'Microsoft Zira Desktop - English (United States)');
+        utterance.voice = window.speechSynthesis.getVoices().filter(function(voice) { return voice.name === 'Microsoft Zira Desktop - English (United States)'; })[0];
+        window.speechSynthesis.speak(utterance);
+        this.speechSynthesisActive = true;
+
+      } else {
+        console.error("Text-to-speech not supported in this browser.");
+      }
     }
   }
 };
@@ -120,7 +189,7 @@ body {
 
 .user-bubble,
 .assistant-bubble {
-  max-width: 100%;
+  max-width: 80%;
   padding: 10px 15px;
   border-radius: 20px;
   position: relative;
@@ -180,7 +249,7 @@ body {
 
 .chat-input {
   flex-grow: 1;
-  padding: 10px 15px;
+  padding: 10px 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
@@ -189,7 +258,8 @@ body {
 }
 
 .send-button {
-  padding: 10px 20px;
+  flex-grow: 1;
+  padding: 10px 10px;
   background-color: #ff6f61;
   color: white;
   border: none;
@@ -197,6 +267,17 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.TTSbutton {
+   flex-grow: 1;
+   padding: 10px 10px;
+   margin-left: 3px;
+   background-color: #ff6f61;
+   color: white;
+   border: none;
+   border-radius: 20px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
 
 .send-button:hover {
   background-color: #ff5a4d;
