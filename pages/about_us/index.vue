@@ -9,12 +9,12 @@
       <p class="self-center text-6xl font-semibold whitespace-nowrap hidden">HERmet</p>
     </div>
     <div class="centered w-full">
-      <img src="/assets/imgs/aboutus_big_2.jpeg" width="100%">
+      <img src="/assets/imgs/aboutUs/aboutus_big_2.jpeg" alt="" id="main_img">
     </div>
 
     <div class="container">
-      <div class="image-container">
-        <img src="/assets/imgs/aboutUs/stop_violence.jpg" class="img-about">
+      <div id="mc1" class="image-container">
+        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="" class="img-about">
       </div>
       <div class="text-container">
         <h2>OUR MISSION</h2>
@@ -25,36 +25,41 @@
           and well-being of all women affected by such circumstances.
         </p>
       </div>
+      <div id="mc2" class="image-container">
+        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="" class="img-about">
+      </div>
     </div>
 
     <div class="container">
       <div class="text-container">
         <h2>OUR HISTORY</h2>
         <p class="justified">
-          HERmet, established in 2015, emerged from a grassroots movement aimed at combatting violence against women and promoting gender equality.
+          HERmet, established in 2015, emerged from a movement aimed at fighting violence against women and promoting gender equality.
           Since then, the organization has worked tirelessly to provide support, advocacy, and resources for survivors while also advocating for systemic
-          change through education and awareness initiatives. With a commitment to empowerment and social justice,
-          HERmet continues to grow and adapt, driven by the voices and experiences of survivors and allies, as it strives to create a world free
-          from violence and discrimination for all women and girls.
+          change through education and awareness initiatives. With a commitment to empowerment and social justice,HERmet continues to grow and adapt,
+          driven by the voices and experiences of survivors and allies, as it strives to create a world free from violence and discrimination for all women and girls.
         </p>
       </div>
       <div class="image-container">
-        <img src="/assets/imgs/aboutUs/history.jpg" class="img-about">
+        <img src="/assets/imgs/aboutUs/history.jpg" alt=""  class="img-about">
       </div>
     </div>
 
     <div class="container">
-      <div class="image-container">
-        <img src="/assets/imgs/aboutUs/stop_violence.jpg" class="img-about">
+      <div id="pc1" class="image-container">
+        <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
       </div>
       <div class="text-container">
         <h2>PRACTICAL INFORMATION</h2>
         <p class="justified">
-          HERmet's headquarter is situated in Milan, at Città Studi.
-          It offers various services 24h per day, but you can find someone at the center at these opening hours
+          HERmet's headquarter is situated at <a href="https://www.google.it/maps/place/Piazza+Leonardo+da+Vinci,+1,+20133+Milano+MI/@45.4785935,9.2246471,17z/data=!3m1!4b1!4m6!3m5!1s0x4786c79bc37bec41:0x7b28618e58d10a3a!8m2!3d45.4785935!4d9.227222!16s%2Fg%2F11v54d4qyw?entry=ttu">Piazza Leonardo da Vinci 1, Milano MI</a>.
+          It offers various services 24h per day, but you can find us at the center at these opening hours
         </p>
-          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-          <p>Saturday - Sunday: 10:00 AM - 4:00 PM</p>
+          <p><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
+          <p><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+      </div>
+      <div id="pc2" class="image-container">
+        <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
       </div>
     </div>
 
@@ -107,6 +112,11 @@
 </script>
 <style scoped>
 
+#main_img {
+  width: 95%;
+  border-radius: 5rem;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -124,6 +134,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+#mc2,
+#pc2 {
+  display: none;
 }
 
 .img-about {
@@ -144,5 +159,19 @@ h2 {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: none;
+  }
+  #mc1,
+  #pc1 {
+    display: none;
+  }
+  #mc2,
+  #pc2 {
+    display: inherit;
+  }
 }
 </style>
