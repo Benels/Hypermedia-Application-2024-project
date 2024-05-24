@@ -72,7 +72,7 @@
     },
     {
       "id": 2,
-      "name": "call_center",
+      "name": "call center",
       "people": call_center
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "id": 4,
-      "name": "medical_personel",
+      "name": "medical personel",
       "people": medical_personel
     },
     {
@@ -92,17 +92,17 @@
     },
     {
       "id": 6,
-      "name": "social_worker",
+      "name": "social worker",
       "people": social_worker
     },
     {
       "id": 7,
-      "name": "vocational_trainer",
+      "name": "vocational trainer",
       "people": vocational_trainer
     },
     {
       "id": 8,
-      "name": "social_worker",
+      "name": "social worker",
       "people": educator
     }
   ]
