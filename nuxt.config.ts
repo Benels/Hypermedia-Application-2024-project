@@ -7,7 +7,9 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Roboto: true,
-      Rubik: true
+      Rubik: true,
+      Caveat: true,
+      "Indie Flower": true
     }
   },
 

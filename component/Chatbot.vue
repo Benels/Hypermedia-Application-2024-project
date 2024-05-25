@@ -120,7 +120,7 @@ body {
 
 .user-bubble {
   align-self: flex-end;
-  background-color: #ff6f61;
+  background-color: #d62828;
   color: white;
   margin-left: auto;
   text-align: right;
@@ -136,7 +136,7 @@ body {
   height: 0;
   border: 0 solid transparent;
   border-bottom-width: 10px;
-  border-left: 10px #ff6f61;
+  border-left: 10px #d62828;
   margin-top: -10px;
 }
 
@@ -144,7 +144,7 @@ body {
   align-self: flex-start;
   background-color: #ffffff;
   color: #333;
-  border: 1px solid #ff6f61;
+  border: 1px solid #d62828;
 }
 
 .assistant-bubble::before {
@@ -181,7 +181,7 @@ body {
 
 .send-button {
   padding: 10px 20px;
-  background-color: #ff6f61;
+  background-color: #d62828;
   color: white;
   border: none;
   border-radius: 20px;
@@ -190,7 +190,7 @@ body {
 }
 
 .send-button:hover {
-  background-color: #ff5a4d;
+  background-color: #d62828;
 }
 
 .message.user {
@@ -199,7 +199,7 @@ body {
 }
 
 .chat-header {
-  background-color: #ff6f61; /* Corallo */
+  background-color: #d62828;
   color: white;
   padding: 15px;
   text-align: center;
