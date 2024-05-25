@@ -49,6 +49,7 @@
     justify-content: center;
     align-items: center;
     gap: 6px;
+    text-align: center;
   }
 
   .textContainer > p {

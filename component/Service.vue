@@ -1,19 +1,18 @@
 <template>
-  <NuxtLink :to = "link" :aria-label="`Link to ${name} ${surname} page`" class="personLink">
+  <NuxtLink :to = "link" :aria-label="`Link to ${name} page`" class="personLink">
     <div class="card">
-      <div class="imageContainer">
-        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${name}-${surname}.jpg`"  :alt="`Missing Image`" />
+      <div class="imageContainer bg-red rounded-3xl">
+        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${id}.jpg`"  :alt="`Missing Image`" />
       </div>
       <div class="textContainer">
-        <p class="name_surname">{{ surname }} {{ name }}</p>
-        <p class="role">{{ role }}</p>
+        <p class="name_surname">{{ name }}</p>
       </div>
     </div>
   </NuxtLink>
 </template>
 
 <script setup>
-  const props = defineProps(['id', 'name', 'surname', 'role', 'link']);
+  const props = defineProps(['id', 'name']);
 </script>
 
 <style scoped>

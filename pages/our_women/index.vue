@@ -3,145 +3,28 @@
     <Title>HERmet - Our People</Title>
   </Head>
 
-  <main class="flex flex-col justify-center items-center">
+  <main class="flex flex-col">
     <p class="text-5xl p-10 hidden">Our Women</p>
 
     <!-- <div class="peopleContainer">
       <Person v-for = "person of people" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
     </div> -->
 
-    <div class="text-center w-full flex flex-col justify-center h-[95vh]">
-      <h1 class="text-4xl uppercase">Board</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
+    <div class="calcHeight w-full flex flex-col justify-center items-center">
+      <div id="sectionName" class="">
+        <p class="text-3xl uppercase text-center">Board</p>
+      </div>
+      <div id="sectionCards" class="flex flex-wrap gap-8 mt-4 w-2/3 justify-center items-start">
         <Person v-for = "person of board" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
       </div>
     </div>
 
-    <div class="scrollIcon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"/></svg>
-    </div>
-
-    <div class="text-center w-full flex flex-col justify-center h-[100vh] bg-red text-white">
-      <h1 class="text-4xl uppercase">Managers</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of manager" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
+    <div v-for="s of sections" class="min-h-[100vh] w-full flex flex-col justify-center items-center" :class="s.id % 2 !== 0 ? 'bg-red': '' ">
+      <div id="sectionName" class="">
+        <p class="text-3xl uppercase text-center">{{ s.name }}</p>
       </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh]">
-      <h1 class="text-4xl uppercase">Lawyers</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of attorney" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh] bg-red text-white">
-      <h1 class="text-4xl uppercase">Psychologists</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of psychologist" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center items-center h-[100vh]">
-      <h1 class="text-4xl uppercase">Medical Personel</h1>
-      <div class="flex flex-row flex-wrap w-2/3 justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of medical_personel" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh] bg-red text-white">
-      <h1 class="text-4xl uppercase">Social Workers</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of social_worker" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh]">
-      <h1 class="text-4xl uppercase">Vocational Trainers</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of vocational_trainer" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh] bg-red text-white">
-      <h1 class="text-4xl uppercase">Educators</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of educator" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center h-[100vh]">
-      <h1 class="text-4xl uppercase">Call Center</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of call_center" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-
-    <!-- BOARD -->
-    <!-- <div class="text-center w-full flex flex-col justify-center pb-20">
-      <h1 class="text-4xl uppercase">Board</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of board" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div> -->
-    <!--
-    <div class="text-center w-full flex flex-row justify-center py-10">
-      <div class="flex flex-col items-center w-[60vw]">
-        <h1 class="text-4xl uppercase">board</h1>
-        <div class="flex flex-row justify-center items-top gap-8 mt-8">
-          <Person v-for = "person of board" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-        </div>
-      </div>
-      <div class="flex flex-col w-[40vw]">
-        <div class="self-start">
-          <h1 class="text-4xl uppercase text-center">manager</h1>
-          <div class="flex flex-row justify-center items-top gap-8 mt-8">
-            <Person v-for = "person of manager" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center w-full flex flex-row justify-center px-20 py-10 bg-red text-white">
-      <div class="flex flex-col justify-center w-[40vw]">
-        <h1 class="text-4xl uppercase">Lawyers</h1>
-        <div class="flex flex-row justify-center items-top gap-8 mt-8">
-          <Person v-for = "person of attorney" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-        </div>
-      </div>
-      <div class="flex flex-col justify-center w-[40vw]">
-        <h1 class="text-4xl uppercase">Psychologists</h1>
-        <div class="flex flex-row justify-center items-top gap-8 mt-8">
-          <Person v-for = "person of psychologist" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-        </div>
-      </div>
-    </div>
-    <div class="text-center w-full flex flex-col justify-center py-10">
-      <h1 class="text-4xl uppercase">Call Center</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of call_center" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-
-    <div class="text-center w-full flex flex-col justify-center py-10 bg-red text-white">
-      <h1 class="text-4xl uppercase">Medical Personel</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of medical_personel" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-      </div>
-    </div>
-
-    <div class="text-center w-full flex flex-row justify-center px-20 py-10">
-      <div class="flex flex-col justify-center w-[40vw]">
-        <h1 class="text-4xl uppercase">Vocational Trainers</h1>
-        <div class="flex flex-row justify-center items-top gap-8 mt-8">
-          <Person v-for = "person of vocational_trainer" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-        </div>
-      </div>
-      <div class="flex flex-col justify-center w-[40vw]">
-        <h1 class="text-4xl uppercase">Educators</h1>
-        <div class="flex flex-row justify-center items-top gap-8 mt-8">
-          <Person v-for = "person of educator" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center w-full flex flex-col justify-center py-10 bg-red text-white">
-      <h1 class="text-4xl uppercase">Social workers</h1>
-      <div class="flex flex-row justify-center items-top gap-8 mt-8">
-        <Person v-for = "person of social_worker" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
+      <div id="sectionCards" class="flex flex-wrap gap-8 mt-4 w-2/3 justify-center items-start">
+        <Person v-for = "person of s.people" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
       </div>
     </div>
 
@@ -183,18 +66,13 @@
 
   const sections = [
     {
-      "id": 0,
-      "name": "board",
-      "people": board
-    },
-    {
       "id": 1,
       "name": "attorney",
       "people": attorney
     },
     {
       "id": 2,
-      "name": "call_center",
+      "name": "call center",
       "people": call_center
     },
     {
@@ -204,7 +82,7 @@
     },
     {
       "id": 4,
-      "name": "medical_personel",
+      "name": "medical personel",
       "people": medical_personel
     },
     {
@@ -214,17 +92,17 @@
     },
     {
       "id": 6,
-      "name": "social_worker",
+      "name": "social worker",
       "people": social_worker
     },
     {
       "id": 7,
-      "name": "vocational_trainer",
+      "name": "vocational trainer",
       "people": vocational_trainer
     },
     {
       "id": 8,
-      "name": "social_worker",
+      "name": "social worker",
       "people": educator
     }
   ]
@@ -250,6 +128,10 @@
     flex-direction: row;
     gap: 128px;
     row-gap: 32px;
+  }
+
+  .calcHeight {
+    min-height: calc(100vh - 72px);
   }
 
 </style>
