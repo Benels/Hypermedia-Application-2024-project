@@ -1,11 +1,11 @@
 <template>
   <Head>
-    <Title>HERmet - Our People</Title>
+    <Title>HERmet - {{a.name}}</Title>
   </Head>
 
   <main class="outerContainer">
     <h1>{{ a.name }}</h1>
-    <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/7.jpg`" :alt="`Missing Image`" />
+    <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" :alt="`Missing Image`" />
     <div class="summary-leader">
       <div class="summary">
         <h2>Summary of the project</h2>
