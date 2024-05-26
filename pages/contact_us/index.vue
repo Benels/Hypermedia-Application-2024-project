@@ -24,13 +24,13 @@
       <div class="contact_social">
         <div class="contacts">
           <p>Call us now at: </p>
-          <a class="number" href="tel:123-456-7890">123-456-7890</a>
+          <a class="number" href="tel:123-456-7890">📞 123-456-7890</a>
 
           <br><br>
 
           <p>Or write as an email at: </p>
-          <a class="mail" href="mailto:10727489@polimi.it">hermet@hermet.com</a>
-
+          <a class="mail" href="mailto:10727489@polimi.it">✉️ hermet@hermet.com</a>
+          <br><br>
           <img src="/assets/imgs/contactus.jpg">
         </div>
 
@@ -79,7 +79,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 5%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .map_embed {
@@ -102,6 +102,10 @@ body {
 .social_logo img {
   width: 50px;
   height: 50px;
+}
+
+.social_logo:hover {
+  transform: translateY(-0.5rem);
 }
 
 .opening_hours {

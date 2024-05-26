@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-  const props = defineProps(['id', 'name']);
+  const props = defineProps(['id', 'name', 'link']);
 </script>
 
 <style scoped>

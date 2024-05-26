@@ -18,15 +18,14 @@
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
     <div class="socialLinks flex-col-reverse gap-2" ref="socialContainer">
-      <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar">
-      <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/instagram.png" alt="Bordered avatar">
-      <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar">
-      <img class="w-14 h-14 rounded-full hover:cursor-pointer" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar">
+      <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffect" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffect" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
+      <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffect" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
+      <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffect" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
 
   </div>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
-
 
 </template>
 
@@ -94,6 +93,15 @@ body {
   opacity: 0;
   display: none;
 }
+
+
+.hoverEffect:hover {
+  transform: translateX(0.5rem);
+}
+
+/*.socialLinks:hover{
+  transform: translateX(0.5rem);
+}*/
 
 .chatbot{
   transition: opacity 1s ease;

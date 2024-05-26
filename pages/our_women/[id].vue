@@ -9,7 +9,7 @@
     <div class="person-card">
       <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`" />
       <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
-      <h2 class="name_surname">{{ person.role }}</h2>
+      <h2 class="role">{{ person.role }}</h2>
       <div class="description-box">
         <div v-for="(part, index) in descriptionParts" :key="index" class="description">
           <p>{{ part }}</p>
@@ -28,7 +28,7 @@
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(project, index) in projects" :key="project.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/projects/' + project.activity_id">
-              <img :src="project.picture" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="project.name" />
+              <img class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${project.activity_id}.jpg`" :alt="project.name" />
               <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
                 {{ project.name }}
               </div>
@@ -56,12 +56,12 @@
 
 
     <div v-if="services.length > 0">
-      <h1>Services managed by {{ person.name }} {{ person.surname }}</h1>
+      <h1  class="activities">Services managed by {{ person.name }} {{ person.surname }}</h1>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(service, index) in services" :key="service.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/services/' + service.activity_id">
-              <img :src="service.picture" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="service.name" />
+              <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${service.activity_id}.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"  :alt="service.name" />
               <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
                 {{ service.name }}
               </div>
@@ -162,8 +162,25 @@
 
 .name_surname:last-of-type {
   font-size: 1.5rem;
+  color: #d62828;
+}
+
+
+.role {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.role:first-of-type {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.role:last-of-type {
+  font-size: 1.2rem;
   color: #555;
 }
+
 
 .description-box {
   width: 100%;

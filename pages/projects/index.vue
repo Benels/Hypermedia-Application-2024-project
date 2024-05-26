@@ -21,5 +21,8 @@
 
 <style scoped>
 
+h1{
+  color: #d62828;
+}
 
 </style>
