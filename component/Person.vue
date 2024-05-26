@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  const props = defineProps(['id', 'name', 'surname', 'role', 'link']);
+  const props = defineProps(['id', 'name', 'surname', 'role', 'link', 'imageSize']);
 </script>
 
 <style scoped>
@@ -23,7 +23,7 @@
   }
 
   .card {
-    width: 300px;
+    width: v-bind(imageSize);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
 
   .imageContainer {
     width: 100%;
-    height: 300px;
+    height: v-bind(imageSize);
   }
 
   .imageContainer > img {

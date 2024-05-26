@@ -15,7 +15,7 @@
         <p class="text-3xl uppercase text-center">Board</p>
       </div>
       <div id="sectionCards" class="flex flex-wrap gap-8 mt-4 w-2/3 justify-center items-start">
-        <Person v-for = "person of board" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
+        <Person v-for = "person of board" imageSize="300px" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
       </div>
     </div>
 
