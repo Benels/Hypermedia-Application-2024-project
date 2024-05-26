@@ -8,30 +8,33 @@
     <div class="image-logo">
       <img class="main-image" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${service.activity_id}.jpg`" :alt="`error`"/>
       <div class="logo-section">
-        <h2>{{briefSummary}}</h2>
+        <!--<h2>{{briefSummary}}</h2>-->
+        <h2 v-html="briefSummary"></h2>
         <img class="logo" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${service.activity_id}.jpg`" :alt="`Missing Image`" />
         <div class="text-section">
-          <div v-for="(part, index) in practicalInfoParts" :key="index">
+          <!--<div v-for="(part, index) in practicalInfoParts" :key="index">
             <p>{{ part }}</p>
-          </div>
-          <p>Phone number: <bold>{{service.phone_number}}</bold></p>
-          <p>Email: <bold><a href="mailto:{{service.email}}">{{service.email}}</a></bold></p>
-          <p>Person in charge: <bold> <router-link :to="'/our_women/' + leader.person_id">{{leader.name}} {{leader.surname}}</router-link></bold> - {{leader.role}}</p>
+          </div>-->
+          <p v-html="openingHours"></p>
+          <p>Phone number: <strong>{{service.phone_number}}</strong></p>
+          <p>Email: <strong><a href="mailto:{{service.email}}">{{service.email}}</a></strong></p>
+          <p>Person in charge: <strong> <router-link :to="'/our_women/' + leader.person_id">{{leader.name}} {{leader.surname}}</router-link></strong> - {{leader.role}}</p>
           <p class="italic">{{service.additional_info}}</p>
         </div>
       </div>
     </div>
     <div class="description">
-      <div v-for="(part, index) in descriptionParts" :key="index" class="description">
+      <!--<div v-for="(part, index) in descriptionParts" :key="index" class="description">
         <div v-if="index !== 0">
           <p>{{ part }}</p>
         </div>
-      </div>
+      </div>-->
+      <div v-html="description"></div>
     </div>
     <hr>
     <div class="testimonial-section">
       <div class="testimonial-title">
-        <h3>Our impact in <bold>their words</bold></h3>
+        <h3>Our impact in <strong>their words</strong></h3>
         <img src="assets/imgs/testimonials.jpg" :alt="`Error`" class="testimonial-image">
       </div>
       <br>
@@ -52,18 +55,23 @@
 </template>
 
 <script setup>
+  import sanitizeHtml from 'sanitize-html';
+  import { h } from 'vue';
+
   const route = useRoute()
   const id = route.params.id;
   const {data: services} = await useFetch('/api/activities/' + id);
   const service = JSON.parse(JSON.stringify(services.value))[0];
   const leader = await $fetch('/api/our_women/' + service.leader);
 
-  const descriptionParts = service.description.split('<br>').map(part => part.trim());
+  //const descriptionParts = service.description.split('<br>').map(part => part.trim());
 
-  const practicalInfoParts = service.opening_hours.split('<br>').map(part => part.trim());
-  const briefSummary = descriptionParts[0];
+  const openingHours = sanitizeHtml(service.opening_hours);
+  const briefSummary = sanitizeHtml(service.summary);
 
   const testimonials = await $fetch('/api/testimonials/' + id);
+
+  const description = sanitizeHtml(service.description);
 
 </script>
 
@@ -146,10 +154,6 @@ h2{
 
 .description p {
   margin: 0;
-}
-
-bold {
-  font-weight: bold;
 }
 
 .italic{
