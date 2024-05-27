@@ -62,56 +62,56 @@
 
   const board = {
     "name": "Board",
-    "people": people.filter((p) => { return (p.role === "CEO" || p.role === "Board Member") }).sort(boardSorting),
-    "color": "#1F77B4"
+    "people": people.filter((p) => { return (p.role === "President" || p.role === "Board Member") }).sort(boardSorting),
+    "color": "#e97878"
   };
 
   const attorney = {
     "name": "Lawyers",
     "people": people.filter((p) => { return p.role === "Attorney" }),
-    "color": "#2CA02C"
+    "color": "#e97878"
   };
 
   const call_center = {
     "name": "Call Center",
     "people": people.filter((p) => { return p.role === "Call center operator" }),
-    "color": "#E377C2"
+    "color": "#e97878"
   }
 
   const manager = {
     "name": "Managers",
     "people": people.filter((p) => { return (p.role === "Manager" || p.role === "Safe House Manager") }),
-    "color": "#7F7F7F"
+    "color": "#e97878"
   } 
 
   const medical_personel = {
     "name": "Medical Personel",
     "people": people.filter((p) => { return p.role.startsWith("Medical Personel") }),
-    "color": "#BCBD22"
+    "color": "#e97878"
   }
 
   const psychologist = {
     "name": "Psychologists",
     "people": people.filter((p) => { return p.role === "Psychologist" }),
-    "color": "#FF7F0E"
+    "color": "#e97878"
   } 
 
   const social_worker = {
     "name": "Social Workers",
     "people": people.filter((p) => { return p.role === "Social worker" }),
-    "color": "#9467BD"
+    "color": "#e97878"
   }
 
   const vocational_trainer = {
     "name": "Vocational Trainers",
     "people": people.filter((p) => { return p.role === "Vocational Trainer" }),
-    "color": "#8C564B"
+    "color": "#e97878"
   } 
 
   const educator = {
     "name": "Educators",
     "people": people.filter((p) => { return p.role === "Educator" }),
-    "color": "#D62728"
+    "color": "#e97878"
   } 
   
   const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personel, social_worker];
