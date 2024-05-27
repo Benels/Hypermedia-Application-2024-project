@@ -15,7 +15,7 @@
 <style>
 
 .section {
-    background-color: v-bind(color);
+    background-color: #d62828;
     transition: all 500ms ease-in-out;
 }
 
