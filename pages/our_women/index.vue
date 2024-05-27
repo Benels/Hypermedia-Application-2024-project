@@ -46,7 +46,7 @@
   const { data: response  } = await useFetch('/api/our_women/');
   const people = JSON.parse(JSON.stringify(response.value))
 
-  const board = people.filter((p) => { return (p.role === "CEO" || p.role === "Board Member") }).sort(boardSorting);
+  const board = people.filter((p) => { return (p.role === "President" || p.role === "Board Member") }).sort(boardSorting);
   const attorney = people.filter((p) => { return p.role === "Attorney" });
   const call_center = people.filter((p) => { return p.role === "Call center operator" });
   const manager = people.filter((p) => { return (p.role === "Manager" || p.role === "Safe House Manager") });
