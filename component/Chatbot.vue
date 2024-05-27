@@ -12,7 +12,8 @@
         </div>
         <div class="message assistant" v-else>
           <div class="assistant-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-            {{ content.text }}
+            <!--{{ content.text }}-->
+            <div v-html="content.text"></div>
             <button @click="speak(content.text)">🔊</button>
           </div>
         </div>
@@ -289,7 +290,7 @@ body {
 }
 
 .chat-header {
-  background-color: #ff6f61; /* Corallo */
+  background-color: #ff6f61;
   color: white;
   padding: 15px;
   text-align: center;
