@@ -10,7 +10,6 @@
         <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
         <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
     </div>
-    
   </div>
 
   <div class="socialContainer fixed bottom-12 left-12 flex flex-col-reverse gap-2 items-center">
@@ -82,6 +81,11 @@ function closeChatbot() {
 </script>
 
 <style>
+
+::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 body {
     margin: 0;
     padding: 0;

@@ -3,13 +3,13 @@
     <Title>HERmet - Our People</Title>
   </Head>
 
-  <main class="flex flex-col lg:flex-row w-[100vw] gap-8 mt-4">
-    <div class="sectionContainer flex flex-col gap-4 min-w-fit">
-      <!-- Section for the MD screen -->
+  <main class="flex flex-col w-[100vw] gap-8 mt-4">
+    <div class="sectionContainer flex flex-col gap-4 min-w-fit justify-center">
+      <!-- Section for the MD screen 
       <Section class="hidden lg:flex" v-for="s of sections" :name="s.name" :color="s.color" @click="changeSection(s)" :active="currentSection.name === s.name" />
-      
+      -->
       <!-- Section for the small screens -->
-      <div class="lg:hidden flex flex-col gap-2 px-2 w-full sm:max-w-[648px] mx-auto">
+      <div class="flex flex-col gap-2 px-2 w-full sm:max-w-[648px] mx-auto">
         <div class="activeSection flex flex-row gap-1 items-center">
           <Section :name="currentSection.name" :color="currentSection.color" class="flex-grow" />
           <div class="dropdownIcon h-10 rounded-full" @click="handleSectionDropdown">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <!-- people container for small screens -->
-    <div class="peopleContainer lg:hidden flex flex-col items-center w-full">
+    <div class="peopleContainer flex flex-col items-center w-full">
       <p class="text-6xl self-center hidden">{{ currentSection.name }}</p>
       <div class="flex items-center min-h-[60vh]">
         <div class="flex flex-wrap px-8 gap-8 gap-y-4 justify-center peopleList ">
@@ -37,7 +37,7 @@
         
       </div>
     </div>
-    <!-- people container for LG -->
+    <!-- people container for LG 
     <div class="peopleContainer hidden lg:flex flex-col flex-grow items-center justify-center flex-grow px-10 calcHeight">
       <p class="text-6xl self-center hidden">{{ currentSection.name }}</p>
       <div class="h-full flex px-8" :class="currentSection.name === 'Medical Personel' ? 'items-end max-w-[50vw]' : 'items-center max-w-[60vw]'">
@@ -48,6 +48,7 @@
         </div>
       </div>
     </div>
+    -->
   </main>
 </template>
 
@@ -182,13 +183,14 @@
     opacity: 0;
   }
 
-
   .notDisplayed {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0.5rem;
     row-gap: 0.5rem;
   }
+
+  
 
   .dropdownIcon {
     aspect-ratio: 1/1;
