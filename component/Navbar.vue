@@ -12,8 +12,8 @@
           <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
           </svg>
-        </button>
-      <div ref="navbarMenu" class="shadow-md md:shadow-none hidden w-full md:block md:w-auto rounded-xl">
+        </button>   
+      <div ref="navbarMenu" class="shadow-md md:shadow-none hidden w-full md:block md:w-auto rounded-xl z-20 bg-dropdownMenu">
         <ul class="text-lg flex flex-col font-medium px-4 pb-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
             <NuxtLink to="/about_us" :class="currentRoute === 'about_us' ? 'text-red underline underline-offset-4 decoration-2' : ''" class="hover:text-red block pb-2 px-3 rounded md:bg-transparent md:p-0" aria-current="page">About us</NuxtLink>
@@ -59,6 +59,8 @@
   import { ref, watch } from "vue";
   import { useRoute } from "vue-router";
   
+  const emit = defineEmits(['closeChatBot']);
+
   const route = useRoute();
   const navbarMenu = ref();
   const currentRoute = ref("index")
@@ -68,6 +70,7 @@
   })
   
   function toggleNavbar(event) {
+    emit("closeChatBot");
     navbarMenu.value.classList.toggle("hidden");
   }
   

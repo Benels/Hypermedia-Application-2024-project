@@ -1,16 +1,16 @@
 <template>
 
-  <Navbar />
+  <Navbar @closeChatBot="closeChatbot" />
   <slot />
-
+  <div class="chatbot md:fixed md:bottom-14 md:right-14" ref="chatbotContainer">
+      <Chatbot @handle="handleChatbot"></Chatbot>
+  </div>
   <div class="chatbotContainer fixed bottom-12 right-14 flex flex-col-reverse gap-2">
     <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
         <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
         <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
     </div>
-    <div class="chatbot fixed right-14 mr-24" ref="chatbotContainer">
-      <Chatbot></Chatbot>
-    </div>
+    
   </div>
 
   <div class="socialContainer fixed bottom-12 left-12 flex flex-col-reverse gap-2 items-center">
@@ -67,12 +67,16 @@ function handleChatbot(event :any){
       chatbotContainer.value.classList.add("setOpacity");
     }, 50);
   }else{
-    displayChat.value = !displayChat.value;
+    closeChatbot();
+  }
+}
+
+function closeChatbot() {
+    displayChat.value = false;
     chatbotContainer.value.classList.remove("setOpacity");
     setTimeout( () => {
       chatbotContainer.value.classList.remove("displayBlock");
     }, 700);
-  }
 }
 
 </script>
@@ -107,7 +111,7 @@ body {
   transition: opacity 1s ease;
   opacity: 0;
   display: none;
-
+  width: 500px;
 }
 
 .setOpacity {
@@ -117,5 +121,24 @@ body {
 .displayBlock {
   display: flex !important;
 }
+
+@media (max-width: 768px) {
+
+  .chatbot {
+    position: absolute;
+    top: 72px;
+    z-index: 10;
+    width: 100vw;
+    max-width: 500px;
+    height: calc(100vh - 72px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
 
 </style>
