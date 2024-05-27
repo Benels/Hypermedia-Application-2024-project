@@ -13,7 +13,7 @@
         <h2 class="role">{{ person.role }}</h2>
         <div class="personal_info">
           <h2 class="contact">Contacts:</h2>
-          <p>mail@mail.com</p>
+          <a class="mail" href="mailto:10727489@polimi.it">✉️ {{ person.name }}.{{ person.surname }}@hermet.com</a>
           <div class="social">
             <h2 class="contact">Socials:</h2>
             <a href="https://www.instagram.com" class="social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram2.png"/></a>
@@ -28,7 +28,7 @@
     <div style="align-self: center">
       <div class="description-box">
         <div v-for="(part, index) in descriptionParts" :key="index" class="description">
-          <p>{{ part }}</p>
+          <p style="font-size: 1.2rem; text-align: justify">{{ part }}</p>
         </div>
       </div>
     </div>
@@ -185,12 +185,10 @@ body {
 .right-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .person-card-img {
-  width: 100%;
+  max-height: 50rem;
   max-width: 20rem;
   border-radius: 10%;
   margin-bottom: 1rem;
@@ -234,6 +232,7 @@ body {
   border-radius: 0.5rem;
   background-color: #f9f9f9;
   margin-top: 1rem;
+  max-width: fit-content;
 }
 
 .description-box {
