@@ -93,13 +93,14 @@ h1 {
   color: #d62828;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 2.3em;
+  font-size: 2.3rem;
+  font-weight: bold;
 }
 h2{
   color: #8c1b1b;
   text-align: center;
   margin-bottom: 20px;
-  font-size:  1.2em!important;
+  font-size:  1.2rem!important;
   font-weight: normal;
 }
 
@@ -121,7 +122,7 @@ h2{
   align-items: center;
   margin-left: 20px;
   width: 55%;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .logo {
@@ -195,14 +196,14 @@ h2{
 .testimonial-quote {
   margin:0;
   padding: 0;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-family: "Indie Flower",serif;
   color: black;
   font-weight: bold;
 }
 
 h3{
-  font-size: 1.8em;
+  font-size: 1.8rem;
   color: #d62828;
   text-align: center;
   margin-bottom: 20px;
@@ -238,6 +239,65 @@ hr{
   border: 0;
   border-top: 1px solid #d62828;
   margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .image-logo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-image {
+    max-width: 100%;
+  }
+
+  .logo-section {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .text-section {
+    width: 100%;
+  }
+
+  .testimonial-section {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .testimonial-title {
+    width: 100%;
+    position: static;
+  }
+
+  .testimonial-container {
+    width: 100%;
+  }
+
+  .testimonials {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2{
+    font-size: 0.8rem!important;
+  }
+
+  p{
+    font-size: 0.7rem;
+  }
+
+  .testimonial-box {
+    width: 100%;
+  }
 }
 
 </style>
