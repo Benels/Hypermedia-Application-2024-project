@@ -3,11 +3,42 @@
     <Title>HERmet - Our People</Title>
   </Head>
 
-  <main class="flex flex-row w-[100vw] gap-8 test">
-    <div class="sectionContainer flex flex-col gap-4 w-[15vw]">
-      <Section v-for="s of sections" :name="s.name" :color="s.color" @click="changeSection(s)" :active="currentSection.name === s.name" />
+  <main class="flex flex-col w-[100vw] gap-8 mt-4">
+    <div class="sectionContainer flex flex-col gap-4 min-w-fit justify-center">
+      <!-- Section for the MD screen 
+      <Section class="hidden lg:flex" v-for="s of sections" :name="s.name" :color="s.color" @click="changeSection(s)" :active="currentSection.name === s.name" />
+      -->
+      <!-- Section for the small screens -->
+      <div class="flex flex-col gap-2 px-2 w-full sm:max-w-[648px] mx-auto">
+        <div class="activeSection flex flex-row gap-1 items-center">
+          <Section :name="currentSection.name" :color="currentSection.color" class="flex-grow" />
+          <div class="dropdownIcon h-10 rounded-full" @click="handleSectionDropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+            </svg>
+          </div>
+        </div>
+        <Transition name="otherSections">
+          <div class="notDisplayed" v-if="displaySections" >
+            <Section v-for="s of sections.filter((x) => x.name !== currentSection.name)" :name="s.name" :color="s.color" @click="changeSection(s)" :active="currentSection.name === s.name" />
+          </div>
+        </Transition>
+      </div>
     </div>
-    <div class="peopleContainer flex flex-col flex-grow items-center justify-center flex-grow px-10 calcHeight">
+    <!-- people container for small screens -->
+    <div class="peopleContainer flex flex-col items-center w-full">
+      <p class="text-6xl self-center hidden">{{ currentSection.name }}</p>
+      <div class="flex items-center min-h-[60vh]">
+        <div class="flex flex-wrap px-8 gap-8 gap-y-4 justify-center peopleList ">
+          <TransitionGroup name="list">
+            <Person v-for = "person of currentSection.people" :imageSize="'300px'" :key = "person.person_id" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
+          </TransitionGroup>
+        </div>
+        
+      </div>
+    </div>
+    <!-- people container for LG 
+    <div class="peopleContainer hidden lg:flex flex-col flex-grow items-center justify-center flex-grow px-10 calcHeight">
       <p class="text-6xl self-center hidden">{{ currentSection.name }}</p>
       <div class="h-full flex px-8" :class="currentSection.name === 'Medical Personel' ? 'items-end max-w-[50vw]' : 'items-center max-w-[60vw]'">
         <div class="flex flex-wrap flex-row items-start justify-evenly w-full gap-8 gap-y-8">
@@ -15,9 +46,9 @@
             <Person v-for = "person of currentSection.people" :imageSize="currentSection.name === 'Medical Personel' ? '250px' : '300px'" :key = "person.person_id" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
           </TransitionGroup>
         </div>
-        
       </div>
     </div>
+    -->
   </main>
 </template>
 
@@ -98,17 +129,29 @@
   function changeSection(newSection) {
     // perform check on the update
     currentSection.value = newSection;
-    console.log("test");
+    displaySections.value = false;
   }
+
+  const displaySections = ref(false);
+  
+  function handleSectionDropdown(event) {
+    displaySections.value = !displaySections.value;
+  }
+
 
 </script>
 
 <style scoped>
 
+  .peopleList {
+    align-items: flex-start;
+  }
+
   .sectionContainer {
     margin-top: auto;
     margin-bottom: auto;
   }
+
   .calcHeight {
     height: calc(90vh - 72px);
   }
@@ -116,19 +159,49 @@
   .list-move, /* apply transition to moving elements */
   .list-enter-active,
   .list-leave-active {
-    transition: all 0.5s ease;
+    transition: opacity 0.5s ease;
   }
 
   .list-enter-from,
   .list-leave-to {
     opacity: 0;
-    transform: translateX(30px);
   }
 
   /* ensure leaving items are taken out of layout flow so that moving
     animations can be calculated correctly. */
   .list-leave-active {
     position: absolute;
+  }
+
+    /* we will explain what these classes do next! */
+  .otherSections-enter-active {
+    transition: opacity 0.8s ease;
+  }
+
+  .otherSections-enter-from,
+  .otherSections-leave-to {
+    opacity: 0;
+  }
+
+  .notDisplayed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+  }
+
+  
+
+  .dropdownIcon {
+    aspect-ratio: 1/1;
+    background-color: rgb(173, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dropdownIcon > svg {
+    width: 60%;
   }
 
 </style>

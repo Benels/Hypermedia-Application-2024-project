@@ -23,8 +23,8 @@
     <div class="chat-input-container">
       <input class="chat-input" v-model="input" @keyup.enter="sendMsg" placeholder="Type your message..." />
       <button class="send-button" @click="sendMsg">Send</button>
-      <button class="TTSbutton" @click="startRecognition">🎙️</button>
-      <button class="TTSbutton" @click="stopRecognition">⏹️</button>
+      <button class="TTSbutton" @click="startRecognition" title="Start voice msg">🎙️</button>
+      <button class="TTSbutton" @click="stopRecognition" title="Stop voice msg">⏹️</button>
     </div>
   </div>
 </template>
@@ -238,6 +238,7 @@ body {
   margin-left: auto;
   text-align: right;
   flex-direction: row-reverse;
+
 }
 
 .user-bubble::before {

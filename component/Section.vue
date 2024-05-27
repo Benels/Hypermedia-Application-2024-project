@@ -1,7 +1,7 @@
 <template>
   <Transition>
-    <div class="h-12 rounded-r-full flex items-center pr-12 section" :class="active ? 'closed' : '' ">
-      <p class="text-xl pl-4 text-gray-200" :class="active ? 'opacity-0' : '' "> {{ name }} </p>
+    <div class="h-12 rounded-full flex items-center section" :class="active ? 'closed' : '' ">
+      <p class="w-full text-center text-xl text-gray-200" :class="active ? 'opacity-0' : '' "> {{ name }} </p>
     </div>
   </Transition>
   
@@ -17,7 +17,6 @@
 .section {
     background-color: v-bind(color);
     transition: all 500ms ease-in-out;
-    width: fit-content;
 }
 
 .closed {
