@@ -5,24 +5,33 @@
 
   <main class="outerContainer">
     <h1>{{ a.name }}</h1>
-    <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" :alt="`Missing Image`" />
-    <div class="summary-leader">
-      <div class="summary">
-        <h2>Summary of the project</h2>
-        <p>{{summary}}</p>
-      </div>
-      <div class="person-card">
-        <!--h2>Leader of the project</h2-->
-        <router-link :to="'/our_women/' + a.leader">
-          <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`" />
-          <h1 class="name_surname">{{ person.name }} {{ person.surname }}, <br>Leader of the project</h1>
-        </router-link>
+    <div class="image-summary">
+      <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" :alt="`Missing Image`" />
+      <div class="summary-leader">
+        <div class="summary">
+          <h2 v-html="summary"></h2>
+        </div>
+        <!--<div class="person-card">
+          <router-link :to="'/our_women/' + a.leader">
+            <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`" style="justify-content: center;" />
+            <h1 class="name_surname">{{ person.name }} {{ person.surname }}, <br>Leader of the project</h1>
+          </router-link>
+        </div>-->
+        <div class="info-container">
+          <p class="info">
+            <br><hr><br>
+            Leader of the project: <router-link :to="'/our_women/' + a.leader">{{person.name}} {{person.surname}}</router-link><br>
+            {{a.statistics}} <br>
+            Places: {{a.places}} <br>
+            Started in {{a.started}} <br>
+            ✉️ <a class="mail" href="mailto:10727489@polimi.it">{{a.email}}</a><br>
+            📞 <strong>{{ a.phone_number}}</strong>
+          </p>
+        </div>
       </div>
     </div>
     <div class = "description_container">
-      <h2>Description of the project</h2>
-      <div v-for="(part, index) in descriptionParts" :key="index" class="description">
-        <p>{{ part }}</p>
+      <div v-html="a.description" class="description">
       </div>
     </div>
 
@@ -33,16 +42,15 @@
 const route = useRoute()
 const activityId = route.params.id;
 const {data: project} = await useFetch('/api/activities/' + activityId);
-console.log(project[0]);
+
 
 const a = JSON.parse(JSON.stringify(project.value))[0];
-console.log(a.leader);
 
 const lead = a.leader;
 const person = await $fetch('/api/our_women/' + lead)
 
 const descriptionParts = a.description.split('<br>').map(part => part.trim());
-const summary = descriptionParts[0]
+const summary = a.summary;
 </script>
 
 <style scoped>
@@ -72,13 +80,14 @@ h1 {
   color: #d62828;
   font-weight: 700;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
-h2 {
-  font-size: 1.5rem;
-  color: #d62828;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+h2{
+  color: #8c1b1b;
+  text-align: center;
+  font-size:  1.2rem!important;
+  font-weight: normal;
 }
 
 p {
@@ -87,10 +96,34 @@ p {
   line-height: 1.6;
 }
 
+.info{
+  font-size: 1rem;
+  text-align: justify;
+
+}
+
+
+a{
+  color: #d62828;
+  font-weight: bold;
+  text-decoration: underline;
+}
+hr{
+  color: #d62828;
+}
+
+.image-summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .main-img {
-  width: 80%;
+  /*width: 80%;*/
+  max-width: 40%;
   height: auto;
-  position: center;
+  /*position: center;*/
   margin-left: auto;
   margin-right: auto;
   border-radius: 1rem;
@@ -99,19 +132,26 @@ p {
 
 .summary-leader {
   display: flex;
-  flex-direction: row;
+  /*flex-direction: row;*/
   gap: 10%;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  /*width: 80%;
+  margin-left: 10%;*/
+  /*margin-right: 10%;*/
   justify-content: space-between;
-  align-items: flex-start;
+  /*align-items: flex-start;*/
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  width: 55%;
+  font-size: 1rem;
 }
 
 .summary, .person-card {
   flex: 1 1 48%;
   box-sizing: border-box;
+  align-items: center;
+  align-self: center;
 }
 
 .summary {
@@ -136,10 +176,9 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 300px;
-  background-color: #ffffff;
+  justify-content: center;
+  /*padding-left: 2rem;
+  padding-right: 2rem;*/
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #d62828;
 }
@@ -149,11 +188,14 @@ p {
 }
 
 .person-card-img {
-  width: 50%;
-  alignment: center;
-  border-radius: 10%;
-  margin-bottom: 1rem;
+  width: 25%;
+  height: 25%;
+  /*alignment: center;*/
   transition: transform 0.3s ease;
+  align-self: center;
+  justify-content: center;
+  margin-left: 37.5%;
+  border-radius: 50%;
 }
 
 .person-card-img:hover {
