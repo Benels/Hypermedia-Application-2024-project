@@ -1,7 +1,8 @@
 <template>
   <div class="chat-container">
     <div class="chat-header">
-      Jarvis - Your personal Assistant
+      <p class="pl-4">Jarvis - Your personal Assistant</p>
+      <div @click="$emit('handle')" class="closeIcon"> <img src="~/assets/svgs/close_x.svg"/> </div>
     </div>
     <div class="chat-box" ref="chatBox">
       <div v-for="(msg, i) in messages" :key="i" class="msg">
@@ -12,7 +13,8 @@
         </div>
         <div class="message assistant" v-else>
           <div class="assistant-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-            {{ content.text }}
+            <!--{{ content.text }}-->
+            <div v-html="content.text"></div>
             <button @click="speak(content.text)">🔊</button>
           </div>
         </div>
@@ -31,6 +33,7 @@
 
 
 <script>
+
   export default {
   data() {
     return {
@@ -159,17 +162,49 @@ body {
   height: 100vh;
 }
 
+
+@media (max-width: 768px) {  /* until md */
+  .chat-container {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-container {
+    max-width: 80%;
+    max-height: 90vh;
+  }
+}
+
+.closeIcon:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.closeIcon {
+  color: white;
+  height: 25px;
+  aspect-ratio: 1/1;
+  margin-right: 5px;
+}
+
+.closeIcon > img {
+  height: 100%;
+  aspect-ratio: 1/1;
+  fill: white;
+}
+
+
 .chat-container {
-  width: 500px;
+  width: 100%;
   align-self: end;
-  max-width: 80%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 90vh;
 }
 
 .chat-box {
@@ -289,7 +324,7 @@ body {
 }
 
 .chat-header {
-  background-color: #ff6f61; /* Corallo */
+  background-color: #ff6f61;
   color: white;
   padding: 15px;
   text-align: center;
@@ -297,6 +332,9 @@ body {
   font-size: 18px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 </style>
