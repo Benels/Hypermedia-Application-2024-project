@@ -1,8 +1,10 @@
 <template>
 
-  <Navbar />
+  <Navbar @closeChatBot="closeChatbot"/>
   <slot />
-
+  <div class="chatbot md:fixed md:bottom-14 md:right-14" ref="chatbotContainer">
+    <Chatbot @handle="handleChatbot"></Chatbot>
+  </div>
   <div class="chatbotContainer fixed bottom-20 right-14 flex flex-col-reverse gap-2">
     <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
@@ -30,7 +32,7 @@
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
+          <span class=" self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
         </NuxtLink>
       </div>
       <div>
@@ -41,14 +43,14 @@
         <span class="footer-text">&copy 2024 HERmet ODV,<br>All rights reserved</span>
       </div>
     </div>
-    <div class="lg:hidden social_phone">
+    <div class="md:hidden socialPhone">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
       <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
     <div class="credits">
-      <p id="credits">Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</p>
+      <p>Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</p>
     </div>
   </footer>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
@@ -93,17 +95,27 @@ function handleChatbot(event :any){
       chatbotContainer.value.classList.add("setOpacity");
     }, 50);
   }else{
-    displayChat.value = !displayChat.value;
-    chatbotContainer.value.classList.remove("setOpacity");
-    setTimeout( () => {
-      chatbotContainer.value.classList.remove("displayBlock");
-    }, 700);
+    closeChatbot();
   }
+}
+
+function closeChatbot() {
+  displayChat.value = false;
+  //displayChat.value = !displayChat.value;
+  chatbotContainer.value.classList.remove("setOpacity");
+  setTimeout( () => {
+    chatbotContainer.value.classList.remove("displayBlock");
+  }, 700);
 }
 
 </script>
 
 <style>
+
+::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -113,18 +125,8 @@ body {
   font-family: 'Rubik';
 }
 
-.chatbotContainer,
-.socialContainer {
-  z-index: 2;
-}
-.social_phone {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin: 0;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+.socialPhone {
+  display: none;
 }
 
 .socialLinks {
@@ -148,7 +150,12 @@ body {
   transition: opacity 1s ease;
   opacity: 0;
   display: none;
+  width: 500px;
+}
 
+.chatbotContainer,
+.socialContainer {
+  z-index: 2;
 }
 
 .setOpacity {
@@ -175,21 +182,21 @@ body {
 
 .footer-container {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 20rem;
-  max-width: 1200px;
-  position: relative;
-  gap: 30px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 9rem;
+  width: 80%;
 }
 
 .footer-logo {
   display: flex;
   align-items: center;
+  right: 4rem;
 }
 
 .footer-img {
-  height: 3rem;
+  height: 5rem;
   margin-right: 0.5rem;
 }
 
@@ -203,26 +210,54 @@ body {
   position: absolute;
   bottom: 0;
   right: 1rem;
-  max-width: 40%;
-}
-
-#credits {
   font-size: smaller;
   text-align: right;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .chatbot {
+    top: 72px;
+    z-index: 10;
+    width: 100vw;
+    max-width: 500px;
+    height: calc(100vh - 72px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  body {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
   .footer-container {
-    height: 9rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: left;
+    position: relative;
+    width: 100%;
+    height: 18rem;
+    gap: 1rem;
   }
   .footer-img {
-    height: 5rem;
+    height: 3rem;
   }
-  .social_phone {
-    display: none;
+  .socialPhone {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 0;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+  .credits {
+    max-width: 40%;
   }
 }
 
