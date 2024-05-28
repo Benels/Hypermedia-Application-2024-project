@@ -236,11 +236,7 @@ body {
       rgb(235 235 235 / 98%),
       rgb(235 235 235 / 95%)
   ), url('assets/imgs/our_women_bg.jpg') repeat;
-
   position: relative;
-}
-.overlay {
- /* Ensure overlay doesn't block interaction with underlying content */
 }
 
 @media (max-width: 768px) {

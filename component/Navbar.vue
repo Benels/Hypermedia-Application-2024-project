@@ -89,14 +89,13 @@
   
   defineExpose({
     closeNavbar
-  })
+  });
   </script>
   
   <style scoped>
 
   .bg{
     background-color: #ebebeb;
-    //border-bottom: 1px solid red;
   }
   .activities_dropdown {
     display: none;
