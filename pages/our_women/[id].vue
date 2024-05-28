@@ -4,34 +4,32 @@
   </Head>
   <main>
     <div class="container"></div>
+    <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
     <div class="person-card">
       <div class="left-section">
         <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`"/>
       </div>
       <div class="right-section">
-        <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
+
         <h2 class="role">{{ person.role }}</h2>
+        <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
+        <br>
         <div class="personal_info">
-          <h2 class="contact">Contacts:</h2>
-          <a class="mail" href="mailto:10727489@polimi.it">✉️ {{ person.name }}.{{ person.surname }}@hermet.com</a>
-          <div class="social">
-            <h2 class="contact">Socials:</h2>
+          ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{ person.name }}.{{ person.surname }}@hermet.com</a>
+          <br><br><div class="social">
             <a href="https://www.instagram.com" class="social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram2.png"/></a>
             <a href="https://www.facebook.com" class="social_logo" target="_blank" aria-label="Link to Facebook"><img src="/assets/imgs/social/facebook.png"/></a>
             <a href="https://twitter.com/home" class="social_logo" target="_blank" aria-label="Link to Twitter"><img src="/assets/imgs/social/twitter.png"/></a>
             <a href="https://www.linkedin.com" class="social_logo" target="_blank" aria-label="Link to LinkedIn"><img src="/assets/imgs/social/linkedin.png"/></a>
           </div>
         </div>
-        <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
-      </div>
+        </div>
     </div>
     <div style="align-self: center">
       <div class="description-box">
-        <div v-for="(part, index) in descriptionParts" :key="index" class="description">
-          <p style="font-size: 1.2rem; text-align: justify">{{ part }}</p>
+        <div v-html="description" class="description"></div>
         </div>
       </div>
-    </div>
     <br />
 
     <div v-if="projects.length > 0">
@@ -123,7 +121,7 @@ if (activities.value) {
   });
 }
 
-const descriptionParts = person.description.split('<br>').map(part => part.trim());
+const description = person.description;
 
 onMounted(() => {
   setTimeout(() => {
@@ -149,26 +147,30 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  gap: 1rem;
-  width: 85%;
-  max-width: 60rem;
+  max-width: 70%;
   border-radius: 1rem;
   margin: auto;
 }
 
-.left-section,
+.left-section{
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+  width: 50%;
+}
 .right-section {
   display: flex;
   flex-direction: column;
+  width: 50%;
   margin-left: 2rem;
-  margin-right: 2rem;
 }
 
 .person-card-img {
-  max-height: 50rem;
-  max-width: 20rem;
-  border-radius: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 2%;
   margin-bottom: 1rem;
+  align-self: flex-end;
 }
 
 .name_surname {
@@ -176,12 +178,13 @@ body {
   font-size: 2rem;
   font-weight: bold;
   color: #d62828;
+  text-align:center;
 }
 
 .role {
   margin: 0.5rem 0;
   font-size: 1.5rem;
-  color: #555;
+  color: #8c1b1b;
 }
 
 .contact {
