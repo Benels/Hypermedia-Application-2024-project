@@ -1,7 +1,7 @@
 <template>
 
 
-  <nav>
+  <nav class="bg">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:py-6 md:pb-4">
       <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -78,7 +78,11 @@
   </script>
   
   <style scoped>
-  
+
+  .bg{
+    background-color: #ebebeb;
+    //border-bottom: 1px solid red;
+  }
   .activities_dropdown {
     display: none;
     z-index: 10;
