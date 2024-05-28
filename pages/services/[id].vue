@@ -31,7 +31,7 @@
       </div>-->
       <div v-html="description"></div>
     </div>
-    <hr>
+    <br>
     <div class="testimonial-section">
       <div class="testimonial-title">
         <h3>Our impact in <strong>their words</strong></h3>
@@ -40,6 +40,7 @@
       <br>
       <br>
       <div class="testimonial-container">
+
         <div class="testimonials">
           <div v-for="(t, i) in testimonials" :key="i" class="testimonial-box">
             <!--<div class="testimonial-box">-->
@@ -181,6 +182,7 @@ h2{
 
 .testimonial-container {
   width: 55%;
+  height: 95%;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
