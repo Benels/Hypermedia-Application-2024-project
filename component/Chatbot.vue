@@ -199,6 +199,7 @@ body {
 
 .chat-container {
   width: 100%;
+  max-height: 80vh;
   align-self: end;
   background-color: white;
   border-radius: 8px;

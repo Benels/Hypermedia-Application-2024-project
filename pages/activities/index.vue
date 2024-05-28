@@ -45,7 +45,7 @@
     <br>
 
     
-    <div class="w-full flex flex-col items-center justify-center gap-4">
+    <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
       <NuxtLink to="/services" class="text-3xl">Our Projects</NuxtLink>
 
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">

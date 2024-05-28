@@ -2,7 +2,7 @@
 
   <Navbar @closeChatBot="closeChatbot" ref="navbar" />
   <slot />
-  <div class="chatbotContainer fixed bottom-20 right-14 flex flex-col-reverse gap-2">
+  <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
     <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
@@ -11,15 +11,15 @@
       <Chatbot @handle="handleChatbot" />
     </div>
   </div>
-  <div class="hidden lg:flex socialContainer fixed bottom-20 left-12 flex-col-reverse gap-2 items-center">
+  <div class="hidden lg:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
     <div class="socialLinks flex-col-reverse gap-2" ref="socialContainer">
-      <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
-      <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
-      <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
-      <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-14 h-14 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
+      <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
+      <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
+      <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
 
   </div>
