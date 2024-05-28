@@ -10,8 +10,8 @@
         <div class="activeSection flex flex-row gap-1 items-center">
           <Section :name="currentSection.name" :color="currentSection.color" :active="true" class="current-section" />
           <div class="dropdownIcon h-10 rounded-full" @click="handleSectionDropdown">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+            <svg id="arrow" class="rotatable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100" height="100">
+              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" fill="#FFFFFF"/>
             </svg>
           </div>
         </div>
@@ -45,6 +45,7 @@ import { ref } from "vue";
 
 const { data: response  } = await useFetch('/api/our_women/');
 const people = JSON.parse(JSON.stringify(response.value))
+
 
 const board = {
   "name": "Board",
@@ -123,6 +124,8 @@ const displaySections = ref(false);
 function handleSectionDropdown(event) {
   displaySections.value = !displaySections.value;
 }
+
+
 </script>
 
 <style scoped>
@@ -175,7 +178,8 @@ function handleSectionDropdown(event) {
 
 .dropdownIcon {
   aspect-ratio: 1/1;
-  background-color: rgb(173, 173, 173);
+  background-color: rgb(214, 40, 40);
+  //background-color: rgb(173, 173, 173);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,4 +198,16 @@ function handleSectionDropdown(event) {
 .other-section:hover {
   background-color: #f0f0f0;
 }
+
+.rotatable {
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+/*
+.rotatable:active {
+  transform: rotate(180deg);
+}
+*/
+
 </style>
