@@ -1,6 +1,6 @@
 <template>
 
-  <Navbar @closeChatBot="closeChatbot"/>
+  <Navbar @closeChatBot="closeChatbot" ref="navbar" />
   <slot />
   
   <div class="chatbotContainer fixed bottom-20 right-14 flex flex-col-reverse gap-2">
@@ -87,6 +87,7 @@ const chatbotContainer = ref();
 
 function handleChatbot(event :any){
   if(!displayChat.value){
+    closeNavbar();
     displayChat.value = !displayChat.value;
     chatbotContainer.value.classList.add("displayBlock");
     setTimeout(() => {
@@ -104,6 +105,13 @@ function closeChatbot() {
   setTimeout( () => {
     chatbotContainer.value.classList.remove("displayBlock");
   }, 700);
+}
+
+const navbar = ref();
+
+function closeNavbar() {
+  console.log("provo a chiudere navbar");
+  navbar.value.closeNavbar();
 }
 
 </script>

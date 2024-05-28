@@ -60,21 +60,36 @@
   import { useRoute } from "vue-router";
   
   const emit = defineEmits(['closeChatBot']);
+  const props = defineProps(['closeSignal']);
+  console.log("closeSignal",props.closeSignal);
+  watch(() => props.closeSignal, (newValue, oldValue) => {
+    if(newValue !== oldValue) {
+      console.log("closeSignal",newValue, oldValue);
+    }
+  })
 
   const route = useRoute();
   const navbarMenu = ref();
-  const currentRoute = ref("index")
+  const currentRoute = ref("index");
+
   watch(() => route.name, (newName, oldName) => {
     currentRoute.value = newName.split("-")[0];
     console.log(currentRoute.value);
   })
-  
+
+  function closeNavbar() {
+    console.log("navbar chiusa");
+    navbarMenu.value.classList.add("hidden");
+  }
+
   function toggleNavbar(event) {
     emit("closeChatBot");
     navbarMenu.value.classList.toggle("hidden");
   }
   
-  
+  defineExpose({
+    closeNavbar
+  })
   </script>
   
   <style scoped>
