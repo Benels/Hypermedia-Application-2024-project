@@ -24,8 +24,8 @@
             {{a.statistics}} <br>
             Places: {{a.places}} <br>
             Started in {{a.started}} <br>
-            ✉️ <a class="mail" href="mailto:10727489@polimi.it">{{a.email}}</a><br>
-            📞 <strong>{{ a.phone_number}}</strong>
+            ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{a.email}}</a><br>
+            📞: <strong><a href="tel:{{ a.phone_number}}">{{ a.phone_number}}</a></strong>
           </p>
         </div>
       </div>
@@ -155,13 +155,22 @@ hr{
 }
 
 .summary {
-  margin-right: 1%;
   text-align: justify;
+  margin-right: 7.5%;
+  margin-left: 7.5%;
 }
 
 .description_container{
   margin-left: 7.5%;
   margin-right: 7.5%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .description {

@@ -173,11 +173,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
   width: 100%;
   flex-shrink: 0; /* Ensure footer doesn't shrink */
   z-index: 1;
+  margin-top: 2rem;
 }
 
 .footer-container {
@@ -193,6 +194,7 @@ body {
   display: flex;
   align-items: center;
   right: 4rem;
+
 }
 
 .footer-img {
