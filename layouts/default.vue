@@ -2,16 +2,14 @@
 
   <Navbar @closeChatBot="closeChatbot"/>
   <slot />
-  <div class="chatbot md:fixed md:bottom-14 md:right-14" ref="chatbotContainer">
-    <Chatbot @handle="handleChatbot"></Chatbot>
-  </div>
+  
   <div class="chatbotContainer fixed bottom-20 right-14 flex flex-col-reverse gap-2">
     <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
     </div>
-    <div class="chatbot fixed right-14 mr-24" ref="chatbotContainer">
-      <Chatbot></Chatbot>
+    <div class="chatbot fixed right-14" ref="chatbotContainer">
+      <Chatbot @handle="handleChatbot" />
     </div>
   </div>
   <div class="hidden lg:flex socialContainer fixed bottom-20 left-12 flex-col-reverse gap-2 items-center">
@@ -123,6 +121,8 @@ body {
   background-color: rgb(235, 235, 235);
   color: black;
   font-family: 'Rubik';
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 }
 
 .socialPhone {
@@ -225,13 +225,6 @@ body {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-  }
-  body {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
-  ::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
   }
 
   .footer-container {
