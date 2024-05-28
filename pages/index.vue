@@ -8,6 +8,7 @@
     <nuxt-link to="/projects">Go to projects Page</nuxt-link><br>
     <nuxt-link to="/services">Go to services Page</nuxt-link><br>
     <nuxt-link to="/our_womenNew">Our Women New</nuxt-link><br>
+    <nuxt-link to="/our_womenNew2">Our Women New2</nuxt-link><br>
     <h1 class="text-3xl font-bold underline">
       Hello world!
     </h1>
