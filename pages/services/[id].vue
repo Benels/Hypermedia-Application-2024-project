@@ -16,8 +16,8 @@
             <p>{{ part }}</p>
           </div>-->
           <p v-html="openingHours"></p>
-          <p>Phone number: <strong>{{service.phone_number}}</strong></p>
-          <p>Email: <strong><a href="mailto:{{service.email}}">{{service.email}}</a></strong></p>
+          <p>📞: <strong><a class="tel-number" href="tel:{{service.phone_number}}">{{service.phone_number}}</a></strong></p>
+          <p>✉️: <strong><a href="mailto:{{service.email}}">{{service.email}}</a></strong></p>
           <p>Person in charge: <strong> <router-link :to="'/our_women/' + leader.person_id">{{leader.name}} {{leader.surname}}</router-link></strong> - {{leader.role}}</p>
           <p class="italic">{{service.additional_info}}</p>
         </div>
@@ -56,15 +56,13 @@
 
 <script setup>
   import sanitizeHtml from 'sanitize-html';
-  import { h } from 'vue';
 
   const route = useRoute()
   const id = route.params.id;
+
   const {data: services} = await useFetch('/api/activities/' + id);
   const service = JSON.parse(JSON.stringify(services.value))[0];
   const leader = await $fetch('/api/our_women/' + service.leader);
-
-  //const descriptionParts = service.description.split('<br>').map(part => part.trim());
 
   const openingHours = sanitizeHtml(service.opening_hours);
   const briefSummary = sanitizeHtml(service.summary);
@@ -84,9 +82,14 @@ body {
 }
 
 .container {
-  /*max-width: 1200px;*/
   margin: 0 auto;
-  padding: 20px;
+  background-color: #fffffa;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  align-items: center;
+  padding-right: 7rem;
+  padding-left: 7rem;
+  padding-top: 3.5rem;
 }
 
 h1 {
@@ -114,6 +117,7 @@ h2{
 .main-image {
   max-width: 40%;
   height: auto;
+  border-radius: 2.5%;
 }
 
 .logo-section {
@@ -138,6 +142,7 @@ h2{
 
 .text-section p {
   margin: 5px 0;
+  color: #333;
 }
 
 .text-section a {
@@ -149,12 +154,25 @@ h2{
   text-decoration: underline;
 }
 
+.tel-number{
+  color: #333!important;
+}
+
 .description {
+  padding: 1rem;
+  font-size: 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
   text-align: justify;
 }
 
 .description p {
   margin: 0;
+
 }
 
 .italic{
@@ -233,6 +251,7 @@ h3{
 .testimonial-image{
   max-width: 100%;
   height: auto;
+  border-radius: 2.5%;
 }
 
 hr{
