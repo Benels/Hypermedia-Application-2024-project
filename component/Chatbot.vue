@@ -2,7 +2,7 @@
   <div class="chat-container">
     <div class="chat-header">
       <p class="pl-4">Jarvis - Your personal Assistant</p>
-      <div @click="$emit('handle')" class="closeIcon"> <img src="~/assets/svgs/close_x.svg"/> </div>
+      <div @click="$emit('handle')" class="closeIcon rounded-md"> <img src="~/assets/svgs/close_x_white.svg"/> </div>
     </div>
     <div class="chat-box" ref="chatBox">
       <div v-for="(msg, i) in messages" :key="i" class="msg">
@@ -179,12 +179,13 @@ body {
 
 .closeIcon:hover {
   cursor: pointer;
-  background-color: #ccc;
+  background-color: #e72727;
 }
 
 .closeIcon {
   color: white;
-  height: 25px;
+  height: 30px;
+  padding: 5px;
   aspect-ratio: 1/1;
   margin-right: 5px;
 }
@@ -336,6 +337,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 </style>

@@ -1,8 +1,7 @@
 <template>
 
-  <Navbar @closeChatBot="closeChatbot"/>
+  <Navbar @closeChatBot="closeChatbot" ref="navbar" />
   <slot />
-  
   <div class="chatbotContainer fixed bottom-20 right-14 flex flex-col-reverse gap-2">
     <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
@@ -52,7 +51,6 @@
     </div>
   </footer>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
-
 </template>
 
 <script lang="ts" setup>
@@ -87,6 +85,7 @@ const chatbotContainer = ref();
 
 function handleChatbot(event :any){
   if(!displayChat.value){
+    closeNavbar();
     displayChat.value = !displayChat.value;
     chatbotContainer.value.classList.add("displayBlock");
     setTimeout(() => {
@@ -106,6 +105,13 @@ function closeChatbot() {
   }, 700);
 }
 
+const navbar = ref();
+
+function closeNavbar() {
+  console.log("provo a chiudere navbar");
+  navbar.value.closeNavbar();
+}
+
 </script>
 
 <style>
@@ -118,8 +124,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(235, 235, 235);
-  color: black;
+  background: linear-gradient(
+      to bottom,
+      rgb(235 235 235 / 94%),
+      rgb(235 235 235 / 94%)
+  ), url('assets/imgs/our_women_bg.jpg') repeat;  color: black;
   font-family: 'Rubik';
   -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
@@ -214,6 +223,20 @@ body {
   right: 1rem;
   font-size: smaller;
   text-align: right;
+}
+
+.external{
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      to bottom,
+      rgb(235 235 235 / 98%),
+      rgb(235 235 235 / 95%)
+  ), url('assets/imgs/our_women_bg.jpg') repeat;
+  position: relative;
 }
 
 @media (max-width: 768px) {

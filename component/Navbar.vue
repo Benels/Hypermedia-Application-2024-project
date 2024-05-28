@@ -1,7 +1,7 @@
 <template>
 
 
-  <nav>
+  <nav class="bg">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:py-6 md:pb-4">
       <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -60,25 +60,43 @@
   import { useRoute } from "vue-router";
   
   const emit = defineEmits(['closeChatBot']);
+  const props = defineProps(['closeSignal']);
+  console.log("closeSignal",props.closeSignal);
+  watch(() => props.closeSignal, (newValue, oldValue) => {
+    if(newValue !== oldValue) {
+      console.log("closeSignal",newValue, oldValue);
+    }
+  })
 
   const route = useRoute();
   const navbarMenu = ref();
-  const currentRoute = ref("index")
+  const currentRoute = ref("index");
+
   watch(() => route.name, (newName, oldName) => {
     currentRoute.value = newName.split("-")[0];
     console.log(currentRoute.value);
   })
-  
+
+  function closeNavbar() {
+    console.log("navbar chiusa");
+    navbarMenu.value.classList.add("hidden");
+  }
+
   function toggleNavbar(event) {
     emit("closeChatBot");
     navbarMenu.value.classList.toggle("hidden");
   }
   
-  
+  defineExpose({
+    closeNavbar
+  });
   </script>
   
   <style scoped>
-  
+
+  .bg{
+    background-color: #ebebeb;
+  }
   .activities_dropdown {
     display: none;
     z-index: 10;
