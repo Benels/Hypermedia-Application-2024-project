@@ -10,7 +10,7 @@
       <div class="logo-section">
         <!--<h2>{{briefSummary}}</h2>-->
         <h2 v-html="briefSummary"></h2>
-        <img class="logo" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${service.activity_id}.jpg`" :alt="`Missing Image`" />
+        <img class="logo" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${service.activity_id}.PNG`" :alt="`Missing Image`" />
         <div class="text-section">
           <!--<div v-for="(part, index) in practicalInfoParts" :key="index">
             <p>{{ part }}</p>

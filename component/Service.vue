@@ -2,7 +2,7 @@
   <NuxtLink :to = "link" :aria-label="`Link to ${name} page`" class="personLink">
     <div class="card">
       <div class="imageContainer bg-red rounded-3xl">
-        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${id}.jpg`"  :alt="`Missing Image`" />
+        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${id}.PNG`"  :alt="`Missing Image`" />
       </div>
       <div class="textContainer">
         <p class="name_surname">{{ name }}</p>
