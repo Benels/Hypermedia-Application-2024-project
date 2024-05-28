@@ -67,18 +67,31 @@
       <div class="text-container">
         <h2>OUR ACTIVITIES</h2>
       </div>
-      <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
+      <div id="default-carousel" class="relative w-3/4 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(a, index) in acts" :key="a.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
-              <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/7.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
-              <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
-                {{ a.name }}
-              </div>
+            <div v-if="a.is_service">
+              <router-link :to="'/services/' + a.activity_id">
+                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${a.activity_id}.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
+                <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
+                  {{ a.name }}
+                </div>
+              </router-link>
+            </div>
+            <div v-else>
+              <router-link :to="'/projects/' + a.activity_id">
+                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
+                <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2">
+                  {{ a.name }}
+                </div>
+              </router-link>
+          </div>
+
           </div>
         </div>
 
         <button v-if="acts.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red bg-opacity-75  dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
             </svg>
@@ -86,7 +99,7 @@
           </span>
         </button>
         <button v-if="acts.length > 1" type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red bg-opacity-75  dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60  dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
             </svg>
@@ -100,6 +113,9 @@
   </main>
 </template>
 <script setup>
+  import { initCarousels } from 'flowbite';
+  import { onMounted } from 'vue'
+
   const { data: activities } = await useFetch('/api/activities/')
   const acts = ref([])
   if (activities.value) {
@@ -107,7 +123,12 @@
       acts.value.push(activity)
     })
   }
-  console.log(acts)
+
+  onMounted(() => {
+    setTimeout(() => {
+      initCarousels();
+    },100)
+  });
 
 </script>
 <style scoped>
