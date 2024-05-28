@@ -1,21 +1,20 @@
 <template>
   <Transition>
-    <div class="h-12 rounded-full flex items-center section" :class="active ? 'closed' : '' ">
-      <p class="w-full text-center text-xl text-gray-200" :class="active ? 'opacity-0' : '' "> {{ name }} </p>
+    <div class="h-12 rounded-full flex items-center section hover:cursor-pointer" :class="active ? 'bg-red text-gray-200' : 'bg-white text-red border-2 border-red hover:bg-red hover:text-white' ">
+      <p class="w-full text-center text-xl " > {{ name }} </p>
     </div>
   </Transition>
   
 </template>
 
 <script lang="ts" setup>
-  const props = defineProps(["name","color","active"]);
+  const props = defineProps(["name","active"]);
 
 </script>
 
 <style>
 
 .section {
-    background-color: #d62828;
     transition: all 500ms ease-in-out;
 }
 
