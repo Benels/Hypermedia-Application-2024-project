@@ -162,21 +162,6 @@ body {
   height: 100vh;
 }
 
-
-@media (max-width: 768px) {  /* until md */
-  .chat-container {
-    max-width: 100%;
-    height: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .chat-container {
-    max-width: 80%;
-    max-height: 90vh;
-  }
-}
-
 .closeIcon:hover {
   cursor: pointer;
   background-color: #e72727;
@@ -199,7 +184,6 @@ body {
 
 .chat-container {
   width: 100%;
-  max-height: 80vh;
   align-self: end;
   background-color: white;
   border-radius: 8px;
@@ -292,12 +276,12 @@ body {
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  margin-right: 10px;
+  margin-right: 4px;
+  margin-left: -4px;
 }
 
 .send-button {
-  flex-grow: 1;
-  padding: 10px 10px;
+  padding: 9px 9px;
   background-color: #ff6f61;
   color: white;
   border: none;
@@ -306,9 +290,8 @@ body {
   transition: background-color 0.3s;
 }
 .TTSbutton {
-   flex-grow: 1;
-   padding: 10px 10px;
-   margin-left: 3px;
+   padding: 9px 9px;
+   margin-left: 2px;
    background-color: #ff6f61;
    color: white;
    border: none;
@@ -340,5 +323,24 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+
+
+@media (max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+    height: calc(100vh - 72px);
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-container {
+    max-width: 80%;
+    max-height: 85vh;
+  }
+}
+
 
 </style>

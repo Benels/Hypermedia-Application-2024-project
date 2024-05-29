@@ -87,7 +87,7 @@ body {
   width: 100%;
   height: 360px;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .contact_social {

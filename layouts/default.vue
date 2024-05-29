@@ -1,13 +1,15 @@
 <template>
 
   <Navbar @closeChatBot="closeChatbot" ref="navbar" />
-  <slot />
+  <div class="content-container">
+    <slot />
+  </div>
   <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
-    <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
+    <div class="z-32 w-20 h-20 overflow-hidden bg-gray-300 rounded-full flex justify-center items-center" @click="handleChatbot">
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
     </div>
-    <div class="chatbot fixed right-14" ref="chatbotContainer">
+    <div class="z-33 chatbot fixed right-10" ref="chatbotContainer">
       <Chatbot @handle="handleChatbot" />
     </div>
   </div>
@@ -21,15 +23,14 @@
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
-
   </div>
 
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="md:pl-7 md:pr-7 lg:pl-0 lg:pr-0 footer-img"/>
-          <span class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
+          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
+          <span class=" self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
         </NuxtLink>
       </div>
       <div>
@@ -91,6 +92,7 @@ function handleChatbot(event :any){
     setTimeout(() => {
       chatbotContainer.value.classList.add("setOpacity");
     }, 50);
+    document.body.classList.add("no-scroll");
   }else{
     closeChatbot();
   }
@@ -102,6 +104,7 @@ function closeChatbot() {
   chatbotContainer.value.classList.remove("setOpacity");
   setTimeout( () => {
     chatbotContainer.value.classList.remove("displayBlock");
+    document.body.classList.remove("no-scroll");
   }, 700);
 }
 
@@ -134,6 +137,11 @@ body {
     scrollbar-width: none; /* Firefox */
 }
 
+.content-container {
+  margin-top: 72px;
+}
+
+
 .socialPhone {
   display: none;
 }
@@ -164,7 +172,7 @@ body {
 
 .chatbotContainer,
 .socialContainer {
-  z-index: 2;
+  z-index: 31;
 }
 
 .setOpacity {
@@ -239,6 +247,9 @@ body {
   position: relative;
 }
 
+.no-scroll {
+}
+
 @media (max-width: 768px) {
   .chatbot {
     top: 72px;
@@ -276,6 +287,11 @@ body {
   }
   .credits {
     max-width: 40%;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100%;
   }
 }
 
