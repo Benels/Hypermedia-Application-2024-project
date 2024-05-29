@@ -32,7 +32,7 @@
       <div class="links-inner-container">
         <div class="imageContainer">
           <a href="/contact_us">
-            <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error"/>
+            <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
           </a>
         </div>
         <div class="link-text">
@@ -81,20 +81,20 @@
 <script setup>
 const {data: activities} = await useFetch('/api/activities/mostRecentActivity');
 const activity = JSON.parse(JSON.stringify(activities.value))[0];
-  let type;
-  if(activity.is_service)
-    type = "services";
-  else type = "projects";
+let type;
+if (activity.is_service)
+  type = "services";
+else type = "projects";
 
 </script>
 
 <style scoped>
-.main-image-container{
+.main-image-container {
   position: relative;
   width: 100%;
 }
 
-.image{
+.image {
   width: 100%;
   height: auto;
 }
@@ -116,7 +116,7 @@ const activity = JSON.parse(JSON.stringify(activities.value))[0];
 }
 
 .slogan em{
-  font-size: 2rem;
+  font-size: 3vw!important;
 }
 
 .logo{
@@ -181,12 +181,12 @@ const activity = JSON.parse(JSON.stringify(activities.value))[0];
   flex-direction: column;
   flex-wrap: wrap;
   margin: 1%;
-  width: v-bind(imageSize);
+  width: v-bind(imageSize);/*da sistemare*/
 }
 
 .imageContainer {
   width: 100%;
-  height: v-bind(imageSize);
+  height: v-bind(imageSize);/*da sistemare*/
 }
 
 .imageContainer > img {
@@ -255,4 +255,42 @@ const activity = JSON.parse(JSON.stringify(activities.value))[0];
   font-weight: bold;
 }
 
+@media(max-width: 768px){
+  .links-outer-container{
+    display:inline;
+    align-items: center;
+  }
+  .imageContainer {
+    width: 80%;
+    height: v-bind(imageSize);/*da sistemare*/
+  }
+
+  .imageContainer > img {
+    width: 80%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5%;
+
+  }
+  .links-inner-container{
+    position: relative;
+    height: auto;
+    align-items:center;
+    width: v-bind(imageSize);/*da sistemare*/
+  }
+
+  .link-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 1.8vw;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5%;
+    border-radius: 5%;
+    width: 60%;
+  }
+}
 </style>
