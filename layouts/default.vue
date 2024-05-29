@@ -92,6 +92,7 @@ function handleChatbot(event :any){
     setTimeout(() => {
       chatbotContainer.value.classList.add("setOpacity");
     }, 50);
+    document.body.classList.add("no-scroll");
   }else{
     closeChatbot();
   }
@@ -103,6 +104,7 @@ function closeChatbot() {
   chatbotContainer.value.classList.remove("setOpacity");
   setTimeout( () => {
     chatbotContainer.value.classList.remove("displayBlock");
+    document.body.classList.remove("no-scroll");
   }, 700);
 }
 
@@ -245,6 +247,9 @@ body {
   position: relative;
 }
 
+.no-scroll {
+}
+
 @media (max-width: 768px) {
   .chatbot {
     top: 72px;
@@ -282,6 +287,11 @@ body {
   }
   .credits {
     max-width: 40%;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100%;
   }
 }
 

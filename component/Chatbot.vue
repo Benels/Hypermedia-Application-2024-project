@@ -276,12 +276,13 @@ body {
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
-  margin-right: 10px;
+  margin-right: 4px;
+  margin-left: -4px;
+  width:;
 }
 
 .send-button {
-  flex-grow: 1;
-  padding: 10px 10px;
+  padding: 9px 9px;
   background-color: #ff6f61;
   color: white;
   border: none;
@@ -290,9 +291,8 @@ body {
   transition: background-color 0.3s;
 }
 .TTSbutton {
-   flex-grow: 1;
-   padding: 10px 10px;
-   margin-left: 3px;
+   padding: 9px 9px;
+   margin-left: 2px;
    background-color: #ff6f61;
    color: white;
    border: none;
