@@ -14,7 +14,7 @@
 
     <div class="container">
       <div id="mc1" class="image-container">
-        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="" class="img-about">
+        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="Image of Stylized women asking for No more violence" class="img-about">
       </div>
       <div class="text-container">
         <h2>OUR MISSION</h2>
@@ -26,7 +26,7 @@
         </p>
       </div>
       <div id="mc2" class="image-container">
-        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="" class="img-about">
+        <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="Image of Stylized women asking for No more violence" class="img-about">
       </div>
     </div>
 
@@ -41,7 +41,7 @@
         </p>
       </div>
       <div class="image-container">
-        <img src="/assets/imgs/aboutUs/history.jpg" alt=""  class="img-about">
+        <img src="/assets/imgs/aboutUs/history.jpg" alt="Image of the First HERmet Reunion"  class="img-about">
       </div>
     </div>
 
@@ -130,6 +130,16 @@
     },100)
   });
 
+  //Search Engine Optimization
+  const description = ref('This page contains details about HERmet mission, its history, some practical information and a preview of activities')
+  const keywords = ref('About Us, Mission, History, Practical Information, Activities')
+
+  useHead({
+    meta: [
+      { name: 'description', content: description },
+      { name: 'keywords', content: keywords }
+    ]
+  })
 </script>
 <style scoped>
 
