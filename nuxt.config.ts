@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxtjs/supabase', '@nuxtjs/google-fonts', "@nuxtjs/tailwindcss"],// ['@pinia/nuxt'],
+  modules: ['@nuxtjs/supabase', '@nuxtjs/google-fonts', "@nuxtjs/tailwindcss",'@pinia/nuxt'],
   googleFonts: {
     families: {
       Roboto: true,
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
   },
 
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   supabase: {
     redirect: false
   },

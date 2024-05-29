@@ -8,7 +8,7 @@
 
       <div class="flex flex-col gap-2 px-2 w-full sm:max-w-[648px] mx-auto">
         <div class="activeSection flex flex-row gap-1 items-center">
-          <Section :name="currentSection.name" :color="currentSection.color" :active="true" class="current-section" />
+          <Section :name="breadcrumbs.currentSection.name" :color="breadcrumbs.currentSection.color" :active="true" class="current-section" />
           <div class="dropdownIcon h-10 rounded-full" @click="handleSectionDropdown">
             <svg id="arrow" class="rotatable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100" height="100">
               <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" fill="#FFFFFF"/>
@@ -17,18 +17,18 @@
         </div>
         <Transition name="otherSections">
           <div class="notDisplayed" v-if="displaySections">
-            <Section v-for="s of sections.filter((x) => x.name !== currentSection.name)" :name="s.name" :active="false" @click="changeSection(s)" />
+            <Section v-for="s of breadcrumbs.sections.filter((x) => x.name !== breadcrumbs.currentSection.name)" :name="s.name" :active="false" @click="changeSection(s)" />
           </div>
         </Transition>
       </div>
     </div>
     <!-- people container for small screens -->
     <div class="peopleContainer flex flex-col items-center w-full">
-      <p class="text-6xl self-center hidden">{{ currentSection.name }}</p>
+      <p class="text-6xl self-center hidden">{{ breadcrumbs.currentSection.name }}</p>
       <div class="flex items-center min-h-[60vh]">
         <div class="flex flex-wrap px-8 gap-8 gap-y-4 justify-center peopleList ">
           <TransitionGroup name="list">
-            <Person v-for = "person of currentSection.people" :imageSize="'300px'" :key = "person.person_id" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
+            <Person v-for = "person of breadcrumbs.currentSection.people" @click="breadcrumbs.setCurrentPerson(person)" :imageSize="'300px'" :key = "person.person_id" :id = "person.person_id" :name = "person.name" :surname = "person.surname" :role = "person.role"  :link = "'/our_women/' + person.person_id"  />
           </TransitionGroup>
         </div>
 
@@ -37,15 +37,15 @@
 
   </main>
 </template>
-
+ 
 <script setup>
 import Person from "~/component/Person.vue";
 import Section from "~/component/Section.vue";
 import { ref } from "vue";
+import { useBreadcrumbStore } from '~/stores/breadcrumb';
 
 const { data: response  } = await useFetch('/api/our_women/');
 const people = JSON.parse(JSON.stringify(response.value))
-
 
 const board = {
   "name": "Board",
@@ -103,7 +103,12 @@ const educator = {
 
 const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker];
 
-const currentSection = ref(board);
+const breadcrumbs = useBreadcrumbStore();
+/* set the sections in the state */
+breadcrumbs.setSections(sections);
+
+/* this defines the appeared section */
+breadcrumbs.setCurrentSection(breadcrumbs.currentSection === null ? board : breadcrumbs.currentSection);
 
 function boardSorting(a,b) {
   if(a.name > b.name)
@@ -114,7 +119,8 @@ function boardSorting(a,b) {
 }
 
 function changeSection(newSection) {
-  currentSection.value = newSection;
+  // currentSection.value = newSection;
+  breadcrumbs.setCurrentSection(newSection);
   displaySections.value = false;
   //currentSection.color = "#d68282"
 }

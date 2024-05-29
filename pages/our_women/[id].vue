@@ -2,6 +2,7 @@
   <Head>
     <title>{{ person.name }} {{ person.surname }} - HERmet</title>
   </Head>
+  <Breadcrumbs />
   <main>
     <div class="container"></div>
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
@@ -100,10 +101,11 @@
 </template>
 
 <script setup>
+
 import WomenActivities from '~/component/WomenActivities.vue';
 import { initCarousels } from 'flowbite';
 import { onMounted, ref } from 'vue';
-
+import Breadcrumbs from '~/component/Breadcrumbs.vue';
 const route = useRoute();
 const person = await $fetch('/api/our_women/' + route.params.id); //get the specific person from their id
 
@@ -142,6 +144,7 @@ useHead({
 </script>
 
 <style scoped>
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
