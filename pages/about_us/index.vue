@@ -72,7 +72,7 @@
           <div v-for="(a, index) in acts" :key="a.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <div v-if="a.is_service">
               <router-link :to="'/services/' + a.activity_id">
-                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${a.activity_id}.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
+                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${a.activity_id}.jpg`" class="absolute block w-full h-80 rounded-lg -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
                 <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2 hover:bg-red">
                   {{ a.name }}
                 </div>
@@ -80,7 +80,7 @@
             </div>
             <div v-else>
               <router-link :to="'/projects/' + a.activity_id">
-                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
+                <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" class="absolute block w-full h-80 rounded-lg -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
                 <div class="absolute bottom-0 left-0 w-full bg-opacity-75 bg-red text-white text-center py-2 hover:bg-red">
                   {{ a.name }}
                 </div>
@@ -186,6 +186,9 @@ h2 {
 @media (max-width: 768px) {
   .container {
     grid-template-columns: none;
+  }
+  .image-container{
+    margin-top: 10px;
   }
   #mc1,
   #pc1 {
