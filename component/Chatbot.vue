@@ -278,7 +278,6 @@ body {
   box-sizing: border-box;
   margin-right: 4px;
   margin-left: -4px;
-  width:;
 }
 
 .send-button {
