@@ -4,16 +4,16 @@
   <div class="content-container">
     <slot />
   </div>
-    <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
-      <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
-        <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
-        <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
-      </div>
-      <div class="chatbot" ref="chatbotContainer">
-        <Chatbot @handle="handleChatbot" />
-      </div>
+  <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
+    <div class="z-32 w-20 h-20 overflow-hidden bg-gray-300 rounded-full flex justify-center items-center" @click="handleChatbot">
+      <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
+      <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
     </div>
-    <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
+    <div class="z-33 chatbot fixed right-10" ref="chatbotContainer">
+      <Chatbot @handle="handleChatbot" />
+    </div>
+  </div>
+  <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
@@ -23,7 +23,6 @@
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
-
   </div>
 
   <footer class="footer">
@@ -171,7 +170,7 @@ body {
 
 .chatbotContainer,
 .socialContainer {
-  z-index: 2;
+  z-index: 31;
 }
 
 .setOpacity {
