@@ -3,7 +3,7 @@
 
   <nav class="bg fixed w-full z-[9998]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:py-6 md:pb-4">
-      <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <NuxtLink @click="closeNavbarChatbot" to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
       </NuxtLink>
@@ -84,6 +84,11 @@
   function toggleNavbar(event) {
     emit("closeChatBot");
     navbarMenu.value.classList.toggle("hidden");
+  }
+
+  function closeNavbarChatbot(){
+    emit("closeChatBot");
+    navbarMenu.value.classList.add("hidden");
   }
 
   
