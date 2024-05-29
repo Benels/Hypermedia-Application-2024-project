@@ -11,7 +11,7 @@
       <Chatbot @handle="handleChatbot" />
     </div>
   </div>
-  <div class="hidden lg:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
+  <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
@@ -28,8 +28,8 @@
     <div class="footer-container">
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
-          <span class=" self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
+          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="md:pl-7 md:pr-7 lg:pl-0 lg:pr-0 footer-img"/>
+          <span class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
         </NuxtLink>
       </div>
       <div>

@@ -50,13 +50,13 @@
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
       </div>
       <div class="text-container">
-        <h2>PRACTICAL INFORMATION</h2>
+        <h2><NuxtLink to="/contact_us">PRACTICAL INFORMATION</NuxtLink></h2>
         <p class="justified">
           HERmet's headquarter is situated at <a href="https://www.google.it/maps/place/Piazza+Leonardo+da+Vinci,+1,+20133+Milano+MI/@45.4785935,9.2246471,17z/data=!3m1!4b1!4m6!3m5!1s0x4786c79bc37bec41:0x7b28618e58d10a3a!8m2!3d45.4785935!4d9.227222!16s%2Fg%2F11v54d4qyw?entry=ttu">Piazza Leonardo da Vinci 1, Milano MI</a>.
           It offers various services 24h per day, but you can find us at the center at these opening hours
         </p>
-          <p><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
-          <p><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+          <p class="justified"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
+          <p class="justified"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
       </div>
       <div id="pc2" class="image-container">
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
@@ -65,7 +65,7 @@
 
     <div class="container">
       <div class="text-container">
-        <h2>OUR ACTIVITIES</h2>
+        <h2><NuxtLink to="/activities">OUR ACTIVITIES</NuxtLink></h2>
       </div>
       <div id="default-carousel" class="relative w-3/4 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
@@ -167,11 +167,12 @@
 }
 
 h2 {
-  font-size: 35px;
+  font-size: 2.5rem;
 }
 
 .justified {
   text-align: center;
+  font-size: 1.2rem;
   padding-left: 7%;
   padding-right: 7%;
 }
