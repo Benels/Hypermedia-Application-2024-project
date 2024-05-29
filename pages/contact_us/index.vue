@@ -31,7 +31,7 @@
           <p>Or write as an email at: </p>
           <a class="mail" href="mailto:10727489@polimi.it">✉️ hermet@hermet.com</a>
           <br><br>
-          <img src="/assets/imgs/contactus.jpg">
+          <img class="img" src="/assets/imgs/contactus.jpg">
         </div>
 
         <div class="social">
@@ -132,6 +132,10 @@ p {
 .mail,
 .address {
   font-size: 25px;
+}
+
+.img{
+  border-radius: 2%;
 }
 
 @media (min-width: 768px) {
