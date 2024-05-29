@@ -5,10 +5,10 @@
     <slot />
   </div>
   <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
-    <div class="z-32 w-20 h-20 overflow-hidden bg-white rounded-full border-2 border-[2px] border-red/50 flex justify-center items-center" @click="handleChatbot">
+    <div class="z-32 w-20 h-20 overflow-hidden bg-white rounded-full border-2 border-[2px] border-red/50 flex justify-center items-center" @click.stop="handleChatbot">
     <!--div class="z-32 w-20 h-20 overflow-hidden bg-gray-300 rounded-full flex justify-center items-center" @click="handleChatbot"-->
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
-      <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
+      <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar" >
     </div>
     <div class="z-33 chatbot fixed right-10" ref="chatbotContainer">
       <Chatbot @handle="handleChatbot" />
@@ -17,7 +17,7 @@
   <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-white rounded-full border-2 border-[2px] border-red/50">
     <!--div class="w-20 h-20 bg-gray-300 rounded-full"-->
-      <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
+      <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click.stop="handleSocialListDisplay">
     </div>
     <div class="socialLinks flex-col-reverse gap-2" ref="socialContainer">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
@@ -60,7 +60,7 @@
 <script lang="ts" setup>
 
 import Navbar from "~/component/Navbar.vue";
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const displaySocialList = ref(false);
 const socialContainer = ref();
@@ -129,6 +129,30 @@ function closeNavbar() {
   navbar.value.closeNavbar();
 }
 
+function closeAll() {
+  closeNavbar();
+  closeSocialList();
+  closeChatbot();
+}
+
+function handleClickOutside(event: MouseEvent) {
+  const target = event.target as HTMLElement;
+  if (
+      !navbar.value.$el.contains(target) &&
+      !socialContainer.value.contains(target) &&
+      !chatbotContainer.value.contains(target)
+  ) {
+    closeAll();
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <style>
