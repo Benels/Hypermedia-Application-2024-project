@@ -30,7 +30,7 @@
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
-          <span class=" self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
+          <p class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</p>
         </NuxtLink>
       </div>
       <div>
