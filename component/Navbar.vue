@@ -96,7 +96,7 @@
 
   .bg{
     background-color: #ebebeb;
-    //border-bottom: 2px solid red;
+    top: 0;
   }
   .activities_dropdown {
     display: none;

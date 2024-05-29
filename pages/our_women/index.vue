@@ -179,7 +179,6 @@ function handleSectionDropdown(event) {
 .dropdownIcon {
   aspect-ratio: 1/1;
   background-color: rgb(214, 40, 40);
-  //background-color: rgb(173, 173, 173);
   display: flex;
   justify-content: center;
   align-items: center;

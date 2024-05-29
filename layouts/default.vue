@@ -136,6 +136,11 @@ body {
     scrollbar-width: none; /* Firefox */
 }
 
+.content-container {
+  margin-top: 72px;
+}
+
+
 .socialPhone {
   display: none;
 }
