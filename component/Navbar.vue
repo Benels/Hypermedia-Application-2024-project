@@ -61,7 +61,6 @@
   
   const emit = defineEmits(['closeChatBot']);
   const props = defineProps(['closeSignal']);
-  console.log("closeSignal",props.closeSignal);
   watch(() => props.closeSignal, (newValue, oldValue) => {
     if(newValue !== oldValue) {
       console.log("closeSignal",newValue, oldValue);
