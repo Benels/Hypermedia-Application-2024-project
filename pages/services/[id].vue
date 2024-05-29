@@ -88,9 +88,9 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   align-items: center;
-  padding-right: 7rem;
-  padding-left: 7rem;
-  padding-top: 3.5rem;
+  padding-right: 7%;
+  padding-left: 7%;
+  padding-top: 3.5%;
 }
 
 h1 {
