@@ -72,6 +72,16 @@
 
   const description = sanitizeHtml(service.description);
 
+  //Search Engine Optimization
+  const page_description = ref('This page contains all the details of HERmet service ' + service.name)
+  const keywords = ref('Service, ' + service.name)
+
+  useHead({
+    meta: [
+      { name: 'description', content: page_description },
+      { name: 'keywords', content: keywords }
+    ]
+  })
 </script>
 
 <style scoped>

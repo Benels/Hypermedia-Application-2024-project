@@ -1,12 +1,17 @@
 <template>
   <div class="error">
     <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
-      <span class="self-center text-white font-semi-bold whitespace-nowrap">HERmet</span>
+      <img src="~/assets/imgs/Logo.svg" class="h-36" alt="Flowbite Logo" />
+      <span class="name"><strong>HERmet  </strong></span>
     </NuxtLink>
+    <br>
     <div>
-      <p class="self-center text-white font-semi-bold whitespace-nowrap">The page you were looking for isn't available anymore</p>
-      <p class="self-center text-white font-semi-bold whitespace-nowrap">Sorry for the issue...</p>
+      <p class="message"><strong>Lost in the Digital World?</strong></p>
+    </div>
+    <div>
+      <p class="message2">
+        This page isn't here, but we are. <br>Please try searching for what you need or return to the homepage. <br>Your safety and support are our priority.
+      </p>
     </div>
   </div>
 </template>
@@ -18,8 +23,24 @@ export default {
 </script>
 
 <style scoped>
-.error{
-  background-color: #d62828;
+.name {
+  font-size: 3rem;
+  color: black;
+}
+
+.message, .message2 {
+  font-size: 1.5rem;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+  text-align: center;
+  color: #d62828;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 </style>

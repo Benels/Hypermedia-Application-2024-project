@@ -47,6 +47,17 @@
 </template>
 
 <script setup>
+
+//Search Engine Optimization
+const description = ref('This page contains contact information, such as the center address with opening hours, e-mail, telephone number and social media links ')
+const keywords = ref('Contact us, Center, Position, Telephone, Mail, Opening, Social')
+
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>
@@ -87,7 +98,7 @@ body {
   width: 100%;
   height: 360px;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .contact_social {

@@ -71,9 +71,9 @@ const manager = {
   "color": "#d62828"
 }
 
-const medical_personel = {
-  "name": "Medical Personel",
-  "people": people.filter((p) => { return p.role.startsWith("Medical Personel") }),
+const medical_personnel = {
+  "name": "Medical Personnel",
+  "people": people.filter((p) => { return p.role.startsWith("Medical Personnel") }),
   "color": "#d62828"
 }
 
@@ -101,7 +101,7 @@ const educator = {
   "color": "#d62828"
 }
 
-const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personel, social_worker];
+const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker];
 
 const currentSection = ref(board);
 
@@ -125,7 +125,16 @@ function handleSectionDropdown(event) {
   displaySections.value = !displaySections.value;
 }
 
+//Search Engine Optimization
+const description = ref('This page contains the entire HERmet team, divided by their role in the association')
+const keywords = ref('Women, People, Team, Member, President, Board, Manager, Lawyer, Psychologist, Educator, Medical Personnel, Call Center, Vocational Trainer, Social Worker')
 
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>
@@ -179,7 +188,6 @@ function handleSectionDropdown(event) {
 .dropdownIcon {
   aspect-ratio: 1/1;
   background-color: rgb(214, 40, 40);
-  //background-color: rgb(173, 173, 173);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -14,8 +14,20 @@
 <script setup>
 
 import Service from '~/component/Service.vue';
+import {ref} from "vue";
 
 const { data: services } = await useFetch("/api/activities/services");
+
+//Search Engine Optimization
+const description = ref('This page contains a list of HERmet services')
+const keywords = ref('Services')
+
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 

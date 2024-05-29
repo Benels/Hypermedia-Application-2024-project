@@ -39,6 +39,8 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+
 const route = useRoute()
 const activityId = route.params.id;
 const {data: project} = await useFetch('/api/activities/' + activityId);
@@ -51,6 +53,17 @@ const person = await $fetch('/api/our_women/' + lead)
 
 const descriptionParts = a.description.split('<br>').map(part => part.trim());
 const summary = a.summary;
+
+//Search Engine Optimization
+const description = ref('This page contains all the details of HERmet project ' + a.name)
+const keywords = ref('Project, ' + a.name)
+
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>
