@@ -1,17 +1,19 @@
 <template>
 
   <Navbar @closeChatBot="closeChatbot" ref="navbar" />
-  <slot />
-  <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
-    <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
-      <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
-      <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
-    </div>
-    <div class="chatbot fixed right-14" ref="chatbotContainer">
-      <Chatbot @handle="handleChatbot" />
-    </div>
+  <div class="content-container">
+    <slot />
   </div>
-  <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
+    <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
+      <div class="w-20 h-20 overflow-hidden bg-gray-300 rounded-full z-100 flex justify-center items-center" @click="handleChatbot">
+        <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
+        <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar">
+      </div>
+      <div class="chatbot" ref="chatbotContainer">
+        <Chatbot @handle="handleChatbot" />
+      </div>
+    </div>
+    <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
     <div class="w-20 h-20 bg-gray-300 rounded-full ">
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click="handleSocialListDisplay">
     </div>
@@ -28,8 +30,8 @@
     <div class="footer-container">
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="md:pl-7 md:pr-7 lg:pl-0 lg:pr-0 footer-img"/>
-          <span class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
+          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
+          <span class=" self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
         </NuxtLink>
       </div>
       <div>
