@@ -147,7 +147,7 @@ hr{
   font-size: 1rem;
 }
 
-.summary, .person-card {
+.summary{
   flex: 1 1 48%;
   box-sizing: border-box;
   align-items: center;
@@ -180,43 +180,6 @@ hr{
 
 }
 
-.person-card {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /*padding-left: 2rem;
-  padding-right: 2rem;*/
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #d62828;
-}
-
-.person-card:hover {
-  transform: translateY(-0.5rem);
-}
-
-.person-card-img {
-  width: 25%;
-  height: 25%;
-  /*alignment: center;*/
-  transition: transform 0.3s ease;
-  align-self: center;
-  justify-content: center;
-  margin-left: 37.5%;
-  border-radius: 50%;
-}
-
-.person-card-img:hover {
-  transform: scale(1.05);
-}
-
-.name_surname {
-  font-size: 1.2rem;
-  color: #d62828;
-  margin-top: 0.5rem;
-}
-
 @media (max-width: 768px) {
   .outerContainer {
     padding: 1rem;
@@ -239,19 +202,6 @@ hr{
     margin-right: 0;
     margin-bottom: 1rem;
     text-align: justify;
-  }
-
-  .person-card {
-    padding: 1rem;
-    max-width: 90%;
-  }
-
-  .person-card-img {
-    max-width: 150px;
-  }
-
-  .name_surname {
-    font-size: 1rem;
   }
 }
 </style>

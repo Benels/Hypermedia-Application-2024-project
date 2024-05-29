@@ -24,12 +24,12 @@
       <div class="contact_social">
         <div class="contacts">
           <p>Call us now at: </p>
-          <a class="number" href="tel:123-456-7890">📞 123-456-7890</a>
+          <a class="number" href="tel:+393243453456">📞 +39 324 345 3456</a>
 
           <br><br>
 
           <p>Or write as an email at: </p>
-          <a class="mail" href="mailto:10727489@polimi.it">✉️ hermet@hermet.com</a>
+          <a class="mail" href="mailto:10727489@polimi.it">✉️ frontdesk@hermet.com</a>
           <br><br>
           <img class="img" src="/assets/imgs/contactus.jpg">
         </div>

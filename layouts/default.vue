@@ -33,8 +33,8 @@
         </NuxtLink>
       </div>
       <div>
-          <span class="footer-text">We are here for you, contacs us as far as you need:<br>call us at
-          <a class="number" href="tel:123-456-7890">123-456-7890</a> or send an email to <a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></span>
+          <span class="footer-text">We are here for you, contacts us as far as you need:<br>call us at
+          <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or send an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
       </div>
       <div>
         <span class="footer-text">&copy 2024 HERmet ODV,<br>All rights reserved</span>
@@ -129,7 +129,7 @@ body {
       rgb(235 235 235 / 94%),
       rgb(235 235 235 / 94%)
   ), url('assets/imgs/our_women_bg.jpg') repeat;  color: black;
-  font-family: 'Rubik';
+  font-family: 'Rubik', sans-serif;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
 }
@@ -203,12 +203,13 @@ body {
   display: flex;
   align-items: center;
   right: 4rem;
-
 }
 
 .footer-img {
   height: 5rem;
   margin-right: 0.5rem;
+  -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+  filter:drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
 }
 
 .footer-text {
