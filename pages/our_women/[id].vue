@@ -128,6 +128,17 @@ onMounted(() => {
     initCarousels();
   }, 100);
 });
+
+//Search Engine Optimization
+const page_description = ref('This page contains ' + person.name + ' ' + person.surname + '\'s personal information.')
+const keywords = ref('Team, ' + person.name + ' ' + person.surname + ', ' + person.role)
+
+useHead({
+  meta: [
+    { name: 'description', content: page_description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>
@@ -238,7 +249,7 @@ body {
   line-height: 1.5rem;
   color: #333;
 }
-
+/*
 .activities {
   color: red;
   font-size: x-large;
@@ -247,7 +258,7 @@ body {
 .activities h1{
   position: center;
 }
-
+*/
 @media (max-width: 768px) {
   .person-card {
     flex-direction: column;

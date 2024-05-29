@@ -14,9 +14,20 @@
 <script setup>
 
   import Project from '~/component/Project.vue';
+  import {ref} from "vue";
 
   const { data: projects } = await useFetch("/api/activities/projects");
 
+  //Search Engine Optimization
+  const description = ref('This page contains a list of HERmet projects')
+  const keywords = ref('Projects')
+
+  useHead({
+    meta: [
+      { name: 'description', content: description },
+      { name: 'keywords', content: keywords }
+    ]
+  })
 </script>
 
 <style scoped>
