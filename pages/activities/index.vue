@@ -112,6 +112,16 @@ onMounted(() => {
   },100)
 });
 
+//Search Engine Optimization
+const description = ref('This page contains a preview of all HERmet activities, divided into services and projects')
+const keywords = ref('Activities, Projects, Services')
+
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>
