@@ -8,8 +8,10 @@
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
     <div class="person-card">
       <div class="left-section">
-        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`"/>
-      </div>
+        <div class="imageContainer">
+          <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`"/>
+        </div>
+        </div>
       <div class="right-section">
 
         <h2 class="role">{{ person.role }}</h2>
@@ -26,7 +28,7 @@
         </div>
         </div>
     </div>
-    <div style="align-self: center">
+    <div class="descriptionContainer">
       <div class="description-box">
         <div v-html="description" class="description"></div>
         </div>
@@ -34,7 +36,8 @@
     <br />
 
     <div v-if="projects.length > 0">
-      <div style="text-align: center; font-family: Arial, sans-serif; font-size: 2rem; color: #d62828">Projects managed by {{ person.name }} {{ person.surname }}</div>
+      <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Projects managed by {{ person.name }} {{ person.surname }}</div>
+      <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(project, index) in projects" :key="project.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
@@ -66,7 +69,8 @@
     </div>
 
     <div v-if="services.length > 0">
-      <div style="text-align: center; font-family: Arial, sans-serif; font-size: 2rem; color: #d62828">Service managed by {{ person.name }} {{ person.surname }}</div>
+      <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Service managed by {{ person.name }} {{ person.surname }}</div>
+      <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(service, index) in services" :key="service.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
@@ -101,8 +105,6 @@
 </template>
 
 <script setup>
-
-import WomenActivities from '~/component/WomenActivities.vue';
 import { initCarousels } from 'flowbite';
 import { onMounted, ref } from 'vue';
 import Breadcrumbs from '~/component/Breadcrumbs.vue';
@@ -140,7 +142,7 @@ useHead({
     { name: 'description', content: page_description },
     { name: 'keywords', content: keywords }
   ]
-})
+});
 </script>
 
 <style scoped>
@@ -161,35 +163,55 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  gap: 2rem;
   max-width: 70%;
   border-radius: 1rem;
   margin: auto;
+  width: v-bind("'48%'");
+}
+
+.imageContainer {
+  width: 100%;
+  height: v-bind("'48%'");
+}
+
+.imageContainer > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
 }
 
 .left-section{
   display: flex;
   flex-direction: column;
-  margin-right: 2rem;
+  align-items: center;
+  /*margin-right: 2rem;*/
   width: 50%;
 }
 .right-section {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-left: 2rem;
 }
 
 .person-card-img {
-  width: 80%;
-  height: 80%;
+  /*width: 80%;
+  height: 80%;*/
+  width: 30vw;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
   border-radius: 2%;
   margin-bottom: 1rem;
-  align-self: flex-end;
 }
 
 .name_surname {
   margin: 0.5rem 0;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #d62828;
   text-align:center;
@@ -231,15 +253,17 @@ body {
 
 .description-box {
   max-width: 70%;
-  margin-left: 15%;
+  /*margin-left: 15%;*/
   padding: 1rem;
   font-size: 1rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.5rem;
   background-color: #f9f9f9;
-  margin-top: 1rem;
+  /*margin-top: 1rem;*/
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .description {
@@ -266,6 +290,7 @@ body {
   .person-card {
     flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
   }
 
   .left-section,
@@ -276,7 +301,7 @@ body {
   }
 
   .person-card-img {
-    margin-bottom: 1rem;
+    width: 90vw;
   }
 
   .right-section {
@@ -284,7 +309,8 @@ body {
   }
 
   .description-box {
-    margin-top: 1rem;
+    /*margin-top: 1rem;
+    max-width: 70%;*/
   }
 
   .description p {
@@ -292,6 +318,18 @@ body {
     font-size: 0.8rem;
     line-height: 1.5rem;
     color: #333;
+  }
+}
+
+@media (max-width: 640px) {
+  .description-box {
+    max-width: 95%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .description-box {
+    max-width: 70%;
   }
 }
 </style>
