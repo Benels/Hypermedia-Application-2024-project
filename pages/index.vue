@@ -368,5 +368,12 @@ else type = "projects";
     gap: 5%;
     align-items: center;
   }
+
+  .slogan{
+    font-size: 5vw;
+  }
+  .slogan em{
+    font-size: 4.5vw!important;
+  }
 }
 </style>
