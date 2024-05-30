@@ -8,8 +8,10 @@
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
     <div class="person-card">
       <div class="left-section">
-        <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`"/>
-      </div>
+        <div class="imageContainer">
+          <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`"/>
+        </div>
+        </div>
       <div class="right-section">
 
         <h2 class="role">{{ person.role }}</h2>
@@ -34,7 +36,8 @@
     <br />
 
     <div v-if="projects.length > 0">
-      <div style="text-align: center; font-family: Arial, sans-serif; font-size: 2rem; color: #d62828">Projects managed by {{ person.name }} {{ person.surname }}</div>
+      <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Projects managed by {{ person.name }} {{ person.surname }}</div>
+      <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(project, index) in projects" :key="project.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
@@ -66,7 +69,8 @@
     </div>
 
     <div v-if="services.length > 0">
-      <div style="text-align: center; font-family: Arial, sans-serif; font-size: 2rem; color: #d62828">Service managed by {{ person.name }} {{ person.surname }}</div>
+      <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Service managed by {{ person.name }} {{ person.surname }}</div>
+      <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(service, index) in services" :key="service.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
@@ -101,8 +105,6 @@
 </template>
 
 <script setup>
-
-import WomenActivities from '~/component/WomenActivities.vue';
 import { initCarousels } from 'flowbite';
 import { onMounted, ref } from 'vue';
 import Breadcrumbs from '~/component/Breadcrumbs.vue';
@@ -165,6 +167,20 @@ body {
   max-width: 70%;
   border-radius: 1rem;
   margin: auto;
+  width: v-bind("'48%'");
+}
+
+.imageContainer {
+  width: 100%;
+  height: v-bind("'48%'");
+}
+
+.imageContainer > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
 }
 
 .left-section{
@@ -195,7 +211,7 @@ body {
 
 .name_surname {
   margin: 0.5rem 0;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #d62828;
   text-align:center;
