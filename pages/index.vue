@@ -16,12 +16,22 @@
     <br><br>
 
     <div class="links-outer-container">
+      <!--mobile version: first contacts-->
+      <div class="links-inner-container" id="mobile">
+        <div class="imageContainer">
+          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
+        </div>
+        <div class="link-text">
+          Need <strong>help</strong>?<br>
+          <small><em>Reach out to us for confidential support and counseling</em></small> <br>
+          <a href="/contact_us" class="contacts-button">CONTACT US</a>
+        </div>
+      </div>
+
       <div class="links-inner-container">
-        <router-link :to="'/' + type + '/' + activity.activity_id">
           <div class="imageContainer">
             <img class="link-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/${type}/${activity.activity_id}.jpg`" :alt="`Missing Image`" />
           </div>
-        </router-link>
         <div class="link-text">
           <strong>{{activity.name}} </strong><br>
           is our newest activity!<br>
@@ -29,11 +39,10 @@
         </div>
       </div>
 
-      <div class="links-inner-container">
+      <!-- pc version: contacts in center-->
+      <div class="links-inner-container" id="pc">
         <div class="imageContainer">
-          <a href="/contact_us">
-            <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
-          </a>
+          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
         </div>
         <div class="link-text">
           Need <strong>help</strong>?<br>
@@ -44,35 +53,45 @@
 
       <div class="links-inner-container">
         <div class="imageContainer">
-          <img class="link-img" src="/assets/imgs/homepage/volunteers.jpg" alt="Error"/>
+          <img class="link-img" src="/assets/imgs/homepage/volunteers3.jpg" alt="Error"/>
         </div>
         <div class="link-text">
           <strong>Volunteer with us</strong> <br>
-          <small><em>and be a part of a supportive community commited to positive change!</em></small><br>
-          ✉️: <a class="mail" href="mailto:volunteers@hermet.com">volunteers@hermet.com</a><br>
+          <small><em>and be part of positive change!</em></small><br>
+          <a href="/voluteer" class="activity-button">Apply now</a>
         </div>
       </div>
     </div>
 
     <div class="jarvis">
-      <h2 class="jarvis-title">Meet Jarvis: your ally against stalking</h2><br>
       <div class="jarvis-inner-container">
         <div class="jarvis-img">
           <img src="/assets/imgs/homepage/jarvis-img.jpg"/>
         </div>
         <div class="jarvis-text">
-          <p>Introducing <strong>Jarvis</strong>, our chatbot dedicated to <strong>assisting victims of stalking</strong>.<br>
-          Accessible day and night, Jarvis provides essential information, safety tips, and
-          guidance on taking protective measures. Reach out to Jarvis for <strong>discreet and immediate
+          <h2 class="jarvis-title">Meet Jarvis: <br id="mobile">your ally against stalking</h2><br>
+          <p id="pc">Hi! I am <strong>Jarvis</strong>, nice to meet you! I am a chatbot dedicated to <strong>assisting victims of stalking</strong>.<br>
+          I am available day and night, and I can provide to you essential information, safety tips, and
+          guidance on taking protective measures. Reach out for <strong>discreet and immediate
           support</strong> whenever you need it.
           <br><br>
-          Jarvis can also help answer any questions you have regarding the center,
-          however she cannot respond to unrelated topics.
+          I can also help you answer any questions you have regarding the center,
+          however I cannot respond to unrelated topics.
           <br><br>
-          Click on the button on the right and start a conversation with her.
+          Click on the button on the right and start a conversation.
           </p>
         </div>
       </div>
+      <p id="mobile">Hi! I am <strong>Jarvis</strong>, nice to meet you! I am a chatbot dedicated to <strong>assisting victims of stalking</strong>.<br>
+        I am available day and night, and I can provide to you essential information, safety tips, and
+        guidance on taking protective measures. Reach out for <strong>discreet and immediate
+          support</strong> whenever you need it.
+        <br><br>
+        I can also help you answer any questions you have regarding the center,
+        however I cannot respond to unrelated topics.
+        <br><br>
+        Click on the button on the right and start a conversation.
+      </p>
     </div>
   </main>
 
@@ -148,6 +167,12 @@ else type = "projects";
   padding: 1%;
 }
 
+.button:hover{
+  background-color:#d62828;
+  color: white;
+  border: 0.3vw solid white;
+}
+
 .activity-button{
   background-color: rgba(214, 40, 40, 0.8);
   color: white;
@@ -155,7 +180,19 @@ else type = "projects";
   border-radius: 10%;
   font-family: Rubik, sans-serif!important;
   font-size: 1.2vw;
-  padding: 1%;
+  padding: 1%
+}
+
+.activity-button:hover{
+  background-color: white;
+  color: #d62828;
+  border: 0.2vw solid #d62828;
+}
+
+.contacts-button:hover{
+  background-color: white;
+  color: #d62828;
+  border: 0.2vw solid #d62828;
 }
 
 .contacts-button{
@@ -181,12 +218,12 @@ else type = "projects";
   flex-direction: column;
   flex-wrap: wrap;
   margin: 1%;
-  width: v-bind(imageSize);/*da sistemare*/
+  width: v-bind("'33%'");
 }
 
 .imageContainer {
   width: 100%;
-  height: v-bind(imageSize);/*da sistemare*/
+  height: v-bind("'33%'");
 }
 
 .imageContainer > img {
@@ -212,13 +249,12 @@ else type = "projects";
   padding: 5%;
   border-radius: 5%;
   width: 70%;
-
+  height: 70%;
+  align-content: center;
 }
 
-.mail{
-  font-size: 1.2vw;
-  text-decoration: underline;
-  font-weight: bold;
+#mobile{
+  display:none;
 }
 
 .jarvis{
@@ -243,54 +279,94 @@ else type = "projects";
   flex-direction: column;
 }
 
+.jarvis-text p{
+  text-align: justify;
+  font-size: 1.1vw;
+}
+
 .jarvis-img{
   display:flex;
   flex-direction: column;
+  width: 20%;
+  height: auto;
 }
 
 .jarvis-title{
   color: #d62828;
-  font-size: 1.8vw;
+  font-size: 1.8vw!important;
   text-align: center;
   font-weight: bold;
 }
 
 @media(max-width: 768px){
+
+  #pc{
+    display: none;
+  }
+
+  #mobile{
+    display: inherit;
+  }
+
   .links-outer-container{
-    display:inline;
+    display:inline-block;
     align-items: center;
   }
-  .imageContainer {
-    width: 80%;
-    height: v-bind(imageSize);/*da sistemare*/
-  }
 
-  .imageContainer > img {
-    width: 80%;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 5%;
-
-  }
   .links-inner-container{
     position: relative;
     height: auto;
-    align-items:center;
-    width: v-bind(imageSize);/*da sistemare*/
+    padding: 2.5%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+    width: v-bind("'100%'");
   }
 
+  .imageContainer {
+    width: 100%;
+    height: v-bind("'100%'");
+  }
   .link-text{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: 1.8vw;
+    font-size: 5vw;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 5%;
     border-radius: 5%;
-    width: 60%;
+    width: 70%;
+    height: 70%;
+    align-content: center;
+  }
+
+  .activity-button{
+    font-size: 5vw;
+  }
+
+  .contacts-button{
+    font-size: 6vw;
+  }
+
+  .jarvis-text p{
+    text-align: justify;
+    font-size: 2.5vw;
+  }
+
+  .jarvis-title{
+    color: #d62828;
+    font-size: 4vw!important;
+    text-align: center;
+    font-weight: bold;
+  }
+  .jarvis-inner-container{
+    display:flex;
+    gap: 5%;
+    align-items: center;
   }
 }
 </style>
