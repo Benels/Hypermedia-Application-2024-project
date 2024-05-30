@@ -10,7 +10,7 @@
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar" >
     </div>
-    <div class="z-33 chatbot fixed right-10" ref="chatbotContainer">
+    <div class="z-33 chatbot fixed right-10 pointer-events-none" ref="chatbotContainer">
       <Chatbot @handle="handleChatbot" />
     </div>
   </div>
@@ -265,7 +265,7 @@ body {
 
 .footer-text {
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Rubik';
 }
 
 .credits {
