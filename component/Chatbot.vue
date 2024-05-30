@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-container">
+  <div class="chat-container pointer-events-auto">
     <div class="chat-header">
       <p class="pl-4">Jarvis - Your personal Assistant</p>
       <div @click="$emit('handle')" class="closeIcon rounded-md"> <img src="~/assets/svgs/close_x_white.svg"/> </div>
