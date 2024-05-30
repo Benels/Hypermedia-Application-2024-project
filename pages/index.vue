@@ -22,8 +22,10 @@
           <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
         </div>
         <div class="link-text">
-          Need <strong>help</strong>?<br>
-          <small><em>Reach out to us for confidential support and counseling</em></small> <br>
+          <p>
+            Need <strong>help</strong>?<br>
+            <small><em>Reach out to us for confidential support and counseling</em></small> <br><br>
+          </p>
           <a href="/contact_us" class="contacts-button">CONTACT US</a>
         </div>
       </div>
@@ -33,8 +35,10 @@
             <img class="link-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/${type}/${activity.activity_id}.jpg`" :alt="`Missing Image`" />
           </div>
         <div class="link-text">
-          <strong>{{activity.name}} </strong><br>
-          is our newest activity!<br>
+          <p>
+            <strong>{{activity.name}} </strong><br>
+            is our newest activity!<br>
+          </p>
           <router-link :to="'/' + type + '/' + activity.activity_id" class="activity-button">Learn more</router-link>
         </div>
       </div>
@@ -45,8 +49,10 @@
           <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
         </div>
         <div class="link-text">
-          Need <strong>help</strong>?<br>
-          <small><em>Reach out to us for confidential support and counseling</em></small> <br>
+          <p>
+            Need <strong>help</strong>?<br>
+            <small><em>Reach out to us for confidential support and counseling</em></small> <br><br>
+          </p>
           <a href="/contact_us" class="contacts-button">CONTACT US</a>
         </div>
       </div>
@@ -56,8 +62,10 @@
           <img class="link-img" src="/assets/imgs/homepage/volunteers3.jpg" alt="Error"/>
         </div>
         <div class="link-text">
-          <strong>Volunteer with us</strong> <br>
-          <small><em>and be part of positive change!</em></small><br>
+          <p>
+            <strong>Volunteer with us</strong> <br>
+            <small><em>and be part of positive change!</em></small><br>
+          </p>
           <a href="/voluteer" class="activity-button">Apply now</a>
         </div>
       </div>
@@ -180,7 +188,7 @@ else type = "projects";
   border-radius: 10%;
   font-family: Rubik, sans-serif!important;
   font-size: 1.2vw;
-  padding: 1%
+  padding: 1%;
 }
 
 .activity-button:hover{
