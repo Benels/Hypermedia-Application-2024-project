@@ -26,7 +26,7 @@
         </div>
         </div>
     </div>
-    <div style="align-self: center">
+    <div class="descriptionContainer">
       <div class="description-box">
         <div v-html="description" class="description"></div>
         </div>
@@ -140,7 +140,7 @@ useHead({
     { name: 'description', content: page_description },
     { name: 'keywords', content: keywords }
   ]
-})
+});
 </script>
 
 <style scoped>
@@ -161,6 +161,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  gap: 2rem;
   max-width: 70%;
   border-radius: 1rem;
   margin: auto;
@@ -169,22 +170,27 @@ body {
 .left-section{
   display: flex;
   flex-direction: column;
-  margin-right: 2rem;
+  align-items: center;
+  /*margin-right: 2rem;*/
   width: 50%;
 }
 .right-section {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-left: 2rem;
 }
 
 .person-card-img {
-  width: 80%;
-  height: 80%;
+  /*width: 80%;
+  height: 80%;*/
+  width: 30vw;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
   border-radius: 2%;
   margin-bottom: 1rem;
-  align-self: flex-end;
 }
 
 .name_surname {
@@ -231,15 +237,17 @@ body {
 
 .description-box {
   max-width: 70%;
-  margin-left: 15%;
+  /*margin-left: 15%;*/
   padding: 1rem;
   font-size: 1rem;
   border: 0.1rem solid #ddd;
   border-radius: 0.5rem;
   background-color: #f9f9f9;
-  margin-top: 1rem;
+  /*margin-top: 1rem;*/
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .description {
@@ -266,6 +274,7 @@ body {
   .person-card {
     flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
   }
 
   .left-section,
@@ -276,7 +285,7 @@ body {
   }
 
   .person-card-img {
-    margin-bottom: 1rem;
+    width: 90vw;
   }
 
   .right-section {
@@ -284,7 +293,8 @@ body {
   }
 
   .description-box {
-    margin-top: 1rem;
+    /*margin-top: 1rem;
+    max-width: 70%;*/
   }
 
   .description p {
@@ -292,6 +302,18 @@ body {
     font-size: 0.8rem;
     line-height: 1.5rem;
     color: #333;
+  }
+}
+
+@media (max-width: 640px) {
+  .description-box {
+    max-width: 95%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .description-box {
+    max-width: 70%;
   }
 }
 </style>
