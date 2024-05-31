@@ -219,7 +219,7 @@ body {
 
 .user-bubble {
   align-self: flex-end;
-  background-color: #ff6f61;
+  background-color: #d62828;
   color: white;
   margin-left: auto;
   text-align: right;
@@ -236,7 +236,7 @@ body {
   height: 0;
   border: 0 solid transparent;
   border-bottom-width: 10px;
-  border-left: 10px #ff6f61;
+  border-left: 10px #d62828;
   margin-top: -10px;
 }
 
@@ -244,7 +244,7 @@ body {
   align-self: flex-start;
   background-color: #ffffff;
   color: #333;
-  border: 1px solid #ff6f61;
+  border: 1px solid #d62828;
 }
 
 .assistant-bubble::before {
@@ -267,6 +267,7 @@ body {
   padding: 10px;
   border-top: 1px solid #ccc;
   background-color: #f9f9f9;
+  position: relative;
 }
 
 .chat-input {
@@ -282,7 +283,7 @@ body {
 
 .send-button {
   padding: 9px 9px;
-  background-color: #ff6f61;
+  background-color: #d62828;
   color: white;
   border: none;
   border-radius: 20px;
@@ -292,7 +293,7 @@ body {
 .TTSbutton {
    padding: 9px 9px;
    margin-left: 2px;
-   background-color: #ff6f61;
+   background-color: #d62828;
    color: white;
    border: none;
    border-radius: 20px;
@@ -301,7 +302,7 @@ body {
  }
 
 .send-button:hover {
-  background-color: #ff5a4d;
+  background-color: #d62828;
 }
 
 .message.user {
@@ -310,7 +311,7 @@ body {
 }
 
 .chat-header {
-  background-color: #ff6f61;
+  background-color: #d62828;
   color: white;
   padding: 15px;
   text-align: center;
@@ -329,9 +330,21 @@ body {
 @media (max-width: 768px) {
   .chat-container {
     max-width: 100%;
-    height: calc(100vh - 72px);
+    height: calc(100vh - 72px/*nav bar*/);
     padding-bottom: 0;
     margin-bottom: 0;
+  }
+  .chat-input-container{
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .chat-box {
+    padding-bottom: 70px;
   }
 }
 
@@ -340,6 +353,7 @@ body {
     max-width: 80%;
     max-height: 85vh;
   }
+
 }
 
 
