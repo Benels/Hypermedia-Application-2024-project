@@ -5,20 +5,17 @@
 
   <main class="outerContainer">
 
-    <div class="centered hidden">
-      <p class="self-center text-6xl font-semibold whitespace-nowrap hidden">HERmet</p>
-    </div>
     <div class="centered w-full">
       <img src="/assets/imgs/aboutUs/aboutus_big_2.jpeg" alt="" id="main_img">
     </div>
-
+  <div class="centered w-full flex-wrap">
     <div class="container">
       <div id="mc1" class="image-container">
         <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="Image of Stylized women asking for No more violence" class="img-about">
       </div>
       <div class="text-container">
-        <h2>OUR MISSION</h2>
-        <p class="justified">The mission of HERmet is to <b>provide comprehensive assistance to women</b> who have experienced
+        <h2 class="md:pl-8">OUR MISSION</h2>
+        <p class="pr-8 md:pr-0 pl-8 justified">The mission of HERmet is to <b>provide comprehensive assistance to women</b> who have experienced
           or perceive themselves as victims of violence, stalking, or abuse of any kind. This non-profit
           organization offers a diverse array of programs aimed at <b>safeguarding victims</b> from multiple perspectives,
           encompassing <b>legal, psychological, and preventive measures,</b> with the ultimate goal of ensuring the safety
@@ -32,8 +29,8 @@
 
     <div class="container">
       <div class="text-container">
-        <h2>OUR HISTORY</h2>
-        <p class="justified">
+        <h2 class="md:pr-8">OUR HISTORY</h2>
+        <p class="pl-8 md:pl-0 pr-8 justified">
           HERmet, established in 2015, emerged <b>from a movement</b> aimed at <b>fighting violence against women</b> and <b>promoting gender equality.</b>
           Since then, the organization has worked tirelessly to provide support, advocacy, and resources for survivors while also advocating for <b>systemic
           change</b> through education and awareness initiatives.<br>With a commitment to empowerment and social justice,HERmet continues to grow and adapt,
@@ -50,8 +47,8 @@
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
       </div>
       <div class="text-container">
-        <h2><NuxtLink to="/contact_us">PRACTICAL INFORMATION</NuxtLink></h2>
-        <p class="justified">
+        <h2 class="md:pl-8"><NuxtLink to="/contact_us">PRACTICAL INFORMATION</NuxtLink></h2>
+        <p class="pr-8 md:pr-0 pl-8 justified">
           HERmet's headquarter is situated at <a href="https://www.google.it/maps/place/Piazza+Leonardo+da+Vinci,+1,+20133+Milano+MI/@45.4785935,9.2246471,17z/data=!3m1!4b1!4m6!3m5!1s0x4786c79bc37bec41:0x7b28618e58d10a3a!8m2!3d45.4785935!4d9.227222!16s%2Fg%2F11v54d4qyw?entry=ttu">Piazza Leonardo da Vinci 1, Milano MI</a>.
           It offers various services 24h per day, but you can find us at the center at these opening hours
         </p>
@@ -109,7 +106,7 @@
       </div>
 
     </div>
-
+  </div>
   </main>
 </template>
 <script setup>
@@ -150,21 +147,25 @@
 
 .container {
   display: grid;
+  place-items: center;
   grid-template-columns: 1fr 1fr;
-  width: 85%;
-  height: 80%;
-  margin-left: 7.5%;
-  margin-right: 7.5%;
+  width: 100%;
   margin-top: 5%;
 }
 
-.image-container,
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
 .text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 #mc2,
@@ -177,6 +178,7 @@
 }
 
 h2 {
+  text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
   color: #d62828;
@@ -191,20 +193,15 @@ a{
 .justified {
   text-align: justify;
   font-size: 1.2rem;
-  padding-left: 7%;
-  padding-right: 7%;
 }
 .opening-hours {
   text-align: center;
   font-size: 1.2rem;
-  padding-left: 7%;
-  padding-right: 7%;
 }
 
 .centered {
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -213,13 +210,12 @@ a{
   }
   .image-container{
     margin-top: 10px;
+    width: 90%;
   }
-  #mc1,
-  #pc1 {
+  #mc1, #pc1 {
     display: none;
   }
-  #mc2,
-  #pc2 {
+  #mc2, #pc2 {
     display: inherit;
   }
   .opening-hours {
