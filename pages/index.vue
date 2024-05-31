@@ -136,7 +136,7 @@ else type = "projects";
   text-align: center;
   background-color: rgba(214, 40, 40, 0.5);
   padding: 5%;
-  border-radius: 5%;
+  border-radius: 2rem;
   font-weight: bold;
   width: 70%;
   font-family: Caveat, sans-serif;
@@ -169,7 +169,7 @@ else type = "projects";
   background-color: white;
   color: #d62828;
   border: 0.3vw solid #d62828;
-  border-radius: 10%;
+  border-radius: 1rem;
   font-family: Rubik, sans-serif!important;
   font-size: 1.7vw;
   padding: 1%;
@@ -185,7 +185,7 @@ else type = "projects";
   background-color: rgba(214, 40, 40, 0.8);
   color: white;
   border: 0.2vw solid white;
-  border-radius: 10%;
+  border-radius: 0.5rem;
   font-family: Rubik, sans-serif!important;
   font-size: 1.2vw;
   padding: 1%;
@@ -207,7 +207,7 @@ else type = "projects";
   background-color: rgba(214, 40, 40, 0.8);
   color: white;
   border: 0.2vw solid white;
-  border-radius: 10%;
+  border-radius: 0.5rem;
   font-family: Rubik, sans-serif!important;
   font-size: 1.8vw;
   padding: 1%;
@@ -238,11 +238,11 @@ else type = "projects";
   width: 100%;
   object-fit: cover;
   object-position: top;
-  border-radius: 5%;
+  border-radius: 2rem;
 }
 
 .link-img{
-  border-radius: 5%;
+  border-radius: 2rem;
 }
 
 .link-text{
@@ -255,7 +255,7 @@ else type = "projects";
   text-align: center;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 5%;
-  border-radius: 5%;
+  border-radius: 2rem;
   width: 70%;
   height: 70%;
   align-content: center;
@@ -346,7 +346,7 @@ else type = "projects";
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 5%;
-    border-radius: 5%;
+    border-radius: 2rem;
     width: 70%;
     height: 70%;
     align-content: center;

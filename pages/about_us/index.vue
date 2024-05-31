@@ -4,10 +4,18 @@
   </Head>
 
   <main class="outerContainer">
-
-    <div class="centered w-full">
-      <img src="/assets/imgs/aboutUs/aboutus_big_2.jpeg" alt="" id="main_img">
+    <div class="main-image-container">
+      <div class="centered w-full">
+        <img src="/assets/imgs/aboutUs/mainimage3.jpg" alt="" id="main_img">
+        <div class="title">
+          <p>
+            About us<br>
+            <em><small>How we started and what drives us today</small></em>
+          </p>
+        </div>
+      </div>
     </div>
+
   <div class="centered w-full flex-wrap">
     <div class="container">
       <div id="mc1" class="image-container">
@@ -38,7 +46,7 @@
         </p>
       </div>
       <div class="image-container">
-        <img src="/assets/imgs/aboutUs/history.jpg" alt="Image of the First HERmet Reunion"  class="img-about">
+        <img src="/assets/imgs/aboutUs/history.jpeg" alt="Image of the First HERmet Reunion"  class="img-about">
       </div>
     </div>
 
@@ -139,6 +147,27 @@
   })
 </script>
 <style scoped>
+
+.title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4vw;
+  text-align: center;
+  background-color: rgba(214, 40, 40, 0.5);
+  padding: 5%;
+  border-radius: 2rem;
+  font-weight: bold;
+  width: 70%;
+  font-family: Caveat, sans-serif;
+  align-content: center;
+}
+
+.main-image-container{
+  position:relative;
+}
 
 #main_img {
   width: 95%;
