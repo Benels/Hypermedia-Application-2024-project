@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 
-export const useBreadcrumbStore = defineStore('test', {
+export const usePeopleStore = defineStore('people', {
     state: () => ({
-        sections: null,
-        currentSection: null,
-        currentPerson: null,
+        sections: undefined,
+        currentSection: undefined,
+        currentPerson: undefined,
     }),
     actions: {
         setSections(sections) {

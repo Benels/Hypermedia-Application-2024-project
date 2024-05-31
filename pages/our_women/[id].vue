@@ -2,7 +2,36 @@
   <Head>
     <title>{{ person.name }} {{ person.surname }} - HERmet</title>
   </Head>
-  <Breadcrumbs />
+  <!-- BREADCRUMBS -->
+  <div class="container">
+    <ol class="inline-flex gap-4 text-xl ml-8">
+        <li class="flex flex-col items-center sectionItem hover:cursor-pointer">
+            <div class="relative w-fit">
+                <p @click="handleSectionBreadcrumb(peopleStore.currentSection)">Our Women - {{ peopleStore.currentSection.name }} </p>
+                <div class="calcWidth bg sectionDropdown rounded-lg shadow-xl border border-gray-300 w-fit self-center absolute text-center">
+                    <ul class="grid grid-cols-1 divide-y divide-gray-300">
+                        <li v-for="s of peopleStore.sections.filter((x) => x.name !== peopleStore.currentSection.name)" class="py-2 hover:text-red" @click="handleSectionBreadcrumb(s)">{{ s.name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <p> > </p>
+        </li>
+        <li class="flex flex-col items-center personItem hover:cursor-pointer">
+            <div class="relative">
+                <p> {{ person.name }} {{ person.surname }} </p>
+                <div class="bg personDropdown rounded-lg shadow-xl border border-gray-300 self-center absolute text-center px-2">
+                    <ul class="grid grid-cols-1 divide-y divide-gray-300">
+                        <li v-for="p of peopleStore.currentSection.people.filter((x) => x.person_id !== person.person_id)" class="p-2 hover:text-red" @click="handlePersonBreadcrumb(p)">{{ p.name }} {{ p.surname }}</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ol>
+  </div>
+
+  <!-- PERSON CONTENT -->
   <main>
     <div class="container"></div>
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
@@ -105,15 +134,41 @@
 </template>
 
 <script setup>
+
+/* FUNCTIONS DEFINITION */
+function computeCurrentSection() {
+  peopleStore.sections.forEach(s => {
+    const temp = s.people.filter((x) => x.person_id === person.person_id)[0];
+    if(temp)
+      peopleStore.setCurrentSection(s);
+  });
+}
+
+function handleSectionBreadcrumb(newSection) {
+  peopleStore.setCurrentSection(newSection);
+  navigateTo('/our_women');
+}
+
+function handlePersonBreadcrumb(newPerson) {
+  navigateTo('/our_women/'+newPerson.person_id);
+}
+
+
+/* PAGE SETUP */
 import { initCarousels } from 'flowbite';
 import { onMounted, ref } from 'vue';
-import Breadcrumbs from '~/component/Breadcrumbs.vue';
+import { usePeopleStore } from '~/stores/peopleStore';
+
+const peopleStore = usePeopleStore();
 const route = useRoute();
+
 const person = await $fetch('/api/our_women/' + route.params.id); //get the specific person from their id
+const description = person.description;
+
+const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id);
 
 const projects = ref([]);
 const services = ref([]);
-const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id);
 
 if (activities.value) {
   activities.value.forEach(activity => {
@@ -125,8 +180,14 @@ if (activities.value) {
   });
 }
 
-const description = person.description;
+if(!peopleStore.sections) {
+  const { data: response  } = await useFetch('/api/our_women/');
+  peopleStore.setSections(response.value.sections);
+}
 
+computeCurrentSection();
+
+/* initialize carousels */
 onMounted(() => {
   setTimeout(() => {
     initCarousels();
@@ -332,4 +393,32 @@ body {
     max-width: 70%;
   }
 }
+
+.calcWidth {
+    width: fit-content;
+    min-width: 100%;
+}
+
+.personDropdown {
+    display: none;
+}
+
+.personItem:hover .personDropdown {
+    display: block;
+}
+
+
+.sectionDropdown {
+    display: none;
+}
+
+.sectionItem:hover .sectionDropdown {
+    display: block;
+}
+
+.bg {
+    background-color: #ebebeb;
+}
+
+
 </style>
