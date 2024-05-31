@@ -66,7 +66,7 @@
             <strong>Volunteer with us</strong> <br>
             <small><em>and be part of positive change!</em></small><br>
           </p>
-          <a href="/voluteer" class="activity-button">Apply now</a>
+          <a href="/volunteer" class="activity-button">Apply now</a>
         </div>
       </div>
     </div>
