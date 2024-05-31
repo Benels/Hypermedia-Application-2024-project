@@ -46,7 +46,7 @@
         </p>
       </div>
       <div class="image-container">
-        <img src="/assets/imgs/aboutUs/history.jpeg" alt="Image of the First HERmet Reunion"  class="img-about">
+        <img src="/assets/imgs/aboutUs/history.jpg" alt="Image of the First HERmet Reunion"  class="img-about">
       </div>
     </div>
 
