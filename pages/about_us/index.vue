@@ -66,7 +66,7 @@
       </div>
       <div id="default-carousel" class="relative w-3/4 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
-          <div v-for="(a, index) in acts" :key="a.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
+          <div v-for="(a, index) in acts" :key="a.activity_id" :data-carousel-item="index" class="hidden duration-1500 ease-in-out">
             <div v-if="a.is_service">
               <router-link :to="'/services/' + a.activity_id">
                 <img :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${a.activity_id}.jpg`" class="absolute block w-full h-80 rounded-lg -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" :alt="Missing" />
@@ -149,7 +149,7 @@
   display: grid;
   place-items: center;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+  width: 95%;
   margin-top: 5%;
 }
 

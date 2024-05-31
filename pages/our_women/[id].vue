@@ -44,7 +44,7 @@
       <div class="right-section">
 
         <h2 class="role">{{ person.role }}</h2>
-        <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${person.surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname }}'s CV</nuxt-link>
+        <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname}}'s CV</nuxt-link>
         <br>
         <div class="personal_info">
           ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{ person.name }}.{{ person.surname }}@hermet.com</a>
@@ -164,6 +164,7 @@ const route = useRoute();
 
 const person = await $fetch('/api/our_women/' + route.params.id); //get the specific person from their id
 const description = person.description;
+const surname = person.surname.replace(/ /g, '_');
 
 const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id);
 

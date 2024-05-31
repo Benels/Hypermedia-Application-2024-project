@@ -26,10 +26,10 @@
             <div class="activities_dropdown rounded-lg shadow-xl border border-gray-300 w-32 self-center mt-7">
                 <ul class="py-2 text-md text-center" aria-labelledby="dropdownLargeButton">
                   <li class="">
-                    <NuxtLink  @click="closeNavbar" to="/projects" class="block px-4 py-2 hover:text-red">Projects</NuxtLink>
+                    <NuxtLink  @click="closeNavbar" to="/services" class="block px-4 py-2 hover:text-red">Services</NuxtLink>
                   </li>
                   <li>
-                    <NuxtLink  @click="closeNavbar" to="/services" class="block px-4 py-2 hover:text-red">Services</NuxtLink>
+                    <NuxtLink  @click="closeNavbar" to="/projects" class="block px-4 py-2 hover:text-red">Projects</NuxtLink>
                   </li>
                 </ul>
                 <!-- commented only because it has a pretty style and we might want to use it later
