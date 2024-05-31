@@ -134,14 +134,15 @@
           return;
         }
 
-        //console.log(window.speechSynthesis.getVoices());
+        text = text.replace(/<u><a href="[^"]*" target="_blank">(.*?)<\/a><\/u>/g, '$1');
+
         window.speechSynthesis.getVoices().forEach(voice => {
           console.log(voice.name);
         });
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'en-US';
-        //utterance.voice = window.speechSynthesis.getVoices()//.find(voice => voice.name === 'Microsoft Zira Desktop - English (United States)');
-        utterance.voice = window.speechSynthesis.getVoices().filter(function(voice) { return voice.name === 'Microsoft Zira Desktop - English (United States)'; })[0];
+        //utterance.voice = window.speechSynthesis.getVoices()//.find(voice => voice.name === 'Microsoft Zira Desktop - English (United States)'); Microsoft Zira - English (United States)   Microsoft Susan - English (United Kingdom)
+        utterance.voice = window.speechSynthesis.getVoices().filter(function(voice) { return voice.name === 'Microsoft Zira - English (United States)'; })[0];
         window.speechSynthesis.speak(utterance);
         this.speechSynthesisActive = true;
 
@@ -355,6 +356,11 @@ body {
   }
 
 }
-
+@media (min-width: 768px) and (max-height: 690px) { /*ipad, forse*/
+  .chat-container {
+    max-width: 80%;
+    max-height: 77vh;
+  }
+}
 
 </style>
