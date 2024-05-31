@@ -6,7 +6,7 @@
   <main class="flex flex-col justify-center items-center mt-8 mb-0 mx-0 p-0 gap-8">
 
     <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
-        <NuxtLink to="/projects" class="text-3xl">Our Services</NuxtLink>
+        <NuxtLink to="/services" class="text-3xl">Our Services</NuxtLink>
 
 
         <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
@@ -46,7 +46,7 @@
 
     
     <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
-      <NuxtLink to="/services" class="text-3xl">Our Projects</NuxtLink>
+      <NuxtLink to="/projects" class="text-3xl">Our Projects</NuxtLink>
 
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <!-- Carousel wrapper -->
