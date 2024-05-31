@@ -29,14 +29,14 @@
   </div>
 
   <footer class="footer">
-    <div class="footer-container">
+    <div class="md:w-3/4 lg:w-4/5 footer-container">
       <div class="footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
           <p class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</p>
         </NuxtLink>
       </div>
-      <div>
+      <div class="md:max-w-80 lg:max-w-screen-lg">
           <span class="footer-text">We are here for you, contacts us as far as you need:<br>call us at
           <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or send an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
       </div>
@@ -246,7 +246,6 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 9rem;
-  width: 80%;
 }
 
 .footer-logo {
@@ -289,9 +288,6 @@ body {
       rgb(235 235 235 / 95%)
   ), url('assets/imgs/our_women_bg.jpg') repeat;
   position: relative;
-}
-
-.no-scroll {
 }
 
 @media (max-width: 768px) {
