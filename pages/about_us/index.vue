@@ -18,10 +18,10 @@
       </div>
       <div class="text-container">
         <h2>OUR MISSION</h2>
-        <p class="justified">The mission of HERmet is to provide comprehensive assistance to women who have experienced
+        <p class="justified">The mission of HERmet is to <b>provide comprehensive assistance to women</b> who have experienced
           or perceive themselves as victims of violence, stalking, or abuse of any kind. This non-profit
-          organization offers a diverse array of programs aimed at safeguarding victims from multiple perspectives,
-          encompassing legal, psychological, and preventive measures, with the ultimate goal of ensuring the safety
+          organization offers a diverse array of programs aimed at <b>safeguarding victims</b> from multiple perspectives,
+          encompassing <b>legal, psychological, and preventive measures,</b> with the ultimate goal of ensuring the safety
           and well-being of all women affected by such circumstances.
         </p>
       </div>
@@ -34,10 +34,10 @@
       <div class="text-container">
         <h2>OUR HISTORY</h2>
         <p class="justified">
-          HERmet, established in 2015, emerged from a movement aimed at fighting violence against women and promoting gender equality.
-          Since then, the organization has worked tirelessly to provide support, advocacy, and resources for survivors while also advocating for systemic
-          change through education and awareness initiatives. With a commitment to empowerment and social justice,HERmet continues to grow and adapt,
-          driven by the voices and experiences of survivors and allies, as it strives to create a world free from violence and discrimination for all women and girls.
+          HERmet, established in 2015, emerged <b>from a movement</b> aimed at <b>fighting violence against women</b> and <b>promoting gender equality.</b>
+          Since then, the organization has worked tirelessly to provide support, advocacy, and resources for survivors while also advocating for <b>systemic
+          change</b> through education and awareness initiatives.<br>With a commitment to empowerment and social justice,HERmet continues to grow and adapt,
+          driven by the voices and experiences of survivors and allies, as it strives to create a world <b>free from violence and discrimination</b> for all women and girls.
         </p>
       </div>
       <div class="image-container">
@@ -55,8 +55,8 @@
           HERmet's headquarter is situated at <a href="https://www.google.it/maps/place/Piazza+Leonardo+da+Vinci,+1,+20133+Milano+MI/@45.4785935,9.2246471,17z/data=!3m1!4b1!4m6!3m5!1s0x4786c79bc37bec41:0x7b28618e58d10a3a!8m2!3d45.4785935!4d9.227222!16s%2Fg%2F11v54d4qyw?entry=ttu">Piazza Leonardo da Vinci 1, Milano MI</a>.
           It offers various services 24h per day, but you can find us at the center at these opening hours
         </p>
-          <p class="justified"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
-          <p class="justified"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+          <p class="opening-hours"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
+          <p class="opening-hours"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
       </div>
       <div id="pc2" class="image-container">
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
@@ -178,9 +178,23 @@
 
 h2 {
   font-size: 2.5rem;
+  font-weight: bold;
+  color: #d62828;
+}
+
+a{
+  color: #d62828;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .justified {
+  text-align: justify;
+  font-size: 1.2rem;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+.opening-hours {
   text-align: center;
   font-size: 1.2rem;
   padding-left: 7%;
@@ -207,6 +221,9 @@ h2 {
   #mc2,
   #pc2 {
     display: inherit;
+  }
+  .opening-hours {
+    font-size: 1.1rem;
   }
 }
 </style>
