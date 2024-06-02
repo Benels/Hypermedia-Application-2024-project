@@ -96,10 +96,10 @@ h1 {
   text-align: center;
 }
 
-h2{
+h2 {
   color: #8c1b1b;
   text-align: center;
-  font-size:  1.2rem!important;
+  font-size: 1.2rem!important;
   font-weight: normal;
 }
 
@@ -109,23 +109,24 @@ p {
   line-height: 1.6;
 }
 
-.info{
+.info {
   font-size: 1rem;
   text-align: justify;
-
+  margin: auto;
+  text-align: center;
 }
 
-
-a{
+a {
   color: #d62828;
   font-weight: bold;
   text-decoration: underline;
 }
-hr{
+
+hr {
   color: #d62828;
 }
 
-.image-summary{
+.image-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -133,10 +134,8 @@ hr{
 }
 
 .main-img {
-  /*width: 80%;*/
   max-width: 40%;
   height: auto;
-  /*position: center;*/
   margin-left: auto;
   margin-right: auto;
   border-radius: 1rem;
@@ -145,35 +144,27 @@ hr{
 
 .summary-leader {
   display: flex;
-  /*flex-direction: row;*/
   gap: 10%;
-  /*width: 80%;
-  margin-left: 10%;*/
-  /*margin-right: 10%;*/
-  justify-content: space-between;
-  /*align-items: flex-start;*/
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px;
   width: 55%;
   font-size: 1rem;
+  text-align: center;
 }
 
-.summary{
+.summary {
   flex: 1 1 48%;
   box-sizing: border-box;
   align-items: center;
   align-self: center;
-}
-
-.summary {
-  text-align: justify;
+  text-align: center;
   margin-right: 7.5%;
   margin-left: 7.5%;
 }
 
-.description_container{
+.description_container {
   margin-left: 7.5%;
   margin-right: 7.5%;
   padding: 1rem;
@@ -190,12 +181,11 @@ hr{
   box-sizing: border-box;
   margin-bottom: 1rem;
   text-align: justify;
-
 }
 
 @media (max-width: 768px) {
   .outerContainer {
-    padding: 1rem;
+    padding: 0;
   }
 
   h1 {
@@ -205,16 +195,29 @@ hr{
   h2 {
     font-size: 1.2rem;
   }
-
   .summary-leader {
+    display: flex;
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .image-summary {
     flex-direction: column;
     align-items: center;
   }
 
+
   .summary {
     margin-right: 0;
+    margin-left: 0;
     margin-bottom: 1rem;
-    text-align: justify;
+    text-align: center;
+  }
+
+  .main-img {
+    max-width: 80%;
+    margin-bottom: 1rem;
   }
 }
 </style>

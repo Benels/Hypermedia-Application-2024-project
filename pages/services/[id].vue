@@ -319,11 +319,11 @@ hr{
   }
 
   h2{
-    font-size: 0.8rem!important;
+    font-size: 1.2rem!important;
   }
 
   p{
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .testimonial-box {
