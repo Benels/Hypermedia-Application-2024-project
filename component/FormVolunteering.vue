@@ -229,7 +229,7 @@ export default {
       this.ack = 0;
 
       setTimeout(() => {
-        this.ack = Math.random() > 0.5 ? 1 : -1;
+        this.ack = Math.random() > 0.1 ? 1 : -1;
       }, 2000);
     },
     closeDialog() {

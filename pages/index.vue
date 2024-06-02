@@ -231,11 +231,12 @@ else type = "projects";
 
 .imageContainer {
   width: 100%;
-  height: v-bind("'33%'");
+  height: 25vw;
 }
 
 .imageContainer > img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top;
   border-radius: 2rem;
@@ -334,7 +335,7 @@ else type = "projects";
 
   .imageContainer {
     width: 100%;
-    height: v-bind("'100%'");
+    height: 100vw;
   }
   .link-text{
     position: absolute;
