@@ -128,6 +128,6 @@ useHead({
 
 
 .text-3xl{
-  color: red;
+  color: #d62828;
 }
 </style>
