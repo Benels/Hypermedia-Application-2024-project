@@ -217,6 +217,11 @@ body {
   z-index: 31;
 }
 
+.chatbotContainer:hover,
+.socialContainer:hover {
+  cursor: pointer;
+}
+
 .setOpacity {
   opacity: 1 !important;
 }
