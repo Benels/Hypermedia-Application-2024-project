@@ -36,8 +36,8 @@
           <p class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</p>
         </NuxtLink>
       </div>
-      <div class="md:max-w-80 lg:max-w-screen-lg">
-          <span class="footer-text">We are here for you, contacts us as far as you need:<br>call us at
+      <div class="md:max-w-80 lg:max-w-screen-lg" id="footer-text-container">
+          <span class="footer-text">Always by your side, reach out to us whenever you need:<br>call
           <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or send an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
       </div>
       <div>
@@ -251,25 +251,32 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 9rem;
+  flex-wrap: wrap;
 }
 
 .footer-logo {
   display: flex;
   align-items: center;
-  right: 4rem;
+  margin-right: 4rem;
 
 }
 
 .footer-img {
-  height: 5rem;
+  width: 8vw;
   margin-right: 0.5rem;
   -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
   filter:drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
 }
 
+#footer-text-container{
+  flex: 1;
+  min-width: 200px;
+
+}
+
 .footer-text {
   text-align: center;
-  font-family: 'Rubik';
+  font-family: 'Rubik', sans-serif;
 }
 
 .credits {
@@ -278,7 +285,9 @@ body {
   bottom: 0;
   right: 1rem;
   font-size: smaller;
-  text-align: right;
+  justify-content: center;
+  text-align: center!important;
+  width:100%;
 }
 
 .external{
@@ -337,6 +346,10 @@ body {
   .no-scroll {
     overflow: hidden;
     height: 100%;
+  }
+
+  #footer-text-container {
+    flex:0;
   }
 }
 

@@ -129,5 +129,6 @@ useHead({
 
 .text-3xl{
   color: #d62828;
+  text-decoration: underline;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="md:flex md:space-x-4 md:w-full">
       <div class="mb-4 md:w-full/2">
         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-        <input type="text" v-model="name" :class="{'border-red-500': nameError}" id="name" placeholder="John" aria-label="Name input field" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+        <input type="text" v-model="name" :class="{'border-red-500': nameError}" id="name" placeholder="Jane" aria-label="Name input field" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
         <p v-if="nameError" class="text-red-500 text-xs italic">{{ nameError }}</p>
       </div>
       <div class="mb-4 md:w-full/2">
