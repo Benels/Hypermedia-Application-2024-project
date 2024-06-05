@@ -3,18 +3,36 @@
     <Title>HERmet - {{ service.name }}</Title>
   </Head>
 
+
   <div class="container">
-    <h1>{{ service.name }}</h1>
+    <!-- BREADCRUMBS -->
+    <ol class="inline-flex gap-4 text-xl">
+      <div class="relative w-fit">
+        <a class="breadcrumbs-ourservices" href="/services/">Our Services</a>
+      </div>
+      <li>
+        <p> > </p>
+      </li>
+      <li class="flex flex-col items-center serviceItem hover:cursor-pointer">
+        <div class="relative">
+          <p> {{ service.name }} </p>
+          <div class="bg serviceDropdown rounded-lg shadow-xl border border-gray-300 self-center absolute text-center px-2">
+            <ul class="grid grid-cols-1 divide-y divide-gray-300">
+              <li v-for="s of allServices.filter((x) => x.activity_id !== service.activity_id)" class="p-2 hover:text-red"><router-link :to="'/services/' + s.activity_id">{{ s.name }}</router-link></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+
+    <br><br><h1>{{ service.name }}</h1>
     <div class="image-logo">
       <img class="main-image" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${service.activity_id}.jpg`" :alt="`error`"/>
       <div class="logo-section">
-        <!--<h2>{{briefSummary}}</h2>-->
         <h2 v-html="briefSummary"></h2>
         <img class="logo" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${service.activity_id}.PNG`" :alt="`Missing Image`" />
         <div class="text-section">
-          <!--<div v-for="(part, index) in practicalInfoParts" :key="index">
-            <p>{{ part }}</p>
-          </div>-->
           <p v-html="openingHours"></p>
           <p>📞: <strong><a class="tel-number" href="tel:{{service.phone_number}}">{{service.phone_number}}</a></strong></p>
           <p>✉️: <strong><a href="mailto:{{service.email}}">{{service.email}}</a></strong></p>
@@ -24,11 +42,6 @@
       </div>
     </div>
     <div class="description">
-      <!--<div v-for="(part, index) in descriptionParts" :key="index" class="description">
-        <div v-if="index !== 0">
-          <p>{{ part }}</p>
-        </div>
-      </div>-->
       <div v-html="description"></div>
     </div>
     <br>
@@ -71,6 +84,8 @@
   const testimonials = await $fetch('/api/testimonials/' + id);
 
   const description = sanitizeHtml(service.description);
+
+  const { data: allServices } = await useFetch("/api/activities/services");
 
   //Search Engine Optimization
   const page_description = ref('This page contains all the details of HERmet service ' + service.name)
@@ -270,6 +285,19 @@ hr{
   border: 0;
   border-top: 1px solid #d62828;
   margin: 10px 0;
+}
+
+.serviceDropdown {
+  display: none;
+  background-color: white;
+}
+
+.serviceItem:hover .serviceDropdown {
+  display: block;
+}
+
+.breadcrumbs-ourservices:hover{
+  color: #d62828;
 }
 
 @media (max-width: 768px) {
