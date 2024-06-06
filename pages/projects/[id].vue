@@ -4,28 +4,43 @@
   </Head>
 
   <main class="outerContainer">
-    <h1>{{ a.name }}</h1>
+
+    <!-- BREADCRUMBS -->
+    <ol class="inline-flex gap-4 text-xl">
+      <div class="relative w-fit">
+        <a class="breadcrumbs-ourprojects" href="/projects/">Our Projects</a>
+      </div>
+      <li>
+        <p> > </p>
+      </li>
+      <li class="flex flex-col items-center projectItem hover:cursor-pointer">
+        <div class="relative">
+          <p> {{ a.name }} </p>
+          <div class="bg projectDropdown rounded-lg shadow-xl border border-gray-300 self-center absolute text-center px-2">
+            <ul class="grid grid-cols-1 divide-y divide-gray-300">
+              <li v-for="s of allProjects.filter((x) => x.activity_id !== a.activity_id)" class="p-2 hover:text-red"><router-link :to="'/projects/' + s.activity_id">{{ s.name }}</router-link></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <br><br><h1>{{ a.name }}</h1><br>
     <div class="image-summary">
       <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" :alt="`Missing Image`" />
       <div class="summary-leader">
         <div class="summary">
           <h2 v-html="summary"></h2>
         </div>
-        <!--<div class="person-card">
-          <router-link :to="'/our_women/' + a.leader">
-            <img class="person-card-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/person_image/${person.name}-${person.surname}.jpg`" :alt="`Missing Image`" style="justify-content: center;" />
-            <h1 class="name_surname">{{ person.name }} {{ person.surname }}, <br>Leader of the project</h1>
-          </router-link>
-        </div>-->
         <div class="info-container">
           <p class="info">
             <br><hr><br>
-            Leader of the project: <router-link :to="'/our_women/' + a.leader">{{person.name}} {{person.surname}}</router-link><br>
+            Leader of the project: <u><router-link class="contacts" :to="'/our_women/' + a.leader">{{person.name}} {{person.surname}}</router-link></u><br>
             {{a.statistics}} <br>
             Places: {{a.places}} <br>
             Started in {{a.started}} <br>
-            ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{a.email}}</a><br>
-            📞: <strong><a href="tel:{{ a.phone_number}}">{{ a.phone_number}}</a></strong>
+            ✉️: <u><a class="contacts" href="mailto:10727489@polimi.it">{{a.email}}</a></u><br>
+            📞: <strong><a class="contacts" href="tel:{{ a.phone_number}}">{{ a.phone_number}}</a></strong>
           </p>
         </div>
       </div>
@@ -53,6 +68,8 @@ const person = await $fetch('/api/our_women/' + lead)
 
 const descriptionParts = a.description.split('<br>').map(part => part.trim());
 const summary = a.summary;
+
+const { data: allProjects } = await useFetch("/api/activities/projects");
 
 //Search Engine Optimization
 const description = ref('This page contains all the details of HERmet project ' + a.name)
@@ -113,13 +130,11 @@ p {
   font-size: 1rem;
   text-align: justify;
   margin: auto;
-  text-align: center;
 }
 
-a {
+.contacts {
   color: #d62828;
   font-weight: bold;
-  text-decoration: underline;
 }
 
 hr {
@@ -181,6 +196,24 @@ hr {
   box-sizing: border-box;
   margin-bottom: 1rem;
   text-align: justify;
+}
+
+.projectDropdown {
+  display: none;
+  background-color: white;
+}
+
+.projectItem:hover .projectDropdown {
+  display: block;
+}
+
+.breadcrumbs-ourprojects:hover{
+  color: #d62828;
+}
+
+.breadcrumbs-ourprojects,
+.projectItem p {
+  font-size: inherit;
 }
 
 @media (max-width: 768px) {
