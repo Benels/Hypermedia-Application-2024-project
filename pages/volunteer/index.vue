@@ -28,8 +28,18 @@
 
 <script setup>
 import FormVolunteering from "~/component/FormVolunteering.vue";
+import {ref} from "vue";
 
+//Search Engine Optimization
+const description = ref('This page contains the volunteer application form for who aims to join HERmet')
+const keywords = ref('Women, People, Team, Volunteer, Application, HERmet, Join, Work,Us, Form')
 
+useHead({
+  meta: [
+    { name: 'description', content: description },
+    { name: 'keywords', content: keywords }
+  ]
+})
 </script>
 
 <style scoped>

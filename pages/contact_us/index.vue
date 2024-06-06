@@ -31,7 +31,7 @@
           <p>Or write as an email at: </p>
           <a class="mail" href="mailto:10727489@polimi.it">✉️ frontdesk@hermet.com</a>
           <br><br>
-          <img class="img" src="/assets/imgs/contactus2.jpg">
+          <img class="img" src="/assets/imgs/contactus2.jpg" alt="Image unavailable">
         </div>
 
         <div class="social">
@@ -146,6 +146,7 @@ p {
 }
 
 .img{
+  max-height: 45vh;
   border-radius: 2%;
 }
 
