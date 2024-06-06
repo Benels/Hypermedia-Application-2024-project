@@ -61,6 +61,7 @@ if(!peopleStore.currentSection) {
 function changeSection(newSection) {
   peopleStore.setCurrentSection(newSection);
   displaySections.value = false;
+  rotated.value = !rotated.value;
 }
 
 const displaySections = ref(false);
