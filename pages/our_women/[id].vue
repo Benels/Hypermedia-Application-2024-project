@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <title>{{ person.name }} {{ person.surname }} - HERmet</title>
+    <title>HERmet - {{ person.name }} {{ person.surname }}</title>
   </Head>
   <!-- BREADCRUMBS -->
   <div class="container">

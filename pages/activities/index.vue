@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Title>HERmet - Our People</Title>
+    <Title>HERmet - Our Activities</Title>
   </Head>
 
   <main class="flex flex-col justify-center items-center mt-8 mb-0 mx-0 p-0 gap-8">
