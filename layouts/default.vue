@@ -191,6 +191,7 @@ body {
 .socialPhone {
   display: none;
 }
+
 .socialLinks {
   transition: opacity 1s ease;
   opacity: 0;
@@ -326,7 +327,7 @@ body {
     justify-content: left;
     position: relative;
     width: 100%;
-    height: 75vw;
+    height: 21rem;
     gap: 1rem;
   }
 
