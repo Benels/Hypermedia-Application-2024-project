@@ -104,6 +104,12 @@ body {
 .contact_social {
   justify-content: space-between;
 }
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+}
 
 .social_logo {
   display: inline-block;

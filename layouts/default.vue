@@ -30,7 +30,7 @@
 
   <footer class="footer">
     <div class="md:w-3/4 lg:w-4/5 footer-container">
-      <div class="footer-logo">
+      <div class="lg:mr-16 footer-logo">
         <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
           <p class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</p>
@@ -39,6 +39,10 @@
       <div class="md:max-w-80 lg:max-w-screen-lg" id="footer-text-container">
           <span class="footer-text">Always by your side, reach out to us whenever you need:<br>call
           <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or send an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
+      </div>
+      <div class="md:max-w-80 md:ml-10 lg:max-w-screen-lg" id="footer-text-container">
+          <span class="footer-text">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
+           </span>
       </div>
       <div>
         <span class="footer-text">&copy 2024 HERmet ODV,<br>All rights reserved</span>
@@ -257,12 +261,11 @@ body {
 .footer-logo {
   display: flex;
   align-items: center;
-  margin-right: 4rem;
-
+  max-width: 18%;
 }
 
 .footer-img {
-  width: 8vw;
+  width: 7vw;
   margin-right: 0.5rem;
   -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
   filter:drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
@@ -270,8 +273,8 @@ body {
 
 #footer-text-container{
   flex: 1;
-  min-width: 200px;
-
+  min-width: 10vw;
+  max-width: 20vw;
 }
 
 .footer-text {
@@ -324,9 +327,15 @@ body {
     justify-content: left;
     position: relative;
     width: 100%;
-    height: 18rem;
+    height: 20rem;
     gap: 1rem;
   }
+
+  #footer-text-container{
+    min-width: auto;
+    max-width: none;
+  }
+
   .footer-img {
     height: 3rem;
   }

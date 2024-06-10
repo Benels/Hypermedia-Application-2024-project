@@ -112,8 +112,25 @@
           </span>
         </button>
       </div>
-
     </div>
+
+    <div class="container">
+      <div id="vc1" class="image-container">
+        <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
+      </div>
+      <div class="text-container">
+        <h2 class="md:pl-8"><NuxtLink to="/volunteer">JOIN THE CAUSE</NuxtLink></h2>
+        <p class="pr-8 md:pr-0 pl-8 justified">By becoming a <b>volunteer</b>, you'll support women who have experienced violence, stalking,
+          or abuse, offering them crucial assistance and hope. Your dedication can help <b>change lives</b>, providing legal, psychological,
+          and preventative aid.<br>At HERmet, you'll be part of a compassionate team committed to <b>making a difference</b>.
+          Volunteer with us and be a beacon of strength and support in our community.
+        </p>
+      </div>
+      <div id="vc2" class="image-container">
+        <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
+      </div>
+    </div>
+
   </div>
   </main>
 </template>
@@ -198,7 +215,8 @@
 }
 
 #mc2,
-#pc2 {
+#pc2,
+#vc2 {
   display: none;
 }
 
@@ -241,10 +259,10 @@ a{
     margin-top: 10px;
     width: 90%;
   }
-  #mc1, #pc1 {
+  #mc1, #pc1, #vc1 {
     display: none;
   }
-  #mc2, #pc2 {
+  #mc2, #pc2, #vc2 {
     display: inherit;
   }
   .opening-hours {
