@@ -327,7 +327,7 @@ body {
     justify-content: left;
     position: relative;
     width: 100%;
-    height: 20rem;
+    height: 75vw;
     gap: 1rem;
   }
 
