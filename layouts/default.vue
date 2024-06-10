@@ -191,7 +191,6 @@ body {
 .socialPhone {
   display: none;
 }
-
 .socialLinks {
   transition: opacity 1s ease;
   opacity: 0;
