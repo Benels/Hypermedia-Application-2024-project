@@ -137,11 +137,14 @@
 
 /* FUNCTIONS DEFINITION */
 function computeCurrentSection() {
-  peopleStore.sections.forEach(s => {
+  for(var s of peopleStore.sections) {
+    console.log(s.name);
     const temp = s.people.filter((x) => x.person_id === person.person_id)[0];
-    if(temp)
+    if(temp) {
       peopleStore.setCurrentSection(s);
-  });
+      return;
+    }
+  }
 }
 
 function handleSectionBreadcrumb(newSection) {
@@ -185,8 +188,8 @@ if(!peopleStore.sections) {
   const { data: response  } = await useFetch('/api/our_women/');
   peopleStore.setSections(response.value.sections);
 }
-
-computeCurrentSection();
+if(!peopleStore.currentSection)
+  computeCurrentSection();
 
 /* initialize carousels */
 onMounted(() => {

@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
         throw createError({statusCode: 400, statusMessage: error.message})
     }
 
-    const people = JSON.parse(JSON.stringify(person))
+    const people = JSON.parse(JSON.stringify(person));
     const board = {
     "name": "Board",
     "people": people.filter((p) => { return (p.role === "President" || p.role === "Board Member") }).sort(boardSorting),
@@ -75,7 +75,13 @@ export default defineEventHandler(async (event) => {
     "color": "#d62828"
     }
 
-    const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker];
+    const allPeople = {
+      "name": "All",
+      "people": people,
+      "color": "#d62828"
+    }
+
+    const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker, allPeople];
 
     return { sections, defaultSection: board }
 })
