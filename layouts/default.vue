@@ -129,7 +129,6 @@ function closeChatbot() {
 const navbar = ref();
 
 function closeNavbar() {
-  console.log("provo a chiudere navbar");
   navbar.value.closeNavbar();
 }
 

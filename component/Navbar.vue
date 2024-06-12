@@ -60,12 +60,6 @@
   import { useRoute } from "vue-router";
   
   const emit = defineEmits(['closeChatBot']);
-  const props = defineProps(['closeSignal']);
-  watch(() => props.closeSignal, (newValue, oldValue) => {
-    if(newValue !== oldValue) {
-      console.log("closeSignal",newValue, oldValue);
-    }
-  })
 
   const route = useRoute();
   const navbarMenu = ref();
@@ -73,7 +67,6 @@
 
   watch(() => route.name, (newName, oldName) => {
     currentRoute.value = newName.split("-")[0];
-    console.log(currentRoute.value);
   })
 
   function closeNavbar() {
