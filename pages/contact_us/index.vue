@@ -74,17 +74,15 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 5%;
-  width: 85%;
-  height: 80%;
-  margin-left: 7.5%;
-  margin-right: 7.5%;
-  margin-top: 5%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .contact_social,
 .map {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
