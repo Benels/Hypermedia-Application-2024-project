@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
     const people = JSON.parse(JSON.stringify(person));
     const board = {
-    "name": "Board of directors",
+    "name": "Board",
     "people": people.filter((p) => { return (p.role === "President" || p.role === "Board Member") }).sort(boardSorting),
     "color": "#d62828"
     };

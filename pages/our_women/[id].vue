@@ -3,11 +3,16 @@
     <title>HERmet - {{ person.name }} {{ person.surname }}</title>
   </Head>
   <!-- BREADCRUMBS -->
-  <div class="container">
-    <ol class="inline-flex gap-4 text-xl ml-8">
-        <li class="flex flex-col items-center sectionItem hover:cursor-pointer">
+  <div class="flex justify-center sm:block">
+    <ol class="flex flex-row gap-2 sm:gap-4 sm:text-xl sm:ml-8 text-base items-center">
+        <li class="flex flex-col items-center sectionItem hover:cursor-pointer text-center">
             <div class="relative w-fit">
-                <p @click="handleSectionBreadcrumb(peopleStore.currentSection)">Our Women - {{ peopleStore.currentSection.name }} </p>
+                <div class="currentSectionContainer flex flex-row gap-1 h-fit items-center" @click="handleSectionBreadcrumb(peopleStore.currentSection)">
+                  <img src="~/assets/svgs/group-of-people.svg" class="sm:hidden h-[40px]"/>
+                  <p class="hidden sm:block">Our Women </p>
+                  <p>- {{ peopleStore.currentSection.name }} </p>
+
+                </div>
                 <div class="calcWidth bg sectionDropdown rounded-lg shadow-xl border border-gray-300 w-fit self-center absolute text-center">
                     <ul class="grid grid-cols-1 divide-y divide-gray-300">
                         <li v-for="s of peopleStore.sections.filter((x) => x.name !== peopleStore.currentSection.name)" class="py-2 hover:text-red" @click="handleSectionBreadcrumb(s)">{{ s.name }}</li>
@@ -33,7 +38,7 @@
 
   <!-- PERSON CONTENT -->
   <main>
-    <div class="container"></div>
+    <div class="personContainer"></div>
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
     <div class="person-card">
       <div class="left-section">
@@ -220,6 +225,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.breadcrumbContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8c1b1b;
+}
+
+.breadcrumbsList {
+  font-size: 1rem;
 }
 
 .person-card {
