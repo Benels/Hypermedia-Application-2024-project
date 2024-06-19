@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
     const people = JSON.parse(JSON.stringify(person));
     const board = {
-    "name": "Board",
+    "name": "Board of directors",
     "people": people.filter((p) => { return (p.role === "President" || p.role === "Board Member") }).sort(boardSorting),
     "color": "#d62828"
     };
@@ -83,5 +83,5 @@ export default defineEventHandler(async (event) => {
 
     const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker, allPeople];
 
-    return { sections, defaultSection: board }
+    return { sections, defaultSection: allPeople }
 })

@@ -28,9 +28,6 @@
         <Transition name="otherSections">
           <div class="notDisplayed" v-if="displayFilterDropdown">
             <Section v-for="f of peopleStore.filters" :name="f" @click="changeFilter(f)" :active="peopleStore.currentFilter === f" />
-            <!-- <div class="resetSorting lastRow">
-               <p> RESET </p>
-            </div> -->
           </div>
         </Transition>
       </div>
@@ -64,7 +61,6 @@ const sections = response.value.sections;
 
 const defaultSection = response.value.defaultSection;
 
-
 if(!peopleStore.sections) {
   peopleStore.setSections(sections);
 }
@@ -76,6 +72,10 @@ if(!peopleStore.currentSection) {
 function changeSection(newSection) {
   peopleStore.setCurrentSection(newSection);
   displaySections.value = false;
+  rotateSections();
+}
+
+function rotateSections() {
   rotatedSection.value = !rotatedSection.value;
 }
 
@@ -85,12 +85,11 @@ function changeFilter(newFilter) {
 
 const displaySections = ref(false);
 const rotatedSection = ref(false);
-const displayFilterDropdown = ref(false);
+const displayFilterDropdown = ref(peopleStore.currentSection.name === "All");
 
 function handleSectionDropdown(event) {
   displaySections.value = !displaySections.value;
-  rotatedSection.value = !rotatedSection.value;
-
+  rotateSections();
   //close filter dropdown
   displayFilterDropdown.value = false;
 }
@@ -98,7 +97,11 @@ function handleSectionDropdown(event) {
 function handleFilterDropdown(event) {
   displayFilterDropdown.value = !displayFilterDropdown.value;
   // close sections dropdown
-  displaySections.value = false;
+  if(displaySections.value) {
+    displaySections.value = false;
+    rotateSections();
+  }
+
 }
 
 //Search Engine Optimization

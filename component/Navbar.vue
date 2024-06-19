@@ -70,7 +70,6 @@
   })
 
   function closeNavbar() {
-    console.log("navbar chiusa");
     navbarMenu.value.classList.add("hidden");
   }
 
