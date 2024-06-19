@@ -24,8 +24,6 @@ function reverseAlphabetic(a,b) {
     return 0;
 }
 
-var allSection = undefined;
-
 export const usePeopleStore = defineStore('people', {
     state: () => ({
         sections: undefined,
@@ -37,7 +35,6 @@ export const usePeopleStore = defineStore('people', {
     actions: {
         setSections(sections) {
             this.sections = sections;
-            // allSection = this.sections.filter((s) => s.name === "All")[0];
         },
         setCurrentSection(newCurrent) {
             this.currentSection = newCurrent;
@@ -49,7 +46,9 @@ export const usePeopleStore = defineStore('people', {
         setCurrentFilter(newFilterName) {
             this.currentFilter = newFilterName;
             const sorting = filterList.filter((f) => f.name === newFilterName)[0].algorithm;
+            console.log("OLD",this.sections.filter((s) => s.name === "All")[0].people);
             this.sections.filter((s) => s.name === "All")[0].people.sort(sorting); 
+            console.log("NEW",this.sections.filter((s) => s.name === "All")[0].people);
         },
         setDisplayFilterIcon(state) {
             this.displayFilterIcon = state;

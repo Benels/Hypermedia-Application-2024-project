@@ -83,5 +83,5 @@ export default defineEventHandler(async (event) => {
 
     const sections = [board, attorney, call_center, vocational_trainer, psychologist, educator, manager, medical_personnel, social_worker, allPeople];
 
-    return { sections, defaultSection: allPeople }
+    return { sections }
 })

@@ -59,7 +59,7 @@ const peopleStore = usePeopleStore();
 const { data: response  } = await useFetch('/api/our_women/');
 const sections = response.value.sections;
 
-const defaultSection = response.value.defaultSection;
+const defaultSection = sections.filter((s) => s.name === "All")[0];
 
 if(!peopleStore.sections) {
   peopleStore.setSections(sections);
@@ -73,6 +73,8 @@ function changeSection(newSection) {
   peopleStore.setCurrentSection(newSection);
   displaySections.value = false;
   rotateSections();
+  if(newSection.name === "All")
+    displayFilterDropdown.value = true;
 }
 
 function rotateSections() {
@@ -81,6 +83,7 @@ function rotateSections() {
 
 function changeFilter(newFilter) {
   peopleStore.setCurrentFilter(newFilter);
+  console.log(newFilter);
 }
 
 const displaySections = ref(false);
