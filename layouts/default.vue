@@ -28,24 +28,28 @@
 
   </div>
 
-  <footer class="footer">
-    <div class="md:w-3/4 lg:w-4/5 footer-container">
-      <div class="lg:mr-16 footer-logo">
-        <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
-          <p class="md:hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap">HERmet</p>
-        </NuxtLink>
+  <footer class="footer md:items-center md:h-56 lg:h-36">
+    <div class="md:w-3/4 lg:w-4/5 md:items-center footer-container">
+      <div class="lg:max-w-screen-lg flex-auto footer-logo-container">
+        <div class="footer-logo">
+          <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="~/assets/imgs/Logo.svg" alt="Logo" class="footer-img"/>
+            <p class="self-center md:text-base lg:text-2xl font-semibold whitespace-nowrap">HERmet</p>
+          </NuxtLink>
+        </div>
+        <p class="footer-text md:text-sm lg:text-base"><b>Always by your side</b></p>
       </div>
-      <div class="md:max-w-80 lg:max-w-screen-lg" id="footer-text-container">
-          <span class="footer-text">Always by your side, reach out to us whenever you need:<br>call
-          <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or send an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
+      <div class="md:max-w-44 lg:max-w-80 flex-auto" >  <!--id="footer-text-container"-->
+          <span class="footer-text md:text-sm lg:text-base">Reach out to us whenever you need:<br> at Piazza Leonardo da Vinci 1 - MI, by
+            calling
+            <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or sending an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
       </div>
-      <div class="md:max-w-80 md:ml-10 lg:max-w-screen-lg" id="footer-text-container">
-          <span class="footer-text">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
+      <div class="lg:max-w-screen-lg flex-auto lg:ml-4" > <!--id="footer-text-container"-->
+          <span class="footer-text md:text-sm lg:text-base">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
            </span>
       </div>
-      <div>
-        <span class="footer-text">&copy 2024 HERmet ODV,<br>All rights reserved</span>
+      <div class="lg:max-w-screen-lg flex-auto">
+        <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV,<br>All rights reserved</span>
       </div>
     </div>
     <div class="md:hidden socialPhone">
@@ -239,7 +243,6 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 1rem;
   position: relative;
   width: 100%;
@@ -251,30 +254,30 @@ body {
 .footer-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   height: 9rem;
   flex-wrap: wrap;
 }
 
+.footer-logo-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-logo {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  max-width: 18%;
+  width: 100%;
 }
 
 .footer-img {
-  width: 7vw;
+  height: 5rem;
   margin-right: 0.5rem;
   -webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
   filter:drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
 }
 
-#footer-text-container{
-  flex: 1;
-  min-width: 10vw;
-  max-width: 20vw;
-}
 
 .footer-text {
   text-align: center;
@@ -287,7 +290,7 @@ body {
   bottom: 0;
   right: 1rem;
   font-size: smaller;
-  justify-content: center;
+  justify-content: right;
   text-align: center!important;
   width:100%;
 }
@@ -319,24 +322,27 @@ body {
     margin-right: auto;
   }
 
+  .footer {
+    height: 30rem;
+    justify-content: flex-end;
+  }
+
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: normal;
     justify-content: left;
-    position: relative;
     width: 100%;
-    height: 21rem;
+    height: 80%;
     gap: 1rem;
   }
 
-  #footer-text-container{
-    min-width: auto;
-    max-width: none;
+  .footer-logo {
+    width: 5%;
   }
-
   .footer-img {
-    height: 3rem;
+    height: 100%;
+    margin-right: 0;
   }
   .socialPhone {
     display: flex;

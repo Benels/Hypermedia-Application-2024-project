@@ -123,7 +123,7 @@
         <p class="pr-8 md:pr-0 pl-8 justified">By becoming a <b>volunteer</b>, you'll support women who have experienced violence, stalking,
           or abuse, offering them crucial assistance and hope. Your dedication can help <b>change lives</b>, providing legal, psychological,
           and preventative aid.<br>At HERmet, you'll be part of a compassionate team committed to <b>making a difference</b>.
-          Volunteer with us and be a beacon of strength and support in our community.
+          <NuxtLink to="/volunteer"><b>Volunteer with us</b></NuxtLink> and be a beacon of strength and support in our community.
         </p>
       </div>
       <div id="vc2" class="image-container">
