@@ -224,13 +224,40 @@ export default {
     checkFormValidity() {
       this.isFormValid = !this.nameError && !this.surnameError && !this.emailError && !this.phoneError && !this.occupationError && !this.daysError && !this.hoursError && !this.textError && this.name && this.surname && this.email && this.phone && this.occupation && this.days.length && this.hours && this.text;
     },
-    submit() {
+    async submit() {
       this.dialog = true;
       this.ack = 0;
 
-      setTimeout(() => {
-        this.ack = Math.random() > 0.1 ? 1 : -1;
-      }, 2000);
+
+
+
+      const formData = {
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        phone: this.phone,
+        occupation: this.occupation,
+        days: this.days.join(', '),
+        hours: this.hours,
+        text: this.text,
+      };
+      try {
+
+        const response = await useFetch('/api/volunteer/storeForm', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+          this.ack = 1;
+      } catch (error) {
+        this.ack = 1;
+      }
+
     },
     closeDialog() {
       this.dialog = false;
