@@ -40,7 +40,8 @@
       messages: [{ role: 'assistant', content: [{ text: "Hi, I am Jarvis, how can I help you?", type: 'text' }] }],
       input: '',
       speechSynthesisActive: false,
-      recognition: null
+      recognition: null,
+      recognitionActive: false
     };
   },
   mounted() {
@@ -86,7 +87,7 @@
     setupRecognition() {
       if ('webkitSpeechRecognition' in window) {
         this.recognition = new webkitSpeechRecognition();
-        this.recognition.continuous = false;
+        this.recognition.continuous = true;
         this.recognition.interimResults = false;
         this.recognition.lang = 'en-US';
 
@@ -101,6 +102,7 @@
         };
 
         this.recognition.onend = () => {
+          this.recognitionActive = false;
           console.log("Speech recognition ended.");
         };
       } else {
@@ -109,20 +111,15 @@
     },
 
     startRecognition() {
-      if (this.recognition) {
+      if (this.recognition && !this.recognitionActive) {
         this.recognition.start();
+        this.recognitionActive = true;
       }
     },
 
-    /*stopRecognition() {
-      //if (this.recognition) {
-      // this.recognition.stop();
-      //}
-    },*/
     stopRecognition() {
-      if (this.recognitionActive && this.recognition) {
+      if (this.recognition && this.recognitionActive) {
         this.recognition.stop();
-        this.recognitionActive = false;
       }
     },
 
