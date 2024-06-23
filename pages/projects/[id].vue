@@ -8,7 +8,8 @@
     <!-- BREADCRUMBS -->
     <ol class="inline-flex gap-4 text-xl">
       <div class="relative w-fit">
-        <a class="breadcrumbs-ourprojects" href="/projects/">Our Projects</a>
+        <a class="breadcrumbs-ourprojects" id="pc" href="/projects/">Our Projects</a>
+        <a class="breadcrumbs-ourprojects" id="mobile" href="/projects/">PRJs</a>
       </div>
       <li>
         <p> > </p>
@@ -216,7 +217,20 @@ hr {
   font-size: inherit;
 }
 
+#mobile{
+  display: none;
+}
+
 @media (max-width: 768px) {
+
+  #mobile{
+    display: inherit;
+  }
+
+  #pc{
+    display: none;
+  }
+
   .outerContainer {
     padding: 0;
   }

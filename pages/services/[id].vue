@@ -8,7 +8,8 @@
     <!-- BREADCRUMBS -->
     <ol class="inline-flex gap-4 text-xl">
       <div class="relative w-fit">
-        <a class="breadcrumbs-ourservices" href="/services/">Our Services</a>
+        <a class="breadcrumbs-ourservices" id="pc" href="/services/">Our Services</a>
+        <a class="breadcrumbs-ourservices" id="mobile" href="/services/">SRVs</a>
       </div>
       <li>
         <p> > </p>
@@ -300,7 +301,20 @@ hr{
   color: #d62828;
 }
 
+#mobile{
+  display: none;
+}
+
 @media (max-width: 768px) {
+
+  #mobile{
+    display: inherit;
+  }
+
+  #pc{
+    display: none;
+  }
+
   .container {
     padding: 10px;
   }
