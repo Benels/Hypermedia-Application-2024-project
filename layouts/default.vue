@@ -29,7 +29,7 @@
   </div>
 
   <footer class="footer md:items-center md:h-56 lg:h-36">
-    <div class="md:w-3/4 lg:w-4/5 md:items-center footer-container">
+    <div class="md:w-3/4 md:w-4/5 md:items-center footer-container">
       <div class="lg:max-w-screen-lg flex-auto footer-logo-container">
         <div class="footer-logo">
           <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -48,21 +48,21 @@
           <span class="footer-text md:text-sm lg:text-base">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
            </span>
       </div>
-      <!-- <div class="hidden xl:block lg:max-w-screen-lg flex-auto">
-        <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV,<br>All rights reserved</span>
-      </div> -->
+      
     </div>
-    <div class="md:hidden socialPhone">
+    <div class="md:hidden socialPhone self-left px-[1rem]">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
       <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
-    <div class="credits xl:flex-row flex-col">
-
-      <p>Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</p>
-      <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV,<br>All rights reserved</span>
-      </div>
+    <div class="self-left px-[1rem] mt-[4px]">
+      <span class="footer-text md:text-sm lg:text-base">Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</span>
+      <!-- <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV, All rights reserved</span> -->
+    </div>
+    <div class="self-left px-[1rem]">
+      <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV, All rights reserved</span>
+    </div>
   </footer>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
 </template>
@@ -244,10 +244,12 @@ body {
   background-color: #d62828;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  /* padding: 1rem; */
   position: relative;
   width: 100vw;
+  height: auto;
   z-index: 1;
   margin-top: 2rem;
   margin-bottom: 0;
@@ -257,9 +259,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 9rem;
-  flex-wrap: wrap;
+  /* height: 9rem; */
+  /* flex-wrap: wrap; */
   background-color: #d62828;
+  padding: 1rem;
 }
 
 .footer-logo-container {
@@ -285,17 +288,6 @@ body {
 .footer-text {
   text-align: center;
   font-family: 'Rubik', sans-serif;
-}
-
-.credits {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  right: 1rem;
-  font-size: smaller;
-  justify-content: right;
-  text-align: center!important;
-  width:100%;
 }
 
 .external{
@@ -326,7 +318,7 @@ body {
   }
 
   .footer {
-    height: 25rem;
+    /* height: 25rem; */
     justify-content: flex-end;
   }
 
@@ -336,7 +328,7 @@ body {
     align-items: normal;
     justify-content: left;
     width: 100vw;
-    height: 80%;
+    /* height: 80%; */
     gap: 1rem;
   }
 
@@ -349,15 +341,13 @@ body {
   }
   .socialPhone {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 5px;
     margin: 0;
-    position: absolute;
-    bottom: 1rem;
+    /* position: absolute; */
+    /* bottom: 1rem;
     left: 1rem;
-  }
-  .credits {
-    max-width: 40%;
+    max-width: 45%; */
   }
 
   .no-scroll {

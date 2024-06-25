@@ -180,9 +180,16 @@
   padding: 5%;
   border-radius: 2rem;
   font-weight: bold;
-  width: 70%;
+  width: 80%;
+  max-width: auto;
   font-family: Caveat, sans-serif;
   align-content: center;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 6.307vw;
+  }
 }
 
 .main-image-container{
