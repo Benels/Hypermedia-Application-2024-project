@@ -23,14 +23,15 @@
 
       <div class="contact_social">
         <div class="contacts">
-          <p>Call us now at: </p>
-          <a class="number" href="tel:+393243453456">📞 +39 324 345 3456</a>
+          <div>
+            <p>Call us now at: </p>
+            <a class="number" href="tel:+393243453456">📞 +39 324 345 3456</a>
+          </div>
 
-          <br><br>
-
-          <p>Or write us an email at: </p>
-          <a class="mail" href="mailto:10727489@polimi.it">✉️ frontdesk@hermet.com</a>
-          <br><br>
+          <div>
+            <p>Or write us an email at: </p>
+            <a class="mail" href="mailto:10727489@polimi.it">✉️ frontdesk@hermet.com</a>
+          </div>
           <img class="img" src="/assets/imgs/contactus2.jpg" alt="Image unavailable">
         </div>
 
@@ -77,12 +78,13 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  justify-content: center;
 }
 
 .contact_social,
 .map {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -107,6 +109,7 @@ body {
   flex-direction: column;
   align-items: center;
   max-height: 100%;
+  gap: 4px;
 }
 
 .social_logo {
