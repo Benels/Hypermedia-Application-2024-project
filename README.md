@@ -1,75 +1,24 @@
-# Nuxt 3 Minimal Starter
+# Hypermedia Application Project
+This repository contains all the files for the Hypermedia Application's course project held at Politecnico di Milano, Academic Year 2024.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<br>
 
-## Setup
+## TheCEOs - Group Members:
+- ####  Benelle Francesco    [@Benels](https://github.com/Benels)
+- ####  Cavicchioli Michele  [@TrueMaicol](https://github.com/TrueMaicol)
+- ####  Lo Presti Irene      [@irelop](https://github.com/irelop)
+- ####  Lodelli Riccardo     [@ilrechh](https://github.com/ilrechh)
 
-Make sure to install the dependencies:
+<br>
 
-```bash
-# npm
-npm install
 
-# pnpm
-pnpm install
+## Usability Evaluation
+The goal for the first part of the project is to evaluate the usability of the [UNICEF](https://www.unicef.org/) website through Heuristic Based evaluation and User Testing.
+A report of the activities can be found [here](Deliverables/Usability_Report.pdf).
 
-# yarn
-yarn install
+<br>
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Website Implementation
+The goal for the second part of the project is to develop a website for a center that offers support to women in difficulty and involved in situations of violence.
+The final version of the wesite can be found at [HERmet](https://hypermediaapplicationproject2024-benels-projects.vercel.app/)
+The documentation for this project involves a [Design Report](Deliverables/Design_Report.pdf), an [Implementation Report](Deliverables/Implementation_Report.pdf) and a [Chatbot Report](Deliverables/Chatbot_Report.pdf).
