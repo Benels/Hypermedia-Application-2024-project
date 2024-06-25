@@ -4,7 +4,7 @@
   </Head>
 
   <main>
-    <div class="container">
+    <div class="contactUsContainer">
       <div class="map">
         <p class="map_text">You can find our centre at:</p>
         <p class="address">Piazza Leonardo da Vinci 1<br>
@@ -62,7 +62,7 @@ useHead({
 </script>
 
 <style scoped>
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -70,15 +70,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
+} */
 
-.container {
+.contactUsContainer {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   margin: 0;
   justify-content: center;
+  /* background-color: blueviolet; */
+  width: 100vw;
 }
 
 .contact_social,
@@ -158,10 +158,17 @@ p {
 }
 
 @media (min-width: 768px) {
-  .container {
+  .contactUsContainer {
     flex-direction: row;
+    /* width: 100vw; */
   }
 
+  .map_embed {
+    /* width: 500px; */
+  }
+}
+
+@media (min-width: 1024px) {
   .map_embed {
     width: 500px;
   }
