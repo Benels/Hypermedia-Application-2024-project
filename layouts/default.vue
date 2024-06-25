@@ -48,9 +48,9 @@
           <span class="footer-text md:text-sm lg:text-base">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
            </span>
       </div>
-      <div class="lg:max-w-screen-lg flex-auto">
+      <!-- <div class="hidden xl:block lg:max-w-screen-lg flex-auto">
         <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV,<br>All rights reserved</span>
-      </div>
+      </div> -->
     </div>
     <div class="md:hidden socialPhone">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
@@ -58,9 +58,11 @@
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
-    <div class="credits">
+    <div class="credits xl:flex-row flex-col">
+
       <p>Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</p>
-    </div>
+      <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV,<br>All rights reserved</span>
+      </div>
   </footer>
   <!-- <img class="absolute w-14 h-14 bottom-12 left-12" src="~/assets/imgs/icons8-futurama-bender.svg" alt="Bordered avatar"> -->
 </template>
@@ -245,10 +247,10 @@ body {
   justify-content: center;
   padding: 1rem;
   position: relative;
-  width: 100%;
-  flex-shrink: 0; /* Ensure footer doesn't shrink */
+  width: 100vw;
   z-index: 1;
   margin-top: 2rem;
+  margin-bottom: 0;
 }
 
 .footer-container {
@@ -257,6 +259,7 @@ body {
   justify-content: space-between;
   height: 9rem;
   flex-wrap: wrap;
+  background-color: #d62828;
 }
 
 .footer-logo-container {
@@ -323,7 +326,7 @@ body {
   }
 
   .footer {
-    height: 30rem;
+    height: 25rem;
     justify-content: flex-end;
   }
 
@@ -332,7 +335,7 @@ body {
     flex-direction: column;
     align-items: normal;
     justify-content: left;
-    width: 100%;
+    width: 100vw;
     height: 80%;
     gap: 1rem;
   }

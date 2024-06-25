@@ -52,16 +52,17 @@
 
     <div class="container">
       <div id="pc1" class="image-container">
-        <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
+        <img src="/assets/imgs/aboutUs/practical_info.jpg" alt="" class="img-about">
       </div>
       <div class="text-container">
-        <h2 class="md:pl-8"><NuxtLink to="/contact_us">PRACTICAL INFORMATION</NuxtLink></h2>
+        <h2 class="md:pl-8">PRACTICAL INFORMATION</h2>
         <p class="pr-8 md:pr-0 pl-8 justified">
           HERmet's headquarter is situated at <a href="https://www.google.it/maps/place/Piazza+Leonardo+da+Vinci,+1,+20133+Milano+MI/@45.4785935,9.2246471,17z/data=!3m1!4b1!4m6!3m5!1s0x4786c79bc37bec41:0x7b28618e58d10a3a!8m2!3d45.4785935!4d9.227222!16s%2Fg%2F11v54d4qyw?entry=ttu">Piazza Leonardo da Vinci 1, Milano MI</a>.
-          It offers various services 24h per day, but you can find us at the center at these opening hours
+          It offers various services 24h per day, but you can find us at the center at these opening hours:
         </p>
-          <p class="opening-hours"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
-          <p class="opening-hours"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+        <p class="opening-hours"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
+        <p class="opening-hours"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+        <NuxtLink to="/activities" class="button">Contact Us</NuxtLink>
       </div>
       <div id="pc2" class="image-container">
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
@@ -70,7 +71,8 @@
 
     <div class="container">
       <div class="text-container">
-        <h2><NuxtLink to="/activities">OUR ACTIVITIES</NuxtLink></h2>
+        <h2>OUR ACTIVITIES</h2>
+        <NuxtLink to="/activities" class="button">More Details</NuxtLink>
       </div>
       <div id="default-carousel" class="relative w-3/4 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
@@ -119,12 +121,13 @@
         <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
       </div>
       <div class="text-container">
-        <h2 class="md:pl-8"><NuxtLink to="/volunteer">JOIN THE CAUSE</NuxtLink></h2>
+        <h2 class="md:pl-8">JOIN THE CAUSE</h2>
         <p class="pr-8 md:pr-0 pl-8 justified">By becoming a <b>volunteer</b>, you'll support women who have experienced violence, stalking,
           or abuse, offering them crucial assistance and hope. Your dedication can help <b>change lives</b>, providing legal, psychological,
-          and preventative aid.<br>At HERmet, you'll be part of a compassionate team committed to <b>making a difference</b>.
-          <NuxtLink to="/volunteer"><b>Volunteer with us</b></NuxtLink> and be a beacon of strength and support in our community.
+          and preventative aid.<br>At our association, you'll be part of a compassionate team committed to <b>making a difference</b>.
+          Stand with HERmet and be a beacon of strength and support in our community.
         </p>
+        <NuxtLink to="/volunteer" class="button">Volunteer with Us</NuxtLink>
       </div>
       <div id="vc2" class="image-container">
         <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
@@ -235,6 +238,27 @@ a{
   color: #d62828;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.button{
+  background-color: white;
+  color: #d62828;
+  border: 0.1rem solid #d62828;
+  border-radius: 1rem;
+  font-family: Rubik, sans-serif!important;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  display: inline-block;
+  padding: 3px 10px;
+  margin-top: 1%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover{
+  background-color:#d62828;
+  color: white;
+  border: 0.1rem solid white;
 }
 
 .justified {
