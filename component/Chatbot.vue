@@ -34,8 +34,6 @@
 
 <script>
 
-  import {sleep} from "openai/core";
-
   export default {
   data() {
     return {
@@ -66,7 +64,7 @@
 
         while(res.status === 429){
           console.log("Rate limit passed. Automatic retry in 6 seconds");
-          await sleep(6000);
+          await new Promise(resolve => setTimeout(resolve, 6000));;
           res = await fetch('/api/chatbot', {
             method: 'POST',
             headers: {
