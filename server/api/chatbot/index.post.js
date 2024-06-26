@@ -1567,7 +1567,7 @@ export default defineEventHandler(async (event) => {
             model: "gpt-3.5-turbo",
             messages: prompt.concat(body.messages),
             temperature: 0.44,
-            max_tokens: 200,
+            max_tokens: 100,
             top_p: 0.16,
             frequency_penalty: 0,
             presence_penalty: 0.24,

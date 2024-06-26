@@ -34,6 +34,8 @@
 
 <script>
 
+  import {sleep} from "openai/core";
+
   export default {
   data() {
     return {
@@ -52,8 +54,9 @@
       this.messages.push({ role: 'user', content: [{ text: this.input, type: 'text' }] });
       const userInput = this.input;
       this.input = '';
+      let res;
       try {
-        const res = await fetch('/api/chatbot', {
+        res = await fetch('/api/chatbot', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -63,6 +66,17 @@
 
         if (!res.ok) {
           throw new Error('Network response was not ok');
+        }
+        while(res.status === 429){
+          console.log("Rate limit passed. Automatic retry in 6 seconds");
+          await sleep(6000);
+          res = await fetch('/api/chatbot', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ messages: this.messages })
+          });
         }
         const data = await res.json();
         if (data.choices && data.choices.length > 0 && data.choices[0].message.content) {
