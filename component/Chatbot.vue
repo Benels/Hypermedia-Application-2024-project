@@ -64,9 +64,6 @@
           body: JSON.stringify({ messages: this.messages })
         });
 
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
         while(res.status === 429){
           console.log("Rate limit passed. Automatic retry in 6 seconds");
           await sleep(6000);
@@ -77,6 +74,9 @@
             },
             body: JSON.stringify({ messages: this.messages })
           });
+        }
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         if (data.choices && data.choices.length > 0 && data.choices[0].message.content) {
