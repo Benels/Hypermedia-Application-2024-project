@@ -50,7 +50,6 @@
   methods: {
     async sendMsg() {
       this.messages.push({ role: 'user', content: [{ text: this.input, type: 'text' }] });
-      const userInput = this.input;
       this.input = '';
       let res;
       try {
@@ -64,7 +63,7 @@
 
         while(res.status === 429){
           console.log("Rate limit passed. Automatic retry in 6 seconds");
-          await new Promise(resolve => setTimeout(resolve, 6000));;
+          await new Promise(resolve => setTimeout(resolve, 6000));
           res = await fetch('/api/chatbot', {
             method: 'POST',
             headers: {
@@ -201,6 +200,8 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: default;
+  overflow-y: auto;
 }
 
 .chat-box {
@@ -234,7 +235,6 @@ body {
   margin-left: auto;
   text-align: right;
   flex-direction: row-reverse;
-
 }
 
 .user-bubble::before {
