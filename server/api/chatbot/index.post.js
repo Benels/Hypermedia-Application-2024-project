@@ -1191,7 +1191,7 @@ export default defineEventHandler(async (event) => {
             top_p: 0.2,
             frequency_penalty: 0,
             presence_penalty: 0,
-            stop: ["\n"],
+            //stop: ["\n"],
         })
     })
     return response
