@@ -5,31 +5,35 @@
 
   <main>
     <div class="main-image-container">
-      <img class="image" src="/assets/imgs/homepage/homepage.jpg" alt="Error"/>
+      <!--decorative image-->
+      <img class="image" src="/assets/imgs/homepage/homepage.jpg" alt="Missing Image"/>
       <div class="slogan">
         <img class="logo" src="/assets/imgs/Logo.svg"/> <p class="hermet">HERmet</p><br>
         Together We Stand:<br>
         <em>Women Helping Women build the life they aspire to live</em><br>
-        <a href="/about_us" class="button">Learn more about us</a>
+        <a href="/about_us" class="button">Learn more about us</a> <!--link to the About Us page-->
       </div>
     </div>
+
     <br><br>
 
     <div class="links-outer-container">
-      <!--mobile version: first contacts-->
+
+      <!--mobile version: first HERmet contacts-->
       <div class="links-inner-container" id="mobile">
         <div class="imageContainer">
-          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
+          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Missing Image" />
         </div>
         <div class="link-text">
           <p>
             Need <strong>help</strong>?<br>
             <small><em>Reach out to us for confidential support and counseling</em></small> <br><br>
           </p>
-          <a href="/contact_us" class="contacts-button">CONTACT US</a>
+          <a href="/contact_us" class="contacts-button">CONTACT US</a> <!--link to the Contact Us page-->
         </div>
       </div>
 
+      <!--newest activity retrieved from the db-->
       <div class="links-inner-container">
           <div class="imageContainer">
             <img class="link-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/${type}/${activity.activity_id}.jpg`" :alt="`Missing Image`" />
@@ -39,43 +43,48 @@
             <strong>{{activity.name}} </strong><br>
             is our newest activity!<br>
           </p>
+          <!--link to the activity's page-->
           <router-link :to="'/' + type + '/' + activity.activity_id" class="activity-button">Learn more</router-link>
         </div>
       </div>
 
-      <!-- pc version: contacts in center-->
+      <!-- pc version: HERmet contacts in center-->
       <div class="links-inner-container" id="pc">
         <div class="imageContainer">
-          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Error" />
+          <img class="link-img" src="/assets/imgs/homepage/contacts.jpg" alt="Missing Image" />
         </div>
         <div class="link-text">
           <p>
             Need <strong>help</strong>?<br>
             <small><em>Reach out to us for confidential support and counseling</em></small> <br><br>
           </p>
-          <a href="/contact_us" class="contacts-button">CONTACT US</a>
+          <a href="/contact_us" class="contacts-button">CONTACT US</a> <!--link to the Contact Us Page-->
         </div>
       </div>
 
+      <!--form to become volunteer-->
       <div class="links-inner-container">
         <div class="imageContainer">
-          <img class="link-img" src="/assets/imgs/homepage/volunteers3.jpg" alt="Error"/>
+          <img class="link-img" src="/assets/imgs/homepage/volunteers3.jpg" alt="Missing Image"/>
         </div>
         <div class="link-text">
           <p>
             <strong>Volunteer with us</strong> <br>
             <small><em>and be part of positive change!</em></small><br>
           </p>
-          <a href="/volunteer" class="activity-button">Apply now</a>
+          <a href="/volunteer" class="activity-button">Apply now</a> <!--link to the form-->
         </div>
       </div>
     </div>
 
     <div class="jarvis">
       <div class="jarvis-inner-container">
+
         <div class="jarvis-img">
+          <!--decorative image of Jarvis, also to be connected to the icon of the chatbot's the button-->
           <img src="/assets/imgs/homepage/jarvis-img.jpg"/>
         </div>
+
         <div class="jarvis-text">
           <h2 class="jarvis-title">Meet Jarvis: <br id="mobile">your ally against stalking</h2><br>
           <p id="pc">Hi! I am <strong>Jarvis</strong>, nice to meet you! I am a chatbot dedicated to <strong>assisting victims of stalking</strong>.<br>
@@ -90,6 +99,8 @@
           </p>
         </div>
       </div>
+
+      <!--mobile version of the same text-->
       <p id="mobile">Hi! I am <strong>Jarvis</strong>, nice to meet you! I am a chatbot dedicated to <strong>assisting victims of stalking</strong>.<br>
         I am available day and night, and I can provide to you essential information, safety tips, and
         guidance on taking protective measures. Reach out for <strong>discreet and immediate
@@ -106,8 +117,12 @@
 </template>
 
 <script setup>
+
+//retrieve the most recent activity from the db
 const {data: activities} = await useFetch('/api/activities/mostRecentActivity');
 const activity = JSON.parse(JSON.stringify(activities.value))[0];
+
+//check if the activity is a project or a service to use the correct link
 let type;
 if (activity.is_service)
   type = "services";

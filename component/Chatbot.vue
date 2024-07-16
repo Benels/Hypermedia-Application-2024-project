@@ -1,25 +1,37 @@
 <template>
   <div class="chat-container pointer-events-auto">
+
     <div class="chat-header">
       <p class="pl-4">Jarvis - Your personal Assistant</p>
+      <!--icon to close the chat window-->
       <div @click="$emit('handle')" class="closeIcon rounded-md"> <img src="~/assets/svgs/close_x_white.svg"/> </div>
     </div>
+
     <div class="chat-box" ref="chatBox">
+      <!--print all messages-->
       <div v-for="(msg, i) in messages" :key="i" class="msg">
+
+        <!--user's messages-->
         <div class="message user" v-if="msg.role === 'user'">
+          <!--message-->
           <div class="user-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-            {{ content.text }}
+            {{ content.text }} <!--plain text-->
           </div>
         </div>
+
+        <!--Jarvis' messages-->
         <div class="message assistant" v-else>
+          <!--message-->
           <div class="assistant-bubble" v-for="(content, contentIndex) in msg.content" :key="contentIndex">
-            <!--{{ content.text }}-->
-            <div v-html="content.text"></div>
+            <div v-html="content.text"></div> <!--could contain html tags for links-->
+            <!--button to listen to the assistant's message-->
             <button @click="speak(content.text)">🔊</button>
           </div>
         </div>
       </div>
     </div>
+
+    <!--space to insert the message-->
     <div class="chat-input-container">
       <input class="chat-input" v-model="input" @keyup.enter="sendMsg" placeholder="Type your message..." />
       <button class="send-button" @click="sendMsg">Send</button>
@@ -37,7 +49,7 @@
   export default {
   data() {
     return {
-      messages: [{ role: 'assistant', content: [{ text: "Hi, I am Jarvis, how can I help you?", type: 'text' }] }],
+      messages: [{ role: 'assistant', content: [{ text: "Hi, I am Jarvis, how can I help you?", type: 'text' }] }], //first standard message to be read by the user
       input: '',
       speechSynthesisActive: false,
       recognition: null,
@@ -53,6 +65,7 @@
       this.input = '';
       let res;
       try {
+        //send messages
         res = await fetch('/api/chatbot', {
           method: 'POST',
           headers: {

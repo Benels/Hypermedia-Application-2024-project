@@ -5,15 +5,20 @@
 
 
   <div class="container">
+
     <!-- BREADCRUMBS -->
     <ol class="inline-flex gap-4 text-xl">
       <div class="relative w-fit">
         <a class="breadcrumbs-ourservices" id="pc" href="/services/">Our Services</a>
+
+        <!--shorter version for smaller devices-->
         <a class="breadcrumbs-ourservices" id="mobile" href="/services/">SRVs</a>
       </div>
+
       <li>
         <p> > </p>
       </li>
+
       <li class="flex flex-col items-center serviceItem hover:cursor-pointer">
         <div class="relative">
           <p> {{ service.name }} </p>
@@ -26,45 +31,61 @@
       </li>
     </ol>
 
-
+    <!--main body-->
     <br><br><h1>{{ service.name }}</h1>
     <div class="image-logo">
-      <img class="main-image" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${service.activity_id}.jpg`" :alt="`error`"/>
+      <!--decorative image retrieved from database-->
+      <img class="main-image" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/services/${service.activity_id}.jpg`" :alt="`Missing Image`"/>
+
       <div class="logo-section">
+        <!--brief summary of the description of the service retrieved from the database-->
         <h2 v-html="briefSummary"></h2>
+
+        <!--logo retrieved from database-->
         <img class="logo" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/logo/${service.activity_id}.PNG`" :alt="`Missing Image`" />
-        <div class="text-section">
+
+        <!--practical information of the service-->
+        <div class="practical-info-section">
           <p v-html="openingHours"></p>
           <p>📞: <strong><a class="tel-number" href="tel:{{service.phone_number}}">{{service.phone_number}}</a></strong></p>
           <p>✉️: <strong><a href="mailto:{{service.email}}">{{service.email}}</a></strong></p>
+          <!--Link to the personal page of the employee in charge of the service-->
           <p>Person in charge: <strong> <router-link :to="'/our_women/' + leader.person_id">{{leader.name}} {{leader.surname}}</router-link></strong> - {{leader.role}}</p>
           <p class="italic">{{service.additional_info}}</p>
         </div>
+
       </div>
     </div>
+
+    <!--complete description of the service-->
     <div class="description">
       <div v-html="description"></div>
     </div>
+
     <br>
+
+    <!--testimonials of people that used the service retrieved from the database-->
     <div class="testimonial-section">
+
       <div class="testimonial-title">
         <h3>Our impact in <strong>their words</strong></h3>
-        <img src="assets/imgs/testimonials.jpg" :alt="`Error`" class="testimonial-image">
+        <!--decorative image for the testimonial section-->
+        <img src="assets/imgs/testimonials.jpg" :alt="`Missing image`" class="testimonial-image">
       </div>
-      <br>
-      <br>
-      <div class="testimonial-container">
 
+      <br>
+      <br>
+
+      <div class="testimonial-container">
         <div class="testimonials">
           <div v-for="(t, i) in testimonials" :key="i" class="testimonial-box">
-            <!--<div class="testimonial-box">-->
               <p class="testimonial-quote">"{{t.quote}}"</p>
               <hr>
               <p class="testimonial-author">{{t.author}}</p>
-           <!-- </div>-->
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -73,19 +94,24 @@
   import sanitizeHtml from 'sanitize-html';
 
   const route = useRoute()
-  const id = route.params.id;
+  const id = route.params.id; //id of the service
 
+  //retrieve service's info from db using the correct id
   const {data: services} = await useFetch('/api/activities/' + id);
   const service = JSON.parse(JSON.stringify(services.value))[0];
+
+  //retrieve info about the employee in charge of the service from the db
   const leader = await $fetch('/api/our_women/' + service.leader);
 
+  //text containing html tags
   const openingHours = sanitizeHtml(service.opening_hours);
   const briefSummary = sanitizeHtml(service.summary);
-
-  const testimonials = await $fetch('/api/testimonials/' + id);
-
   const description = sanitizeHtml(service.description);
 
+  //retrieve testimonials from db given the service's id
+  const testimonials = await $fetch('/api/testimonials/' + id);
+
+  //retrieve all services from db for breadcrumbs
   const { data: allServices } = await useFetch("/api/activities/services");
 
   //Search Engine Optimization
@@ -163,21 +189,21 @@ h2{
   margin-bottom: 10px;
 }
 
-.text-section {
+.practical-info-section {
   text-align: center;
 }
 
-.text-section p {
+.practical-info-section p {
   margin: 5px 0;
   color: #333;
 }
 
-.text-section a {
+.practical-info-section a {
   color: #d62828;
   text-decoration: none;
 }
 
-.text-section a:hover {
+.practical-info-section a:hover {
   text-decoration: underline;
 }
 
@@ -305,6 +331,7 @@ hr{
   display: none;
 }
 
+/*mobile version*/
 @media (max-width: 768px) {
 
   #mobile{
@@ -333,7 +360,7 @@ hr{
     margin-left: 0;
   }
 
-  .text-section {
+  .practical-info-section {
     width: 100%;
   }
 

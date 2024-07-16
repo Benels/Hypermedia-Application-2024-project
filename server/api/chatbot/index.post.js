@@ -2,6 +2,8 @@ import { defineEventHandler, readBody } from 'h3'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
+
+    //prompt used for training the chatbot, through prompt engineering
     const prompt = [
         {
             "role": "system",
@@ -1166,6 +1168,7 @@ export default defineEventHandler(async (event) => {
         }
     ]
 
+    //prompt to be attached after the messages to be sure that the chatbot follows the rules
     const postPrompt = [{
         "role": "system",
         "content": [
@@ -1175,7 +1178,6 @@ export default defineEventHandler(async (event) => {
             }
         ]
     }]
-
 
     const response = await $fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -1191,7 +1193,6 @@ export default defineEventHandler(async (event) => {
             top_p: 0.2,
             frequency_penalty: 0,
             presence_penalty: 0,
-            //stop: ["\n"],
         })
     })
     return response

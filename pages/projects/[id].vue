@@ -9,11 +9,15 @@
     <ol class="inline-flex gap-4 text-xl">
       <div class="relative w-fit">
         <a class="breadcrumbs-ourprojects" id="pc" href="/projects/">Our Projects</a>
+
+        <!--shorter version for smaller devices-->
         <a class="breadcrumbs-ourprojects" id="mobile" href="/projects/">PRJs</a>
       </div>
+
       <li>
         <p> > </p>
       </li>
+
       <li class="flex flex-col items-center projectItem hover:cursor-pointer">
         <div class="relative">
           <p> {{ a.name }} </p>
@@ -28,26 +32,35 @@
 
     <br><br><h1>{{ a.name }}</h1><br>
     <div class="image-summary">
+      <!--decorative image retrieved from database-->
       <img class="main-img" :src="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/projects/${a.activity_id}.jpg`" :alt="`Missing Image`" />
+
       <div class="summary-leader">
         <div class="summary">
+          <!--brief summary of the description of the project retrieved from the database-->
           <h2 v-html="summary"></h2>
         </div>
+
+        <!--info and statistics of the project-->
         <div class="info-container">
           <p class="info">
             <br><hr><br>
+            <!--Link to the personal page of the employee in charge of the project-->
             Leader of the project: <u><router-link class="contacts" :to="'/our_women/' + a.leader">{{person.name}} {{person.surname}}</router-link></u><br>
             {{a.statistics}} <br>
             Places: {{a.places}} <br>
             Started in {{a.started}} <br>
+            <!--contacts-->
             ✉️: <u><a class="contacts" href="mailto:10727489@polimi.it">{{a.email}}</a></u><br>
             📞: <strong><a class="contacts" href="tel:{{ a.phone_number}}">{{ a.phone_number}}</a></strong>
           </p>
         </div>
       </div>
     </div>
+
+    <!--complete description of the project-->
     <div class = "description_container">
-      <div v-html="a.description" class="description">
+      <div v-html="description" class="description">
       </div>
     </div>
 
@@ -56,29 +69,32 @@
 
 <script setup>
 import {ref} from "vue";
+import sanitizeHtml from 'sanitize-html';
 
 const route = useRoute()
-const activityId = route.params.id;
+const activityId = route.params.id;//id of the project
+
+//retrieve project's info from db using the correct id
 const {data: project} = await useFetch('/api/activities/' + activityId);
-
-
 const a = JSON.parse(JSON.stringify(project.value))[0];
 
-const lead = a.leader;
-const person = await $fetch('/api/our_women/' + lead)
+//retrieve info about the employee in charge of the project from the db
+const person = await $fetch('/api/our_women/' + a.leader)
 
-const descriptionParts = a.description.split('<br>').map(part => part.trim());
-const summary = a.summary;
+//text containing html tags
+const summary = sanitizeHtml(a.summary);
+const description = sanitizeHtml(a.description);
 
+//retrieve all projects from db for breadcrumbs
 const { data: allProjects } = await useFetch("/api/activities/projects");
 
 //Search Engine Optimization
-const description = ref('This page contains all the details of HERmet project ' + a.name)
+const page_description = ref('This page contains all the details of HERmet project ' + a.name)
 const keywords = ref('Project, ' + a.name)
 
 useHead({
   meta: [
-    { name: 'description', content: description },
+    { name: 'description', content: page_description },
     { name: 'keywords', content: keywords }
   ]
 })
