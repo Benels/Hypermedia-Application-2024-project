@@ -3,6 +3,9 @@
     <Title>HERmet - {{ service.name }}</Title>
   </Head>
 
+  <!-- Page of a service, contains the practical information about the service,
+   an exhaustive description of it, the testimonials of the people that have used it,
+   its logo, and a decorative image-->
 
   <div class="container">
 

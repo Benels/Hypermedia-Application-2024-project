@@ -59,7 +59,7 @@
         <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname}}'s CV</nuxt-link>
         <br>
         <div class="personal_info">   <!-- Contacts and social medias -->
-          ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{ person.name }}.{{ person.surname }}@hermet.com</a>
+          ✉️: <u><a class="mail" href="mailto:10727489@polimi.it">{{mail}}</a></u>
           <br><br><div class="social">
             <a href="https://www.instagram.com" class="social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram2.png"/></a>
             <a href="https://www.facebook.com" class="social_logo" target="_blank" aria-label="Link to Facebook"><img src="/assets/imgs/social/facebook.png"/></a>
@@ -196,6 +196,7 @@ const route = useRoute();
 const person = await $fetch('/api/our_women/' + route.params.id);
 const description = person.description;
 const surname = person.surname.replace(/ /g, '_');
+const mail = person.name.toLowerCase() + "."+ surname.toLowerCase() +"@hermet.com";
 
 // API call to get the activities that this person is leader of, given the id
 const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id);

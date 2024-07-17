@@ -3,6 +3,9 @@
     <Title>HERmet - {{a.name}}</Title>
   </Head>
 
+  <!-- Page of a project, contains the practical information and statistics of the project,
+   an exhaustive description of it, and a decorative image-->
+
   <main class="outerContainer">
 
     <!-- BREADCRUMBS -->

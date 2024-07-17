@@ -3,6 +3,10 @@
     <Title>HERmet - Home</Title>
   </Head>
 
+  <!--Home page of the website. It contains the logo and the slogan of the center, some links to these pages:
+  About Us, Contact Us, Volunteer form, and Newest Activity. It has also and explanation of the chatbot,
+  its functionalities and where to find it.-->
+
   <main>
     <div class="main-image-container">
       <!--decorative image-->

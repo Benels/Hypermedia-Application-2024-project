@@ -3,6 +3,10 @@
     <Title>HERmet - Our People</Title>
   </Head>
 
+  <!-- Personnel page: contains the list of employers of HERmet, the user can choose how to order them or to use
+   a filter based on their role-->
+
+
   <main class="flex flex-col w-[100vw] gap-8 mt-4">
     <div class="sectionContainer flex flex-col gap-4 min-w-fit justify-center">
 
