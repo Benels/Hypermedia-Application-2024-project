@@ -12,11 +12,15 @@
 </template>
 
 <script setup>
+  // THE COMPONENT IS USED FOR BOTH TYPE OF ACTIVITIES => SERVICES, PROJECTS
+
+  // define the required props 
   const props = defineProps(['id', 'name', 'role', 'link', 'isService']);
+  // based on the isService, compute the proper suffix to be used to compute the complete URL to get the image of this particular activity
   var imageSuffix = props.isService ? "/logo/"+props.id+".PNG" : "/projects/"+props.id+".jpg";
-  console.log(imageSuffix);
+  //console.log(imageSuffix);
   const imageLink = "https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public"+imageSuffix;
-  console.log(imageLink);
+  //console.log(imageLink);
   
 </script>
 
