@@ -3,6 +3,11 @@ import { readBody, sendError, createError } from 'h3';
 
 export default eventHandler(async (event) => {
 
+    /**
+     * API call to supabase in order to store the data from the volunteering form on database.
+     * Depending on the API response a different message will be shown to the user.
+     */
+
     const supabaseUrl = 'https://qpznxdvtbsibmwyurkfl.supabase.co'
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)

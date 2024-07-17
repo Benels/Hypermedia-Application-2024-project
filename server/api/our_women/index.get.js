@@ -1,6 +1,11 @@
 import {createClient} from "@supabase/supabase-js";
 
 function boardSorting(a,b) {
+
+    /**
+     * Sorting function for the employees, given their names.
+     */
+
     if(a.name > b.name)
       return +1;
     if(a.name < b.name)
@@ -9,6 +14,13 @@ function boardSorting(a,b) {
   }
 
 export default defineEventHandler(async (event) => {
+
+
+    /**
+     * API call to supabase in order to retrieve the list of employees of HERmet.
+     * The employees will then be clustered with respect to their role and sorted.
+     */
+
     const supabaseUrl = 'https://qpznxdvtbsibmwyurkfl.supabase.co'
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)

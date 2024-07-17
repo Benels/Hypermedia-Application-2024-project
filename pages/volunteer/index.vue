@@ -2,6 +2,11 @@
   <Head>
     <Title>Volunteer</Title>
   </Head>
+
+
+  <!-- Page that contains the volunteering form, after a brief introduction
+       This page exploits the "FormVolunteering" component, with its structure and API calls -->
+
   <div class="container">
     <h1>Volunteer</h1>
     <div class="intro">

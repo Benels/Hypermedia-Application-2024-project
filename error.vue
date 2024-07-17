@@ -1,4 +1,7 @@
 <template>
+
+  <!-- Landing page in case of errors. -->
+
   <div class="error">
     <NuxtLink to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="~/assets/imgs/Logo.svg" class="h-36" alt="Flowbite Logo" />
