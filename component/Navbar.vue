@@ -3,10 +3,12 @@
 
   <nav class="bg fixed w-full z-[9998]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:py-6 md:pb-4">
+      <!-- when the logo is clicked, close the navbar and request a close of the chatbot window -->
       <NuxtLink @click="closeNavbarChatbot" to="/" title="Homepage" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="~/assets/imgs/Logo.svg" class="h-8" alt="Flowbite Logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap">HERmet</span>
       </NuxtLink>
+      <!-- toggle button of the navbar on mobile devices, when clicked it must handle the menu appearance (also the one of the chatbot) -->
       <button @click="toggleNavbar" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
           <span class="sr-only">Open main menu</span>
           <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -48,10 +50,6 @@
       </div>
     </div>
   </nav>
-  
-    
-  
-  
   </template>
   
   <script setup>
@@ -59,12 +57,15 @@
   import { ref, watch } from "vue";
   import { useRoute } from "vue-router";
   
+  // define the list of events the component can emit (will be catched by other components when needed)
+  // in this case the event 'closeChatbot' will be catched by 
   const emit = defineEmits(['closeChatBot']);
 
   const route = useRoute();
   const navbarMenu = ref();
   const currentRoute = ref("index");
 
+  // whenever the route changes, compute the current page. It will be used to highlight in the menu in what page the user is currently
   watch(() => route.name, (newName, oldName) => {
     currentRoute.value = newName.split("-")[0];
   })
@@ -73,17 +74,19 @@
     navbarMenu.value.classList.add("hidden");
   }
 
+  // close the chatbot whenever the user opens/closes the navbar
   function toggleNavbar(event) {
     emit("closeChatBot");
     navbarMenu.value.classList.toggle("hidden");
   }
 
+  // close the navbar and emit the 'closeChatbot' event to trigger a close on the chatbot window
   function closeNavbarChatbot(){
     emit("closeChatBot");
     navbarMenu.value.classList.add("hidden");
   }
 
-  
+  // expose to other components the closeNavbar function
   defineExpose({
     closeNavbar
   });
@@ -101,7 +104,9 @@
     position: absolute;
     background-color: #ebebeb;
   }
-  
+  /*
+    implements the dropdown of the activities -> services | projects
+  */
   .activities_link:hover .activities_dropdown {
     display: block;
   }

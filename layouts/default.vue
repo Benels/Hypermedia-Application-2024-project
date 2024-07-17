@@ -1,24 +1,35 @@
 <template>
+  <!-- 
+    This layout overwrites the default one so that we can put landmarks in each page 
+  -->
 
+
+  <!-- insert the Navbar component + assign it to the navbar ref + handle the emitted event 'closeChatbot' by calling the closeChatbot function -->
   <Navbar @closeChatBot="closeChatbot" ref="navbar" />
+  <!-- PAGE CONTENT -->
   <div class="content-container">
+    <!-- the slot tag puts here the page content we define in each page -->
     <slot />
   </div>
+  <!-- chatbot front end -->
   <div class="chatbotContainer fixed bottom-8 right-8 flex flex-col-reverse gap-2">
+    <!-- chatbot circle -->
     <div class="z-32 w-20 h-20 overflow-hidden bg-white rounded-full border-2 border-[2px] border-red/50 flex justify-center items-center" @click.stop="handleChatbot">
-    <!--div class="z-32 w-20 h-20 overflow-hidden bg-gray-300 rounded-full flex justify-center items-center" @click="handleChatbot"-->
       <!-- dimensions of the svg must be +2 w.r.t. the dimensions of the above div -->
       <img class="h-[105%] w-auto ml-[8px] mb-[15px]" src="~/assets/imgs/bender.png" alt="Bordered avatar" >
     </div>
     <div class="z-33 chatbot fixed right-10 pointer-events-none" ref="chatbotContainer">
+      <!-- handle the emitted event 'handle' -->
       <Chatbot @handle="handleChatbot" />
     </div>
   </div>
+  <!-- social circle + socials list -->
   <div class="hidden md:flex socialContainer fixed bottom-8 left-8 flex-col-reverse gap-2 items-center">
+    <!-- social circle -->
     <div class="w-20 h-20 bg-white rounded-full border-2 border-[2px] border-red/50">
-    <!--div class="w-20 h-20 bg-gray-300 rounded-full"-->
       <img class="p-3 -ml-[2px]" src="~/assets/imgs/social/share.png" alt="Bordered avatar" @click.stop="handleSocialListDisplay">
     </div>
+    <!-- socials list -->
     <div class="socialLinks flex-col-reverse gap-2" ref="socialContainer">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
       <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-12 h-12 rounded-full hover:cursor-pointer hoverEffectX" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
@@ -81,9 +92,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 const displaySocialList = ref(false);
 const socialContainer = ref();
 function handleSocialListDisplay(event: any) {
-  // write the javascript to toggle the
-  //displaySocialList.value = !displaySocialList.value;
-
+  // handle the appearance of the socials list + handle transition delays
   if(!displaySocialList.value) {
     closeChatbot();
     displaySocialList.value = !displaySocialList.value;
@@ -100,6 +109,7 @@ function handleSocialListDisplay(event: any) {
   }
 }
 
+// close the social list
 function closeSocialList(){
   displaySocialList.value = !displaySocialList.value;
   socialContainer.value.classList.remove("setOpacity");
@@ -112,8 +122,10 @@ import Chatbot from "~/component/Chatbot.vue";
 const displayChat = ref(false);
 const chatbotContainer = ref();
 
+// handle the chatbot appearance 
 function handleChatbot(event :any){
   if(!displayChat.value){
+    // if the user wants to open the chatbot -> close the navbar and the social list + trigger animations + change state
     closeNavbar();
     closeSocialList();
     displayChat.value = !displayChat.value;
@@ -127,6 +139,7 @@ function handleChatbot(event :any){
   }
 }
 
+// function to close the chatbot + handle the transitions and the fixed scrolling
 function closeChatbot() {
   displayChat.value = false;
   //displayChat.value = !displayChat.value;
@@ -150,6 +163,7 @@ function closeAll() {
   closeChatbot();
 }
 
+// close everything (chatbot, social list, navbar)
 function handleClickOutside(event: MouseEvent) {
   const target = event.target as HTMLElement;
   if (
@@ -161,10 +175,12 @@ function handleClickOutside(event: MouseEvent) {
   }
 }
 
+// on mount add the event listener to close everything when a general click is done 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside);
 });
 
+// remove a possible previous event listener (ensures only one listener
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
 });
