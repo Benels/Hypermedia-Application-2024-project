@@ -1,4 +1,6 @@
 <template>
+
+  <!-- Component that defines the visual aspect of the Personal Card for the "Our Women" page -->
   <NuxtLink :to = "link" :aria-label="`Link to ${name} ${surname} page`" class="personLink">
     <div class="card">
       <div class="imageContainer">

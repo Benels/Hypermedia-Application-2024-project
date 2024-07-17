@@ -1,5 +1,11 @@
 <template>
+
+  <!-- Component to create the Volunteering form -->
+
+  <!-- Preventing to submit unless all fields are filled -->
   <form @submit.prevent="submit" class="w-full max-w-lg mx-auto p-4">
+
+    <!-- Name, surname, email, phone and occupation fields with the relative error messages and script-function calls to check their validity-->
     <div class="md:flex md:space-x-4 md:w-full">
       <div class="mb-4 md:w-full/2">
         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
@@ -30,6 +36,8 @@
       <p v-if="occupationError" class="text-red-500 text-xs italic">{{ occupationError }}</p>
     </div>
     <br>
+
+    <!-- Days and availability fields -->
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">Please select which days you would be available:</label>
       <!--div class="flex-col gap-4"-->
@@ -69,12 +77,15 @@
       <textarea v-model="text" :class="{'border-red-500': textError}" id="text" aria-label="Text message input field" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4"></textarea>
       <p v-if="textError" class="text-red-500 text-xs italic">{{ textError }}</p>
     </div>
+
+    <!-- Submission Button, gets disabled if the validity checks for the form are not passed -->
     <div class="mb-4 text-center">
       <button :disabled="!isFormValid" type="submit" class="custom-submit-button">
         Submit
       </button>
     </div>
 
+    <!-- Submission (un)successful message -->
     <div v-if="dialog" class="dialog fixed z-10 inset-0 overflow-y-auto">
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -108,6 +119,11 @@
 
 <script>
 export default {
+
+  /**
+   * Validity checks for the form content
+   */
+
   data() {
     return {
       name: '',
@@ -243,6 +259,7 @@ export default {
       };
       try {
 
+        // API call to post the data on database
         const response = await useFetch('/api/volunteer/storeForm', {
           method: 'POST',
           headers: {
