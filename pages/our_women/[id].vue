@@ -2,6 +2,11 @@
   <Head>
     <title>HERmet - {{ person.name }} {{ person.surname }}</title>
   </Head>
+
+  <!-- Personal page of an employee, contains all the personal information,
+       alongside a picture and the list of projects and services that the person is leader of -->
+
+
   <!-- BREADCRUMBS -->
   <div class="flex justify-center sm:block">
     <ol class="flex flex-row gap-2 sm:gap-4 sm:text-xl sm:ml-8 text-base items-center">
@@ -36,7 +41,9 @@
     </ol>
   </div>
 
-  <!-- PERSON CONTENT -->
+
+
+  <!-- EMPLOYEE CONTENT -->
   <main>
     <div class="personContainer"></div>
     <h1 class="name_surname">{{ person.name }} {{ person.surname }}</h1>
@@ -51,7 +58,7 @@
         <h2 class="role">{{ person.role }}</h2>
         <nuxt-link :to="`https://qpznxdvtbsibmwyurkfl.supabase.co/storage/v1/object/public/cv/${person.name}${surname}.pdf`" target="_blank" class="cv_box">{{ person.name }} {{ person.surname}}'s CV</nuxt-link>
         <br>
-        <div class="personal_info">
+        <div class="personal_info">   <!-- Contacts and social medias -->
           ✉️: <a class="mail" href="mailto:10727489@polimi.it">{{ person.name }}.{{ person.surname }}@hermet.com</a>
           <br><br><div class="social">
             <a href="https://www.instagram.com" class="social_logo" target="_blank" aria-label="Link to Instagram"><img src="/assets/imgs/social/instagram2.png"/></a>
@@ -69,10 +76,13 @@
       </div>
     <br />
 
+    <!-- Carousel that contains the list of projects that the employee is leader of -->
     <div v-if="projects.length > 0">
       <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Projects managed by {{ person.name }} {{ person.surname }}</div>
       <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
+
+        <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(project, index) in projects" :key="project.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/projects/' + project.activity_id">
@@ -83,6 +93,8 @@
             </router-link>
           </div>
         </div>
+
+        <!-- Slider controls -->
         <button v-if="projects.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev >
           <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red bg-opacity-75 dark:bg-gray-800/30 group-hover:bg-red dark:group-hover:bg-gray-800/60  dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10" >
@@ -102,10 +114,14 @@
       </div>
     </div>
 
+
+    <!-- Carousel that contains the list of services that the employee is leader of -->
     <div v-if="services.length > 0">
       <div style="text-align: center; font-weight: bold; font-family: 'Rubik', sans-serif; font-size: 1.5rem; color: #d62828">Service managed by {{ person.name }} {{ person.surname }}</div>
       <br>
       <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
+
+        <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
           <div v-for="(service, index) in services" :key="service.activity_id" :data-carousel-item="index" class="hidden duration-700 ease-in-out">
             <router-link :to="'/services/' + service.activity_id">
@@ -116,6 +132,8 @@
             </router-link>
           </div>
         </div>
+
+        <!-- Slider controls -->
         <button v-if="services.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
           <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-red dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -141,6 +159,8 @@
 <script setup>
 
 /* FUNCTIONS DEFINITION */
+
+// Find the current section of the employee list, deals with the dropdown menu's section list
 function computeCurrentSection() {
   for(var s of peopleStore.sections) {
     console.log(s.name);
@@ -152,6 +172,8 @@ function computeCurrentSection() {
   }
 }
 
+
+// Functions that save the page data in order to show the correct info in the breadcrumbs
 function handleSectionBreadcrumb(newSection) {
   peopleStore.setCurrentSection(newSection);
   navigateTo('/our_women');
@@ -170,15 +192,19 @@ import { usePeopleStore } from '~/stores/peopleStore';
 const peopleStore = usePeopleStore();
 const route = useRoute();
 
-const person = await $fetch('/api/our_women/' + route.params.id); //get the specific person from their id
+// API call to Get the specific person from their id
+const person = await $fetch('/api/our_women/' + route.params.id);
 const description = person.description;
 const surname = person.surname.replace(/ /g, '_');
 
+// API call to get the activities that this person is leader of, given the id
 const { data: activities } = await useFetch('/api/activities/leader/' + route.params.id);
 
 const projects = ref([]);
 const services = ref([]);
 
+
+// Divide the activities between services and projects
 if (activities.value) {
   activities.value.forEach(activity => {
     if (activity.is_service) {
@@ -189,6 +215,8 @@ if (activities.value) {
   });
 }
 
+
+// API call to get the information about the employee given the ID
 if(!peopleStore.sections) {
   const { data: response  } = await useFetch('/api/our_women/');
   peopleStore.setSections(response.value.sections);
@@ -196,12 +224,14 @@ if(!peopleStore.sections) {
 if(!peopleStore.currentSection)
   computeCurrentSection();
 
-/* initialize carousels */
+
+// Initialize the carousel and the time for each loop
 onMounted(() => {
   setTimeout(() => {
     initCarousels();
   }, 100);
 });
+
 
 //Search Engine Optimization
 const page_description = ref('This page contains ' + person.name + ' ' + person.surname + '\'s personal information.')

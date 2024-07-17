@@ -3,7 +3,11 @@
     <Title>HERmet - Contact Us</Title>
   </Head>
 
+  <!-- Contact Us page -->
+
   <main>
+
+    <!-- Map, opening hours and address, Google Maps' Embedded map -->
     <div class="contactUsContainer">
       <div class="map">
         <p class="map_text">You can find our centre at:</p>
@@ -21,6 +25,8 @@
         </div>
       </div>
 
+
+      <!-- Contacts and Social Medias -->
       <div class="contact_social">
         <div class="contacts">
           <div>
@@ -62,35 +68,24 @@ useHead({
 </script>
 
 <style scoped>
-/* body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-} */
+
 
 .contactUsContainer {
   display: flex;
   flex-direction: column;
   margin: 0;
   justify-content: center;
-  /* background-color: blueviolet; */
   width: 100vw;
 }
 
 .contact_social,
 .map {
   display: flex;
-  /* flex: 1; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 5%;
-  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .map_embed {

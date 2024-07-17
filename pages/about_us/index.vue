@@ -163,6 +163,7 @@
   import { initCarousels } from 'flowbite';
   import { onMounted } from 'vue'
 
+  //API call to get the list of activities
   const { data: activities } = await useFetch('/api/activities/')
   const acts = ref([])
   if (activities.value) {
@@ -171,6 +172,7 @@
     })
   }
 
+  // Initialize the carousel and the time for each loop
   onMounted(() => {
     setTimeout(() => {
       initCarousels();

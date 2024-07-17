@@ -3,11 +3,16 @@
     <Title>HERmet - Our Activities</Title>
   </Head>
 
+  <!--
+      Main page for the activities, contains two carousels, one for the projects and one for the services
+   -->
+
   <main class="flex flex-col justify-center items-center mt-8 mb-0 mx-0 p-0 gap-8">
 
+
+    <!-- Services -->
     <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
         <NuxtLink to="/services" class="text-3xl">Our Services</NuxtLink>
-
 
         <div id="default-carousel" class="relative w-1/2 mx-auto" data-carousel="slide">
         <!-- Carousel wrapper -->
@@ -44,7 +49,7 @@
 
     <br>
 
-    
+    <!-- Projects -->
     <div class="w-full flex flex-col items-center justify-center gap-4 z-0">
       <NuxtLink to="/projects" class="text-3xl">Our Projects</NuxtLink>
 
@@ -91,10 +96,12 @@
 import { initCarousels } from 'flowbite';
 import { onMounted } from 'vue'
 
+// API call to get the list of activities
 const projects = ref([])
 const services = ref([])
 const { data: activities } = await useFetch('/api/activities/')
 
+// Divide the activities between services and projects
 if (activities.value) {
 activities.value.forEach(activity => {
   if (activity.is_service) {
@@ -105,7 +112,7 @@ activities.value.forEach(activity => {
 })
 }
 
-// initialize components based on data attribute selectors
+// Initialize the carousel and the time for each loop
 onMounted(() => {
   setTimeout(() => {
       initCarousels();
