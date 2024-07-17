@@ -4,6 +4,7 @@
   </Head>
 
   <main class="outerContainer">
+    <!--The first image and text showing when opening the page-->
     <div class="main-image-container">
       <div class="centered w-full">
         <img src="/assets/imgs/aboutUs/mainimage3.jpg" alt="" id="main_img">
@@ -16,11 +17,14 @@
       </div>
     </div>
 
+  <!--the 1st main division of the page, composed by...-->
   <div class="centered w-full flex-wrap">
     <div class="container">
+      <!--...an image showing on the left and...-->
       <div id="mc1" class="image-container">
         <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="Image of Stylized women asking for No more violence" class="img-about">
       </div>
+      <!--...a text showing on the right-->
       <div class="text-container">
         <h2 class="md:pl-8">OUR MISSION</h2>
         <p class="pr-8 md:pr-0 pl-8 justified">The mission of HERmet is to <b>provide comprehensive assistance to women</b> who have experienced
@@ -30,12 +34,15 @@
           and well-being of all women affected by such circumstances.
         </p>
       </div>
+      <!--this img is showed only on mobile devices, because it appears under the text, to make the page more readable-->
       <div id="mc2" class="image-container">
         <img src="/assets/imgs/aboutUs/stop_violence.jpg" alt="Image of Stylized women asking for No more violence" class="img-about">
       </div>
     </div>
 
+    <!--the 2nd main division of the page, composed by...-->
     <div class="container">
+      <!--...a text showing on the left and...-->
       <div class="text-container">
         <h2 class="md:pr-8">OUR HISTORY</h2>
         <p class="pl-8 md:pl-0 pr-8 justified">
@@ -44,16 +51,20 @@
           change</b> through education and awareness initiatives.<br>With a commitment to empowerment and social justice,HERmet continues to grow and adapt,
           driven by the voices and experiences of survivors and allies, as it strives to create a world <b>free from violence and discrimination</b> for all women and girls.
         </p>
+      <!--...an image showing on the right-->
       </div>
       <div class="image-container">
         <img src="/assets/imgs/aboutUs/history.jpg" alt="Image of the First HERmet Reunion"  class="img-about">
       </div>
     </div>
 
+    <!--the 3rd main division of the page, composed by...-->
     <div class="container">
+      <!--...an image showing on the left and...-->
       <div id="pc1" class="image-container">
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt="" class="img-about">
       </div>
+      <!--...a text showing on the right-->
       <div class="text-container">
         <h2 class="md:pl-8">PRACTICAL INFORMATION</h2>
         <p class="pr-8 md:pr-0 pl-8 justified">
@@ -62,20 +73,27 @@
         </p>
         <p class="opening-hours"><b>Monday - Friday: 9:00 AM - 6:00 PM</b></p>
         <p class="opening-hours"><b>Saturday - Sunday: 10:00 AM - 4:00 PM</b></p>
+        <!--This is a button to link Contact Us page-->
         <NuxtLink to="/activities" class="button">Contact Us</NuxtLink>
       </div>
+      <!--this img is showed only on mobile devices, because it appears under the text, to make the page more readable-->
       <div id="pc2" class="image-container">
         <img src="/assets/imgs/aboutUs/practical_info.jpg" alt=""  class="img-about">
       </div>
     </div>
 
+    <!--the 4th main division of the page, composed by...-->
     <div class="container">
+      <!--The title of the section-->
       <div class="text-container">
         <h2>OUR ACTIVITIES</h2>
+        <!--This is a button to link Our Activities page-->
         <NuxtLink to="/activities" class="button">More Details</NuxtLink>
       </div>
+      <!--The Carousel of Activities given by...-->
       <div id="default-carousel" class="relative w-3/4 mx-auto" data-carousel="slide">
         <div class="relative h-56 overflow-hidden rounded-lg md:h-80">
+          <!--This loop on the activities, showing their distinctive image and their title-->
           <div v-for="(a, index) in acts" :key="a.activity_id" :data-carousel-item="index" class="hidden duration-1500 ease-in-out">
             <div v-if="a.is_service">
               <router-link :to="'/services/' + a.activity_id">
@@ -92,11 +110,10 @@
                   {{ a.name }}
                 </div>
               </router-link>
-          </div>
-
+            </div>
           </div>
         </div>
-
+        <!--Here the arrows which allow to scroll from one activity to another one-->
         <button v-if="acts.length > 1" type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
           <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red bg-opacity-75  dark:bg-gray-800/30 group-hover:bg-red dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -116,10 +133,13 @@
       </div>
     </div>
 
+    <!--the 5th main division of the page, composed by...-->
     <div class="container">
+      <!--...an image showing on the left and...-->
       <div id="vc1" class="image-container">
         <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
       </div>
+      <!--...a text showing on the right-->
       <div class="text-container">
         <h2 class="md:pl-8">JOIN THE CAUSE</h2>
         <p class="pr-8 md:pr-0 pl-8 justified">By becoming a <b>volunteer</b>, you'll support women who have experienced violence, stalking,
@@ -127,8 +147,10 @@
           and preventative aid.<br>At our association, you'll be part of a compassionate team committed to <b>making a difference</b>.
           Stand with HERmet and be a beacon of strength and support in our community.
         </p>
+        <!--This is a button to link Volunteer with Us page-->
         <NuxtLink to="/volunteer" class="button">Volunteer with Us</NuxtLink>
       </div>
+      <!--this img is showed only on mobile devices, because it appears under the text, to make the page more readable-->
       <div id="vc2" class="image-container">
         <img src="/assets/imgs/aboutUs/volunteers.jpg" alt="" class="img-about">
       </div>

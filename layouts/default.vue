@@ -28,7 +28,10 @@
 
   </div>
 
+  <!--The footer represents the bottom of every page of the website, it adapts to the screen dimension,
+  having some feature based on which device is used. It contains:-->
   <footer class="footer md:items-center md:h-56 lg:h-36">
+    <!--The website logo, useful also as an Home Page link-->
     <div class="md:w-3/4 md:w-4/5 md:items-center footer-container">
       <div class="lg:max-w-screen-lg flex-auto footer-logo-container">
         <div class="footer-logo">
@@ -39,26 +42,29 @@
         </div>
         <p class="footer-text md:text-sm lg:text-base"><b>Always by your side</b></p>
       </div>
-      <div class="md:max-w-44 lg:max-w-80 flex-auto" >  <!--id="footer-text-container"-->
+      <!--A brief recap on how to reach HERmet physically or virtually-->
+      <div class="md:max-w-44 lg:max-w-80 flex-auto" >
           <span class="footer-text md:text-sm lg:text-base">Reach out to us whenever you need:<br> at Piazza Leonardo da Vinci 1 - MI, by
             calling
             <a class="number" href="tel:+393243453456">+39 324 345 3456</a> or sending an email to <u><a class="mail" href="mailto:10727489@polimi.it">frontdesk@hermet.com</a></u></span>
       </div>
-      <div class="lg:max-w-screen-lg flex-auto lg:ml-4" > <!--id="footer-text-container"-->
+      <!--A link to Volunteers page-->
+      <div class="lg:max-w-screen-lg flex-auto lg:ml-4" >
           <span class="footer-text md:text-sm lg:text-base">Be part of the Change:<br><NuxtLink to="/volunteer"><u>Join HERmet now</u></NuxtLink>
            </span>
       </div>
-      
     </div>
+    <!--These social media logos act as a link to them, and they appears only on mobile, because social media button would
+    occupy too many screen, covering lot of information-->
     <div class="md:hidden socialPhone self-left px-[1rem]">
       <a href="https://www.linkedin.com" target="_blank" aria-label="Link to Linkedin"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/linkedin.png" alt="Bordered avatar"></a>
       <a href="https://www.instagram.com" target="_blank" aria-label="Link to Instagram"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/instagram2.png" alt="Bordered avatar"></a>
       <a href="https://www.facebook.com" target="_blank" aria-label="Link to Facebook"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/facebook.png" alt="Bordered avatar"></a>
       <a href="https://www.twitter.com" target="_blank" aria-label="Link to Twitter"><img class="w-10 h-10 rounded-full hover:cursor-pointer hoverEffectY" src="~/assets/imgs/social/twitter.png" alt="Bordered avatar"></a>
     </div>
+    <!--There are also text for credits to the team and a Copyright license-->
     <div class="self-left px-[1rem] mt-[4px]">
       <span class="footer-text md:text-sm lg:text-base">Credits: Benelle Francesco, Cavicchioli Michele, Lo Presti Irene, Lodelli Riccardo</span>
-      <!-- <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV, All rights reserved</span> -->
     </div>
     <div class="self-left px-[1rem]">
       <span class="footer-text md:text-sm lg:text-base">&copy 2024 HERmet ODV, All rights reserved</span>
