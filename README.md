@@ -10,6 +10,9 @@ This repository contains all the files for the Hypermedia Application's course p
 - ####  Lodelli Riccardo     [@ilrechh](https://github.com/ilrechh)
 
 <br>
+Finale Grade: 30 Cum Laude
+<br>
+<br>
 
 
 ## Usability Evaluation
